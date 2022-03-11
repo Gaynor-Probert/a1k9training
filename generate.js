@@ -63,9 +63,18 @@ const kiss = new Kiss({
       image: '/images/about/horse-sit-v1.png',
       'caption-class': 'pull-right push-down',
     },
-    title: 'Find A1K9',
+    title: 'Find A1K9 Training',
     path: 'find-us',
     slug: 'index',
+  })
+
+  .page({
+    view: 'contact.hbs',
+    model: {
+      image: '/images/about/horse-sit-v1.png',
+      'caption-class': 'pull-left push-down',
+    },
+    title: 'Contact A1K9 Training'
   })
 
   .generate(function () {
