@@ -68,15 +68,6 @@ const kiss = new Kiss({
     slug: 'index',
   })
 
-  .page({
-    view: 'contact.hbs',
-    model: {
-      image: '/images/about/horse-sit-v1.png',
-      'caption-class': 'pull-left push-down',
-    },
-    title: 'Contact A1K9 Training'
-  })
-
   .generate(function () {
     console.log('Success'.rainbow)
     if (this.config.dev) console.log('http://localhost:3000'.yellow)
