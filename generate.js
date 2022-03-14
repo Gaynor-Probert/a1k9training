@@ -14,7 +14,7 @@ const kiss = new Kiss({
 
   .page({
     view: 'index.hbs',
-    title: 'Gaynor Probert - Dog Behaviour and Trainer South Wales',
+    title: 'Dog Behaviour and Trainer South Wales | A1K9 Training',
     description:
       'Gaynor Probert K9 Behaviour and Training - Improving relationships between dogs and their owners',
   })
@@ -42,7 +42,7 @@ const kiss = new Kiss({
       faqs: '../models/faqs/courses.json',
     },
     controller: 'faqMapper.js',
-    title: 'Dog Training Classes South Wales with Gaynor Probert',
+    title: 'Dog Training Classes in South Wales with Gaynor Probert',
   })
   .pages({
     view: 'courses/course.hbs',
