@@ -3,7 +3,13 @@
     <div class="navbar navbar-inverse navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target=".navbar-collapse"
+            aria-label="Site Navigation"
+          >
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -15,130 +21,146 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             {{#isActive this href="/"}}
-            <li class="{{active}}">
-              <a href="{{href}}">
-                <span class="glyphicon glyphicon-home"></span>
-                Home
-              </a>
-            </li>
+              <li class="{{active}}">
+                <a href="{{href}}">
+                  <span class="glyphicon glyphicon-home"></span>
+                  Home
+                </a>
+              </li>
             {{/isActive}}
-            {{#isActive this href="/behavioural-consultations" folderMatch=true}}
-            <li class="{{active}}">
-              <a href="{{href}}" class="dropdown-toggle" data-toggle="dropdown">
-                Consultations
-                <b class="caret hidden-xs"></b>
-              </a>
-              <ul class="dropdown-menu hidden-xs">
-                <li>
-                  <a href="{{href}}">
-                    Behavioural Consultations
-                  </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <a href="{{href}}/dog-on-dog-aggression">
-                    Dog-on-Dog Aggression
-                  </a>
-                </li>
-                <li>
-                  <a href="{{href}}/dog-on-person-aggression">
-                    Dog-on-Person Aggression
-                  </a>
-                </li>
-              </ul>
-            </li>
+            {{#isActive
+              this
+              href="/behavioural-consultations"
+              folderMatch=true
+            }}
+              <li class="{{active}}">
+                <a
+                  href="{{href}}"
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
+                >
+                  Consultations
+                  <b class="caret hidden-xs"></b>
+                </a>
+                <ul class="dropdown-menu hidden-xs">
+                  <li>
+                    <a href="{{href}}">
+                      Behavioural Consultations
+                    </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="{{href}}/dog-on-dog-aggression">
+                      Dog-on-Dog Aggression
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{href}}/dog-on-person-aggression">
+                      Dog-on-Person Aggression
+                    </a>
+                  </li>
+                </ul>
+              </li>
             {{/isActive}}
             {{#isActive this href="/courses" folderMatch=true}}
-            <li class="{{active}}">
-              <a href="{{href}}" class="dropdown-toggle" data-toggle="dropdown">
-                Courses
-                <b class="caret hidden-xs"></b>
-              </a>
-              <ul class="dropdown-menu hidden-xs">
-                <li>
-                  <a href="{{href}}">
-                    About our Courses
-                  </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <a href="{{href}}/puppy-socialisation">
-                    Puppy Socialisation
-                  </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <a href="{{href}}/junior-obedience">
-                    Junior Course
-                  </a>
-                </li>
-                <li>
-                  <a href="{{href}}/bronze-obedience">
-                    Bronze Obedience
-                  </a>
-                </li>
-                <li>
-                  <a href="{{href}}/silver-obedience">
-                    Silver Obedience
-                  </a>
-                </li>
-                <li>
-                  <a href="{{href}}/gold-obedience">
-                    Gold Obedience
-                  </a>
-                </li>
-                <li>
-                  <a href="{{href}}/platinum-obedience">
-                    Platinum Obedience
-                  </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <a href="{{href}}/one-to-one">
-                    One to One
-                  </a>
-                </li>
-              </ul>
-            </li>
+              <li class="{{active}}">
+                <a
+                  href="{{href}}"
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
+                >
+                  Courses
+                  <b class="caret hidden-xs"></b>
+                </a>
+                <ul class="dropdown-menu hidden-xs">
+                  <li>
+                    <a href="{{href}}">
+                      About our Courses
+                    </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="{{href}}/puppy-socialisation">
+                      Puppy Socialisation
+                    </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="{{href}}/junior-obedience">
+                      Junior Course
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{href}}/bronze-obedience">
+                      Bronze Obedience
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{href}}/silver-obedience">
+                      Silver Obedience
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{href}}/gold-obedience">
+                      Gold Obedience
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{href}}/platinum-obedience">
+                      Platinum Obedience
+                    </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="{{href}}/one-to-one">
+                      One to One
+                    </a>
+                  </li>
+                </ul>
+              </li>
             {{/isActive}}
             {{#isActive this href="/about" folderMatch=true}}
-            <li class="{{active}}">
-              <a href="{{href}}" class="dropdown-toggle" data-toggle="dropdown">
-                About Us
-                <b class="caret hidden-xs"></b>
-              </a>
-              <ul class="dropdown-menu hidden-xs">
-                <li>
-                  <a href="{{href}}">
-                    Philosophy
-                  </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <a href="{{href}}/facilities">
-                    Facilities
-                  </a>
-                </li>
-                <li>
-                  <a href="{{href}}/gaynor-probert">
-                    Gaynor Probert
-                  </a>
-                </li>
-                <li>
-                  <a href="{{href}}/sara-thomas">
-                    Sara Thomas
-                  </a>
-                </li>
-              </ul>
-            </li>
+              <li class="{{active}}">
+                <a
+                  href="{{href}}"
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
+                >
+                  About Us
+                  <b class="caret hidden-xs"></b>
+                </a>
+                <ul class="dropdown-menu hidden-xs">
+                  <li>
+                    <a href="{{href}}">
+                      Philosophy
+                    </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="{{href}}/facilities">
+                      Facilities
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{href}}/gaynor-probert">
+                      Gaynor Probert
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{href}}/sara-thomas">
+                      Sara Thomas
+                    </a>
+                  </li>
+                </ul>
+              </li>
             {{/isActive}}
             {{#isActive this href="/find-us"}}
-            <li class="{{active}}">
-              <a href="{{href}}">
-                <span class="glyphicon glyphicon-envelope"></span>
-                Contact
-              </a>
-            </li>
+              <li class="{{active}}">
+                <a href="{{href}}">
+                  <span class="glyphicon glyphicon-envelope"></span>
+                  Contact
+                </a>
+              </li>
             {{/isActive}}
           </ul>
         </div>
