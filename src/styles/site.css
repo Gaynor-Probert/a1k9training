@@ -193,6 +193,18 @@
     @apply mb-0;
   }
 
+  /* The page title lives here on every inner page; size by level so an h1 reads
+   * as the title and an h4 (the FAQ heading) as a section label. */
+  .page-header h1 {
+    @apply font-display text-3xl leading-tight text-ink-900 md:text-4xl;
+  }
+
+  .page-header h2,
+  .page-header h3,
+  .page-header h4 {
+    @apply font-display text-2xl leading-tight text-ink-900;
+  }
+
   /* .figure-right / .figure-left — floated thumbnail image with a soft border.
    * Replace Bootstrap `img-thumbnail pull-right` / `pull-left`. Float only from
    * the `sm` breakpoint up; full width and centred on a phone. */
@@ -221,6 +233,10 @@
   /* .prose-site — the typography plugin, re-tuned to the palette. Applied by the
    * layouts around markdown partial output; not for hand-written markup. */
   .prose-site {
+    /* The plugin's defaults are a cool grey; keep body copy on the site's ink. */
+    --tw-prose-body: var(--color-ink-700);
+    --tw-prose-bullets: var(--color-brand-600);
+    --tw-prose-counters: var(--color-brand-700);
     @apply prose max-w-none prose-headings:font-display prose-headings:text-ink-900
       prose-a:font-medium prose-a:text-brand-700 prose-strong:text-ink-900
       prose-img:rounded-card;
