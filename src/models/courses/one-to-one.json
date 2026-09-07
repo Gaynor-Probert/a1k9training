@@ -2,8 +2,8 @@
   "slug": "one-to-one",
   "title": "One to one Dog Training | A1K9 Training",
   "description": "",
-  "image": "/images/courses/one-to-one/one-to-one-v3.png",
-  "caption-class": "pull-right",
+  "image": "/images/courses/one-to-one/one-to-one-v3.webp",
+  "caption": "right",
   "heading": "What's Right For You?",
   "components": {
     "intro": "courses/one-to-one/intro",

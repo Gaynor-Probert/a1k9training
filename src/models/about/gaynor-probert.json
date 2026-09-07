@@ -2,8 +2,8 @@
   "slug": "gaynor-probert",
   "title": "Gaynor Probert - About Me & A1K9 Training",
   "description": "",
-  "image": "/images/about/gaynor-probert-v1.png",
-  "caption-class": "pull-left",
+  "image": "/images/about/gaynor-probert-v1.webp",
+  "caption": "left",
   "next": {
     "name": "About Sara Thomas",
     "link": "/about/sara-thomas"

@@ -1,0 +1,738 @@
+{
+  "generated": "2026-09-07T21:39:26.483Z",
+  "images": {
+    "/images/index/gaynor-probert-award-v1.png": {
+      "src": "/images/index/gaynor-probert-award-v1.webp",
+      "width": 500,
+      "height": 500,
+      "role": "content",
+      "bytes": 46356
+    },
+    "/images/index/peek-a-boo-dog-1.png": {
+      "src": "/images/index/peek-a-boo-dog-1.webp",
+      "width": 500,
+      "height": 500,
+      "role": "content",
+      "bytes": 22658
+    },
+    "/images/about/CFBA-v1.png": {
+      "src": "/images/about/CFBA-v1.webp",
+      "width": 260,
+      "height": 173,
+      "role": "content",
+      "bytes": 7208
+    },
+    "/images/about/BIPDT-V1.png": {
+      "src": "/images/about/BIPDT-V1.webp",
+      "width": 260,
+      "height": 251,
+      "role": "content",
+      "bytes": 11490
+    },
+    "/images/about/guild-of-dog-trainers-v1.png": {
+      "src": "/images/about/guild-of-dog-trainers-v1.webp",
+      "width": 260,
+      "height": 286,
+      "role": "content",
+      "bytes": 10616
+    },
+    "/images/about/NTIPDU-v1.png": {
+      "src": "/images/about/NTIPDU-v1.webp",
+      "width": 223,
+      "height": 225,
+      "role": "content",
+      "bytes": 11730
+    },
+    "/images/index/facebook-v1.png": {
+      "src": "/images/index/facebook-v1.webp",
+      "width": 140,
+      "height": 140,
+      "role": "content",
+      "bytes": 1896
+    },
+    "/images/index/find-us-v1.png": {
+      "src": "/images/index/find-us-v1.webp",
+      "width": 140,
+      "height": 140,
+      "role": "content",
+      "bytes": 18226
+    },
+    "/images/index/tel-v1.png": {
+      "src": "/images/index/tel-v1.webp",
+      "width": 140,
+      "height": 140,
+      "role": "content",
+      "bytes": 5478
+    },
+    "/images/about/facilities/location-v1.png": {
+      "src": "/images/about/facilities/location-v1.webp",
+      "width": 460,
+      "height": 250,
+      "role": "content",
+      "bytes": 44970
+    },
+    "/images/about/facilities/training-fields-v1.png": {
+      "src": "/images/about/facilities/training-fields-v1.webp",
+      "width": 460,
+      "height": 250,
+      "role": "content",
+      "bytes": 19270
+    },
+    "/images/about/facilities/parking-v1.png": {
+      "src": "/images/about/facilities/parking-v1.webp",
+      "width": 460,
+      "height": 250,
+      "role": "content",
+      "bytes": 18126
+    },
+    "/images/about/facilities/indoor-training-v1.png": {
+      "src": "/images/about/facilities/indoor-training-v1.webp",
+      "width": 460,
+      "height": 250,
+      "role": "content",
+      "bytes": 24174
+    },
+    "/images/about/facilities/shop-v1.png": {
+      "src": "/images/about/facilities/shop-v1.webp",
+      "width": 460,
+      "height": 250,
+      "role": "content",
+      "bytes": 27418
+    },
+    "/images/about/facilities/hospitality-cabin-v1.png": {
+      "src": "/images/about/facilities/hospitality-cabin-v1.webp",
+      "width": 460,
+      "height": 250,
+      "role": "content",
+      "bytes": 11798
+    },
+    "/images/about/gaynor-probert-canine-and-feline-practitioner-of-the-year-2014-v1.png": {
+      "src": "/images/about/gaynor-probert-canine-and-feline-practitioner-of-the-year-2014-v1.webp",
+      "width": 300,
+      "height": 400,
+      "role": "content",
+      "bytes": 21046
+    },
+    "/images/about/gaynor-probert-awards-v1.png": {
+      "src": "/images/about/gaynor-probert-awards-v1.webp",
+      "width": 500,
+      "height": 494,
+      "role": "content",
+      "bytes": 58342
+    },
+    "/images/about/offlead-run-v1.png": {
+      "src": "/images/about/offlead-run-v1.webp",
+      "width": 500,
+      "height": 379,
+      "role": "content",
+      "bytes": 42792
+    },
+    "/images/consultations/naughty-dog-v1.png": {
+      "src": "/images/consultations/naughty-dog-v1.webp",
+      "width": 500,
+      "height": 374,
+      "role": "content",
+      "bytes": 29222
+    },
+    "/images/consultations/ali-the-rotti-v1.png": {
+      "src": "/images/consultations/ali-the-rotti-v1.webp",
+      "width": 300,
+      "height": 199,
+      "role": "content",
+      "bytes": 11710
+    },
+    "/images/courses/bronze/ozzy-v1.png": {
+      "src": "/images/courses/bronze/ozzy-v1.webp",
+      "width": 300,
+      "height": 225,
+      "role": "content",
+      "bytes": 13380
+    },
+    "/images/courses/gold/linda-and-bella-v1.png": {
+      "src": "/images/courses/gold/linda-and-bella-v1.webp",
+      "width": 300,
+      "height": 451,
+      "role": "content",
+      "bytes": 17546
+    },
+    "/images/courses/gold/gold-v1.png": {
+      "src": "/images/courses/gold/gold-v1.webp",
+      "width": 500,
+      "height": 332,
+      "role": "content",
+      "bytes": 38474
+    },
+    "/images/courses/gold/agility-v1.png": {
+      "src": "/images/courses/gold/agility-v1.webp",
+      "width": 500,
+      "height": 517,
+      "role": "content",
+      "bytes": 26074
+    },
+    "/images/courses/puppy-v2.png": {
+      "src": "/images/courses/puppy-v2.webp",
+      "width": 460,
+      "height": 250,
+      "role": "content",
+      "bytes": 24096
+    },
+    "/images/courses/bronze-v1.png": {
+      "src": "/images/courses/bronze-v1.webp",
+      "width": 460,
+      "height": 250,
+      "role": "content",
+      "bytes": 14992
+    },
+    "/images/courses/silver-v1.1.png": {
+      "src": "/images/courses/silver-v1.1.webp",
+      "width": 460,
+      "height": 250,
+      "role": "content",
+      "bytes": 20396
+    },
+    "/images/courses/gold-v1.png": {
+      "src": "/images/courses/gold-v1.webp",
+      "width": 460,
+      "height": 250,
+      "role": "content",
+      "bytes": 19268
+    },
+    "/images/courses/platinum-v1.png": {
+      "src": "/images/courses/platinum-v1.webp",
+      "width": 460,
+      "height": 250,
+      "role": "content",
+      "bytes": 19020
+    },
+    "/images/courses/one2one-v2.png": {
+      "src": "/images/courses/one2one-v2.webp",
+      "width": 460,
+      "height": 250,
+      "role": "content",
+      "bytes": 16098
+    },
+    "/images/courses/junior/mbali-v1.jpg": {
+      "src": "/images/courses/junior/mbali-v1.webp",
+      "width": 325,
+      "height": 503,
+      "role": "content",
+      "bytes": 18304
+    },
+    "/images/courses/junior/junior-v1.png": {
+      "src": "/images/courses/junior/junior-v1.webp",
+      "width": 500,
+      "height": 246,
+      "role": "content",
+      "bytes": 26174
+    },
+    "/images/courses/bronze/walking-the-dog-v1.png": {
+      "src": "/images/courses/bronze/walking-the-dog-v1.webp",
+      "width": 500,
+      "height": 391,
+      "role": "content",
+      "bytes": 33938
+    },
+    "/images/courses/one-to-one/poppy-v1.png": {
+      "src": "/images/courses/one-to-one/poppy-v1.webp",
+      "width": 300,
+      "height": 225,
+      "role": "content",
+      "bytes": 21948
+    },
+    "/images/courses/one-to-one/121-v1.png": {
+      "src": "/images/courses/one-to-one/121-v1.webp",
+      "width": 500,
+      "height": 333,
+      "role": "content",
+      "bytes": 32018
+    },
+    "/images/courses/platinum/glenda-and-bryn-v1.png": {
+      "src": "/images/courses/platinum/glenda-and-bryn-v1.webp",
+      "width": 300,
+      "height": 373,
+      "role": "content",
+      "bytes": 25402
+    },
+    "/images/courses/platinum/sit-v1.png": {
+      "src": "/images/courses/platinum/sit-v1.webp",
+      "width": 500,
+      "height": 333,
+      "role": "content",
+      "bytes": 21494
+    },
+    "/images/courses/platinum/tire-jump-v1.png": {
+      "src": "/images/courses/platinum/tire-jump-v1.webp",
+      "width": 500,
+      "height": 333,
+      "role": "content",
+      "bytes": 24376
+    },
+    "/images/courses/puppy/mandy-and-henry-v1.png": {
+      "src": "/images/courses/puppy/mandy-and-henry-v1.webp",
+      "width": 400,
+      "height": 223,
+      "role": "content",
+      "bytes": 14506
+    },
+    "/images/courses/puppy/puppy-v1.png": {
+      "src": "/images/courses/puppy/puppy-v1.webp",
+      "width": 500,
+      "height": 333,
+      "role": "content",
+      "bytes": 49874
+    },
+    "/images/courses/puppy/flying-ewok-v1.png": {
+      "src": "/images/courses/puppy/flying-ewok-v1.webp",
+      "width": 500,
+      "height": 333,
+      "role": "content",
+      "bytes": 38824
+    },
+    "/images/courses/silver/keith-and-magic-v1.png": {
+      "src": "/images/courses/silver/keith-and-magic-v1.webp",
+      "width": 300,
+      "height": 227,
+      "role": "content",
+      "bytes": 14532
+    },
+    "/images/courses/silver/walking-the-dog-v1.png": {
+      "src": "/images/courses/silver/walking-the-dog-v1.webp",
+      "width": 500,
+      "height": 375,
+      "role": "content",
+      "bytes": 47238
+    },
+    "/images/courses/silver/agility-v2.1.png": {
+      "src": "/images/courses/silver/agility-v2.1.webp",
+      "width": 500,
+      "height": 509,
+      "role": "content",
+      "bytes": 47480
+    },
+    "/images/about/facilities-v2.png": {
+      "src": "/images/about/facilities-v2.webp",
+      "width": 1600,
+      "height": 787,
+      "role": "hero",
+      "bytes": 241838,
+      "variants": {
+        "960": {
+          "src": "/images/about/facilities-v2-960w.webp",
+          "width": 960,
+          "height": 472,
+          "bytes": 89702
+        }
+      }
+    },
+    "/images/about/gaynor-probert-v1.png": {
+      "src": "/images/about/gaynor-probert-v1.webp",
+      "width": 1600,
+      "height": 787,
+      "role": "hero",
+      "bytes": 61584,
+      "variants": {
+        "960": {
+          "src": "/images/about/gaynor-probert-v1-960w.webp",
+          "width": 960,
+          "height": 472,
+          "bytes": 32608
+        }
+      }
+    },
+    "/images/about/philosophy-v4.png": {
+      "src": "/images/about/philosophy-v4.webp",
+      "width": 1600,
+      "height": 787,
+      "role": "hero",
+      "bytes": 250852,
+      "variants": {
+        "960": {
+          "src": "/images/about/philosophy-v4-960w.webp",
+          "width": 960,
+          "height": 472,
+          "bytes": 104810
+        }
+      }
+    },
+    "/images/about/sara-thomas-v2.png": {
+      "src": "/images/about/sara-thomas-v2.webp",
+      "width": 1600,
+      "height": 787,
+      "role": "hero",
+      "bytes": 120690,
+      "variants": {
+        "960": {
+          "src": "/images/about/sara-thomas-v2-960w.webp",
+          "width": 960,
+          "height": 472,
+          "bytes": 58532
+        }
+      }
+    },
+    "/images/consultations/dog-on-dog-aggression/dog-on-dog-aggression-v1.png": {
+      "src": "/images/consultations/dog-on-dog-aggression/dog-on-dog-aggression-v1.webp",
+      "width": 1600,
+      "height": 787,
+      "role": "hero",
+      "bytes": 213444,
+      "variants": {
+        "960": {
+          "src": "/images/consultations/dog-on-dog-aggression/dog-on-dog-aggression-v1-960w.webp",
+          "width": 960,
+          "height": 472,
+          "bytes": 89956
+        }
+      }
+    },
+    "/images/consultations/dog-on-person-aggression/dog-on-person-aggression-v3.png": {
+      "src": "/images/consultations/dog-on-person-aggression/dog-on-person-aggression-v3.webp",
+      "width": 1600,
+      "height": 787,
+      "role": "hero",
+      "bytes": 232436,
+      "variants": {
+        "960": {
+          "src": "/images/consultations/dog-on-person-aggression/dog-on-person-aggression-v3-960w.webp",
+          "width": 960,
+          "height": 472,
+          "bytes": 92728
+        }
+      }
+    },
+    "/images/courses/bronze/bronze-course-v2.png": {
+      "src": "/images/courses/bronze/bronze-course-v2.webp",
+      "width": 1600,
+      "height": 787,
+      "role": "hero",
+      "bytes": 188774,
+      "variants": {
+        "960": {
+          "src": "/images/courses/bronze/bronze-course-v2-960w.webp",
+          "width": 960,
+          "height": 472,
+          "bytes": 70948
+        }
+      }
+    },
+    "/images/courses/gold/gold-course-v1.png": {
+      "src": "/images/courses/gold/gold-course-v1.webp",
+      "width": 1600,
+      "height": 787,
+      "role": "hero",
+      "bytes": 223122,
+      "variants": {
+        "960": {
+          "src": "/images/courses/gold/gold-course-v1-960w.webp",
+          "width": 960,
+          "height": 472,
+          "bytes": 111384
+        }
+      }
+    },
+    "/images/courses/junior/junior-course-v3.png": {
+      "src": "/images/courses/junior/junior-course-v3.webp",
+      "width": 1600,
+      "height": 787,
+      "role": "hero",
+      "bytes": 164816,
+      "variants": {
+        "960": {
+          "src": "/images/courses/junior/junior-course-v3-960w.webp",
+          "width": 960,
+          "height": 472,
+          "bytes": 73172
+        }
+      }
+    },
+    "/images/courses/one-to-one/one-to-one-v3.png": {
+      "src": "/images/courses/one-to-one/one-to-one-v3.webp",
+      "width": 1600,
+      "height": 787,
+      "role": "hero",
+      "bytes": 230942,
+      "variants": {
+        "960": {
+          "src": "/images/courses/one-to-one/one-to-one-v3-960w.webp",
+          "width": 960,
+          "height": 472,
+          "bytes": 120272
+        }
+      }
+    },
+    "/images/courses/platinum/platinum-course-v2.png": {
+      "src": "/images/courses/platinum/platinum-course-v2.webp",
+      "width": 1600,
+      "height": 787,
+      "role": "hero",
+      "bytes": 190418,
+      "variants": {
+        "960": {
+          "src": "/images/courses/platinum/platinum-course-v2-960w.webp",
+          "width": 960,
+          "height": 472,
+          "bytes": 81610
+        }
+      }
+    },
+    "/images/courses/puppy/puppy-class-v2.png": {
+      "src": "/images/courses/puppy/puppy-class-v2.webp",
+      "width": 1600,
+      "height": 787,
+      "role": "hero",
+      "bytes": 184314,
+      "variants": {
+        "960": {
+          "src": "/images/courses/puppy/puppy-class-v2-960w.webp",
+          "width": 960,
+          "height": 472,
+          "bytes": 78528
+        }
+      }
+    },
+    "/images/courses/silver/silver-course-v1.png": {
+      "src": "/images/courses/silver/silver-course-v1.webp",
+      "width": 1600,
+      "height": 787,
+      "role": "hero",
+      "bytes": 183936,
+      "variants": {
+        "960": {
+          "src": "/images/courses/silver/silver-course-v1-960w.webp",
+          "width": 960,
+          "height": 472,
+          "bytes": 69342
+        }
+      }
+    },
+    "/images/gaynor-probert-home-v1.1.png": {
+      "src": "/images/gaynor-probert-home-v1.1.webp",
+      "width": 1600,
+      "height": 787,
+      "role": "hero",
+      "bytes": 80246,
+      "variants": {
+        "960": {
+          "src": "/images/gaynor-probert-home-v1.1-960w.webp",
+          "width": 960,
+          "height": 472,
+          "bytes": 41396
+        }
+      }
+    },
+    "/images/consultations/consultations-v1.png": {
+      "src": "/images/consultations/consultations-v1.webp",
+      "width": 1600,
+      "height": 787,
+      "role": "hero",
+      "bytes": 125656,
+      "variants": {
+        "960": {
+          "src": "/images/consultations/consultations-v1-960w.webp",
+          "width": 960,
+          "height": 472,
+          "bytes": 56072
+        }
+      }
+    },
+    "/images/courses/classes-v1.1.png": {
+      "src": "/images/courses/classes-v1.1.webp",
+      "width": 1600,
+      "height": 787,
+      "role": "hero",
+      "bytes": 126932,
+      "variants": {
+        "960": {
+          "src": "/images/courses/classes-v1.1-960w.webp",
+          "width": 960,
+          "height": 472,
+          "bytes": 51908
+        }
+      }
+    },
+    "/images/about/horse-sit-v1.png": {
+      "src": "/images/about/horse-sit-v1.webp",
+      "width": 1600,
+      "height": 787,
+      "role": "hero",
+      "bytes": 189596,
+      "variants": {
+        "960": {
+          "src": "/images/about/horse-sit-v1-960w.webp",
+          "width": 960,
+          "height": 472,
+          "bytes": 78548
+        }
+      }
+    }
+  },
+  "unreferenced": [
+    {
+      "path": "/images/consultations/dog-on-person-aggression/_dog-on-person-aggression-v3.png",
+      "bytes": 3322052
+    },
+    {
+      "path": "/images/consultations/dog-on-person-aggression/dog-on-person-aggression-v2.png",
+      "bytes": 2963745
+    },
+    {
+      "path": "/images/consultations/dog-on-person-aggression/dog-on-person-aggression-v2.1.png",
+      "bytes": 2962392
+    },
+    {
+      "path": "/images/courses/junior/junior-course-v1.png",
+      "bytes": 2955750
+    },
+    {
+      "path": "/images/consultations/dog-on-person-aggression/dog-on-person-aggression-v1.png",
+      "bytes": 2792417
+    },
+    {
+      "path": "/images/courses/junior/junior-course-v2.png",
+      "bytes": 2792245
+    },
+    {
+      "path": "/images/about/philosophy-v1.png",
+      "bytes": 2749358
+    },
+    {
+      "path": "/images/about/philosophy-v3.png",
+      "bytes": 2708244
+    },
+    {
+      "path": "/images/about/philosophy-v2.png",
+      "bytes": 2690770
+    },
+    {
+      "path": "/images/courses/bronze/bronze-course-v1.png",
+      "bytes": 2099690
+    },
+    {
+      "path": "/images/courses/platinum/platinum-course-v1.png",
+      "bytes": 2077804
+    },
+    {
+      "path": "/images/consultations/1-2-1-obedience-v1.png",
+      "bytes": 1986807
+    },
+    {
+      "path": "/images/about/sara-thomas-v1.png",
+      "bytes": 1937604
+    },
+    {
+      "path": "/images/about/facilities-v1.png",
+      "bytes": 1918026
+    },
+    {
+      "path": "/images/courses/one-to-one/one-to-one-v2.png",
+      "bytes": 1891154
+    },
+    {
+      "path": "/images/courses/one-to-one/one-to-one-v1.png",
+      "bytes": 1672913
+    },
+    {
+      "path": "/images/index/gaynor-probert-home-v1.1.png",
+      "bytes": 1631438
+    },
+    {
+      "path": "/images/courses/puppy/puppy-class-v1.png",
+      "bytes": 1354537
+    },
+    {
+      "path": "/images/index/gaynor-probert-home-v1.png",
+      "bytes": 1021052
+    },
+    {
+      "path": "/images/courses/gold/dogs-in-down-position-v1.png",
+      "bytes": 498714
+    },
+    {
+      "path": "/images/index/gaynor-probert-awards-v1.png",
+      "bytes": 495882
+    },
+    {
+      "path": "/images/courses/silver/agility-v1.png",
+      "bytes": 464659
+    },
+    {
+      "path": "/images/index/3-musketeer-dogs-v1.png",
+      "bytes": 436342
+    },
+    {
+      "path": "/images/courses/bronze/agility-v1.png",
+      "bytes": 378973
+    },
+    {
+      "path": "/images/index/gaynor-probert-v1.png",
+      "bytes": 352303
+    },
+    {
+      "path": "/images/courses/bronze/bronze-v1.png",
+      "bytes": 328884
+    },
+    {
+      "path": "/images/courses/puppy/squeak-v1.png",
+      "bytes": 299113
+    },
+    {
+      "path": "/images/courses/silver/agility-v2.png",
+      "bytes": 260213
+    },
+    {
+      "path": "/images/about/facilities/training-fields-v1 (Gaynor Probert's conflicted copy 2014-11-03).png",
+      "bytes": 238089
+    },
+    {
+      "path": "/images/courses/puppy-v1.1.png",
+      "bytes": 217865
+    },
+    {
+      "path": "/images/courses/puppy/puppy-mix-v1.png",
+      "bytes": 216543
+    },
+    {
+      "path": "/images/courses/silver-v1.png",
+      "bytes": 187734
+    },
+    {
+      "path": "/images/courses/one2one-v1.png",
+      "bytes": 171612
+    },
+    {
+      "path": "/images/about/gaynor-probert-v1.JPG",
+      "bytes": 147283
+    },
+    {
+      "path": "/images/bg.png",
+      "bytes": 34447
+    },
+    {
+      "path": "/images/background.png",
+      "bytes": 34176
+    },
+    {
+      "path": "/images/institutions/dog-shield.png",
+      "bytes": 27403
+    },
+    {
+      "path": "/images/institutions/biopdt.jpg",
+      "bytes": 12445
+    },
+    {
+      "path": "/images/index/contact-v1.png",
+      "bytes": 11452
+    },
+    {
+      "path": "/images/institutions/ntipdu.jpg",
+      "bytes": 7268
+    },
+    {
+      "path": "/images/institutions/cfba.jpg",
+      "bytes": 3151
+    }
+  ],
+  "totals": {
+    "beforeBytes": 46940801,
+    "afterBytes": 5381090
+  }
+}
