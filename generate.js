@@ -14,7 +14,21 @@ const kiss = new Kiss({
   // Every emitted .css/.js is renamed to carry a hash of its own bytes, so the
   // host can cache them for ever. Templates keep asking for the plain name via
   // the {{asset}} helper — see src/layouts/*.hbs.
-  assets: { hash: true },
+  assets: {
+    hash: true,
+    // Tailwind runs as a kiss asset pipeline step: `run` compiles the
+    // stylesheet into src/assets/css before the asset copy (production and
+    // `kiss-ssg check` alike), and in dev mode `watch` keeps it compiling as
+    // templates change. Output is gitignored; kiss copies and hashes it.
+    pipeline: [
+      {
+        name: 'tailwind',
+        run: 'npx @tailwindcss/cli -i src/styles/site.css -o src/assets/css/site.css --minify',
+        watch:
+          'npx @tailwindcss/cli -i src/styles/site.css -o src/assets/css/site.css --minify --watch=always',
+      },
+    ],
+  },
   year: year,
 })
 

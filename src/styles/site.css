@@ -22,6 +22,7 @@
 /* src/assets holds vendored/binary files and the generated stylesheet itself —
  * never a source of class names. */
 @source not '../assets';
+@source not '../../qa'; /* QA scripts mention utility names in their tests */
 
 /* ---------------------------------------------------------------------------
  * Self-hosted display face. Latin subset pulled from the Google Fonts CSS API
