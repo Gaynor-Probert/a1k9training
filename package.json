@@ -9,7 +9,7 @@
     "@tailwindcss/typography": "^0.5.20",
     "colors": "^1.4.0",
     "eslint-config-prettier": "^6.15.0",
-    "kiss-ssg": "github:cprobert/kiss-ssg#621baa84f5ae2262f19099404005e77c515c769e",
+    "kiss-ssg": "github:cprobert/kiss-ssg#6f005aa600372c0cb1bbe272bafe3c84456ad574",
     "lighthouse": "^13.4.1",
     "playwright": "^1.56.1",
     "sharp": "^0.35.4",
@@ -18,7 +18,14 @@
   "scripts": {
     "build": "node generate",
     "gen": "node generate",
-    "dev": "node generate dev"
+    "dev": "node generate dev",
+    "qa:serve": "node qa/serve.mjs",
+    "qa:snapshot": "node qa/snapshot.mjs",
+    "qa:lh": "node qa/lighthouse.mjs",
+    "qa:axe": "node qa/axe.mjs",
+    "qa:compare": "node qa/compare.mjs",
+    "qa:no-bootstrap": "node qa/no-bootstrap.mjs",
+    "qa:baseline": "node qa/snapshot.mjs qa/.baseline-site baseline && node qa/lighthouse.mjs qa/.baseline-site baseline && node qa/axe.mjs qa/.baseline-site baseline"
   },
   "repository": {
     "type": "git",

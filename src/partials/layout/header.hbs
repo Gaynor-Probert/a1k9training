@@ -2,4 +2,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Gaynor Probert">
 <link rel="icon" href="/favicon.ico" sizes="any">
+<meta name="theme-color" content="#1f5136">
 <!-- analytics: intentionally empty — add a tag here when one is chosen -->
+
+<link rel="canonical" href="{{canonical}}">
+
+{{!--
+  Open Graph / Twitter. og:image and the JSON-LD image below both go through
+  the heroImage helper (generate.js): model.image on every inner page, the
+  home page's own hardcoded hero (layout-video.hbs) as the one fallback,
+  since the home page's model carries no image of its own.
+--}}
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+{{#if description}}
+  <meta property="og:description" content="{{description}}">
+{{/if}}
+<meta property="og:url" content="{{canonical}}">
+<meta property="og:image" content="{{absUrl (heroImage model)}}">
+<meta property="og:site_name" content="A1K9 Behaviour and Training Academy">
+<meta name="twitter:card" content="summary_large_image">
+
+{{!--
+  LocalBusiness JSON-LD, every page. Fields left out on purpose rather than
+  invented: no street address or opening hours are sourced anywhere in this
+  repo, so schema.org gets only what's actually here (index.hbs, the tel:
+  link in every "Call Me" / "Get in Touch" link).
+--}}
+<script type="application/ld+json">
+{{{stringify (localBusiness model)}}}
+</script>
