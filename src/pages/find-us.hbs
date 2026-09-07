@@ -1,18 +1,18 @@
 {{#extend "layout"}}
 {{#content "intro"}}
-<h1 id="get_in_touch">
+<h2 id="get_in_touch">
   How to contact/find A1K9 Training
-</h1>
+</h2>
 
 {{/content}}
 {{#content "main"}}
 
-<div class="row">
+<div class="grid gap-10 lg:grid-cols-2">
 
-  <div class="col-md-6">
+  <div>
 
     <div class="page-header">
-      <h1>
+      <h1 class="mb-3 text-3xl sm:text-4xl">
         Get in Touch
       </h1>
       <p>
@@ -20,110 +20,127 @@
       </p>
     </div>
 
-    <form id="a1k9-contact-consultation" name="a1k9-contact-consultation" method="post" data-netlify="true">
+    <form id="a1k9-contact-consultation" name="a1k9-contact-consultation" method="post" data-netlify="true"
+      netlify-honeypot="bot-field" class="space-y-6">
 
-      <div class="form-group">
-        <label for="first-name">
-          Name <span class="req">*</span>
+      <p class="hidden">
+        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+      </p>
+
+      <div>
+        <label for="first-name" class="block font-medium">
+          Name <span class="text-accent-700" aria-hidden="true">*</span><span class="sr-only"> required</span>
         </label>
-        <div class="form-inline">
-          <input id="first-name" name="first-name" type="text" class="form-control" placeholder="first" required>
-          <input id="last-name" name="last-name" type="text" class="form-control" placeholder="last" required>
+        <div class="mt-1 grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for="first-name" class="sr-only">First name</label>
+            <input id="first-name" name="first-name" type="text" placeholder="first" required
+              class="w-full rounded-md border border-sand-300 bg-white px-3 py-2 focus-visible:border-brand-600 focus-visible:outline-none">
+          </div>
+          <div>
+            <label for="last-name" class="sr-only">Last name</label>
+            <input id="last-name" name="last-name" type="text" placeholder="last" required
+              class="w-full rounded-md border border-sand-300 bg-white px-3 py-2 focus-visible:border-brand-600 focus-visible:outline-none">
+          </div>
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="tel">
-          Mobile number <span class="req">*</span>
+      <div>
+        <label for="tel" class="block font-medium">
+          Mobile number <span class="text-accent-700" aria-hidden="true">*</span><span class="sr-only"> required</span>
         </label>
-        <div>
-          <input id="tel" name="mobile" type="tel" class="form-control" maxlength="15" required>
+        <input id="tel" name="mobile" type="tel" maxlength="15" required
+          class="mt-1 w-full rounded-md border border-sand-300 bg-white px-3 py-2 focus-visible:border-brand-600 focus-visible:outline-none">
+      </div>
+
+      <div>
+        <label for="email" class="block font-medium">
+          Email <span class="text-accent-700" aria-hidden="true">*</span><span class="sr-only"> required</span>
+        </label>
+        <input id="email" name="email" type="email" spellcheck="false" maxlength="255" required
+          class="mt-1 w-full rounded-md border border-sand-300 bg-white px-3 py-2 focus-visible:border-brand-600 focus-visible:outline-none">
+      </div>
+
+      <div>
+        <label for="message" class="block font-medium">
+          Message <span class="text-accent-700" aria-hidden="true">*</span><span class="sr-only"> required</span>
+        </label>
+        <textarea id="message" name="message" spellcheck="true" rows="10" required
+          class="mt-1 w-full rounded-md border border-sand-300 bg-white px-3 py-2 focus-visible:border-brand-600 focus-visible:outline-none"></textarea>
+      </div>
+
+      <div>
+        <h3 class="text-lg">
+          About your dog
+        </h3>
+        <p class="mt-1 text-sm text-ink-600">Please provide the following details for your dog:</p>
+      </div>
+
+      <div>
+        <label for="dog-name" class="block font-medium">
+          Dogs name <span class="text-accent-700" aria-hidden="true">*</span><span class="sr-only"> required</span>
+        </label>
+        <input id="dog-name" name="dog-name" type="text" required
+          class="mt-1 w-full rounded-md border border-sand-300 bg-white px-3 py-2 focus-visible:border-brand-600 focus-visible:outline-none">
+      </div>
+
+      <div>
+        <label for="dog-breed" class="block font-medium">
+          Dogs breed <span class="text-accent-700" aria-hidden="true">*</span><span class="sr-only"> required</span>
+        </label>
+        <input id="dog-breed" name="dog-breed" type="text" maxlength="255" required
+          class="mt-1 w-full rounded-md border border-sand-300 bg-white px-3 py-2 focus-visible:border-brand-600 focus-visible:outline-none">
+      </div>
+
+      <div>
+        <label for="dog-age-years" class="block font-medium">
+          Dogs age <span class="text-accent-700" aria-hidden="true">*</span><span class="sr-only"> required</span>
+        </label>
+
+        <div class="mt-1 grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for="dog-age-years" class="sr-only">Dogs age, years</label>
+            <input id="dog-age-years" name="dog-age-years" type="text" min="0" max="30"
+              placeholder="years" required
+              class="w-full rounded-md border border-sand-300 bg-white px-3 py-2 focus-visible:border-brand-600 focus-visible:outline-none">
+          </div>
+          <div>
+            <label for="dog-age-months" class="sr-only">Dogs age, months</label>
+            <input id="dog-age-months" name="dog-age-months" type="text" min="0" max="12"
+              placeholder="months"
+              class="w-full rounded-md border border-sand-300 bg-white px-3 py-2 focus-visible:border-brand-600 focus-visible:outline-none">
+          </div>
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="desc" for="email">
-          Email <span class="req">*</span>
-        </label>
-        <div>
-          <input id="email" name="email" type="email" spellcheck="false" class="form-control" maxlength="255" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="message">
-          Message <span class="req">*</span>
-        </label>
-
-        <div>
-          <textarea id="message" name="message" class="form-control" spellcheck="true" rows="10" required></textarea>
-        </div>
-      </div>
-
-      <h3>
-        About your dog
-      </h3>
-      <div class="help-block">Please provide the following details for your dog:</div>
-
-      <div class="form-group">
-        <label for="dog-name">
-          Dogs name <span class="req">*</span>
-        </label>
-        <div>
-          <input id="dog-name" name="dog-name" type="text" class="form-control" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="dog-breed">
-          Dogs breed <span class="req">*</span>
-        </label>
-        <div>
-          <input id="dog-breed" name="dog-breed" type="text" class="form-control" maxlength="255" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="dog-age-years">
-          Dogs age <span class="req">*</span>
-        </label>
-        
-        <div class="form-inline">
-          <input id="dog-age-years" name="dog-age-years" type="text" class="form-control" min="0" max="30"
-            placeholder="years" required>
-          <input id="dog-age-months" name="dog-age-months" type="text" class="form-control" min="0" max="12"
-            placeholder="months">
-        </div>
-
-        <div class="form-group" style="margin-top: 20px;">
-          <input id="saveForm" name="saveForm" class="btn btn-primary btn-lg" type="submit" value="Submit">
-        </div>
-      </div>
+      <button id="saveForm" name="saveForm" type="submit" class="btn btn-primary btn-lg">
+        Submit
+      </button>
     </form>
 
   </div>
 
-  <div class="col-md-6">
+  <div>
 
     <div class="page-header">
-      <h1>
+      <h2 class="mb-3 text-2xl sm:text-3xl">
         Find Us
-      </h1>
+      </h2>
       <p>
         A1K9 Dog Training Academy is based just outside Swansea in South Wales.
       </p>
     </div>
 
-    <div style="width:auto;height:450px">
+    <div>
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39560.254227981626!2d-3.9974988901576323!3d51.7053036589514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486ef696ff0afd73%3A0xd1d8c5e285d0d27a!2sPontarddulais%2C+Swansea+SA4+8NP!5e0!3m2!1sen!2suk!4v1415040298567"
-        width="100%" height="450" frameborder="0" style="border:0"></iframe>
-      <br />
-      <small>
-        <a href="https://goo.gl/maps/EsD5W" target="_new">
+        width="100%" height="450" loading="lazy" title="Map showing A1K9 Behaviour and Training Academy"
+        class="h-[450px] w-full rounded-card border-0"></iframe>
+      <p class="mt-2 text-sm">
+        <a href="https://goo.gl/maps/EsD5W" target="_new" rel="noopener" class="font-medium text-brand-700 underline underline-offset-4 hover:text-brand-800">
           View Larger Map
         </a>
-      </small>
+      </p>
     </div>
 
   </div>

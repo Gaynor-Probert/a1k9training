@@ -1,4 +1,4 @@
-<img class="img-responsive img-thumbnail pull-right" src="/images/about/gaynor-probert-awards-v1.webp" style="margin: 00 20px 10px;" />
+<img src="/images/about/gaynor-probert-awards-v1.webp" alt="Gaynor Probert's collection of dog behaviour and training awards" width="500" height="494" loading="lazy" decoding="async" class="figure-right">
 
 When she met her partner Charles in 1994, their mutual love of dogs led them to co found A1K9 Behaviour and Training Academy that is based just outside Swansea in South Wales; there they trained dogs to the highest standards establishing an international reputation for excellence that led them to provide trained dogs for clients worldwide.
 

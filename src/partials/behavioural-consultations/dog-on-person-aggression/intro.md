@@ -1,4 +1,4 @@
-# Dog on Person Aggression
+## Dog on Person Aggression
 
 A dog that is aggressive to people is one of the most serious problems that I deal with.
 

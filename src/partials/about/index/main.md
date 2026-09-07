@@ -1,4 +1,4 @@
-<img src="/images/about/offlead-run-v1.webp" class="img-responsive img-thumbnail pull-right" style="margin-left: 10px;" alt="" />
+<img src="/images/about/offlead-run-v1.webp" alt="A dog running free off the lead" width="500" height="379" loading="lazy" decoding="async" class="figure-right">
 
 Gaynor believes that dogs have been both her teacher and her students and that there is no better way to learn than to observe dogs when they are running free and able to express their selves dog to dog in a natural way.
 
