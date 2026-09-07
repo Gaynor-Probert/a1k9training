@@ -1,8 +1,10 @@
-const Kiss = require('kiss-ssg')
-var args = process.argv.slice(2)
+import 'colors'
+import Kiss from 'kiss-ssg'
 
-var d = new Date()
-var year = d.getFullYear()
+const args = process.argv.slice(2)
+
+const d = new Date()
+const year = d.getFullYear()
 
 const kiss = new Kiss({
   dev: args.length > 0,
@@ -12,6 +14,15 @@ const kiss = new Kiss({
   year: year,
 })
 
+// v2 renders .md partials with remarkable's `breaks: true`, so every hard-wrapped
+// line in a markdown partial becomes a <br> — v1 used `breaks: false`. Keeping the
+// v1 setting stops paragraphs in src/partials/**/*.md breaking mid-sentence at the
+// source's wrap points. Partials are rendered at construction, so re-register after
+// changing it. Delete both lines to adopt the v2 default.
+kiss.remarkable.set({ breaks: false })
+kiss.registerPartials()
+
+kiss
   .page({
     view: 'index.hbs',
     title: 'Dog Behaviour and Trainer South Wales | A1K9 Training',
@@ -68,7 +79,22 @@ const kiss = new Kiss({
     slug: 'index',
   })
 
-  .generate(function () {
+  .generate()
+
+// v2 reports a page, controller or dev-server failure by rejecting complete().
+// Without this catch a broken build still exits 0 and deploys a site with
+// pages missing. complete()'s own callback never runs for a failed build, so
+// 'Success' means the whole build was written.
+kiss
+  .complete(function () {
     console.log('Success'.rainbow)
-    if (this.config.dev) console.log('http://localhost:3000'.yellow)
+    if (this.config.dev)
+      console.log(`http://${this.config.devHost}:${this.config.port}`.yellow)
+  })
+  .catch((err) => {
+    for (const failure of err.failures ?? [])
+      console.error(
+        `${failure.view} | ${failure.buildTo} | ${failure.error.message}`.red,
+      )
+    process.exitCode = 1
   })
