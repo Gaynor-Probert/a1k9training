@@ -1,170 +1,197 @@
-<div class="navbar-wrapper">
-  <div class="container">
-    <div class="navbar navbar-inverse navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button
-            type="button"
-            class="navbar-toggle"
-            data-toggle="collapse"
-            data-target=".navbar-collapse"
-            aria-label="Site Navigation"
-          >
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">
-            Gaynor Probert
-          </a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            {{#isActive this href="/"}}
-              <li class="{{active}}">
-                <a href="{{href}}">
-                  <span class="glyphicon glyphicon-home"></span>
-                  Home
+{{!--
+  Site navigation. Sticky bar; the same five destinations and the same hrefs the
+  Bootstrap 3 navbar carried.
+
+  Desktop (lg+): each dropdown group opens on hover, on focus-within (so Tab alone
+  reaches every sub-link) and when its chevron button reports aria-expanded="true".
+  Mobile: one disclosure button toggles the panel, and the dropdowns are simply
+  visible groups inside it — the chevron buttons are display:none there, so their
+  aria state never lies about a menu that is already open.
+
+  Behaviour lives in /js/site.js. Nothing else.
+--}}
+<nav class="border-b border-brand-900/40 bg-brand-800 text-sand-100" aria-label="Main">
+  <div class="mx-auto flex max-w-content items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+    <a href="/" class="font-display text-lg font-bold tracking-wide text-white no-underline sm:text-xl">
+      Gaynor Probert
+    </a>
+
+    <button type="button"
+      class="inline-flex items-center gap-2 rounded-pill px-3 py-2 text-sm font-semibold text-sand-100 hover:bg-brand-700 hover:text-white lg:hidden"
+      data-nav-toggle
+      aria-expanded="false"
+      aria-controls="site-menu">
+      <svg class="size-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 5h14M3 10h14M3 15h14" />
+      </svg>
+      Menu
+    </button>
+
+    <div id="site-menu" class="hidden w-full basis-full lg:block lg:w-auto lg:basis-auto" data-nav-panel>
+      <ul class="flex flex-col gap-1 pt-3 pb-1 lg:flex-row lg:items-center lg:gap-1 lg:pt-0 lg:pb-0">
+
+        {{#isActive this href="/" active="true"}}
+          <li>
+            <a href="{{href}}" data-active="{{active}}"
+              class="block rounded-pill px-4 py-2 font-medium text-sand-100 no-underline hover:bg-brand-700 hover:text-white data-[active=true]:bg-brand-900 data-[active=true]:text-white">
+              Home
+            </a>
+          </li>
+        {{/isActive}}
+
+        {{#isActive this href="/behavioural-consultations" folderMatch=true active="true"}}
+          <li class="group relative" data-dropdown>
+            <div class="flex items-center rounded-pill data-[active=true]:bg-brand-900 lg:group-hover:bg-brand-700" data-active="{{active}}">
+              <a href="{{href}}" data-active="{{active}}"
+                class="block grow rounded-pill px-4 py-2 font-medium text-sand-100 no-underline hover:text-white data-[active=true]:text-white">
+                Consultations
+              </a>
+              <button type="button" class="mr-1 hidden rounded-pill p-1.5 text-sand-100 hover:text-white lg:inline-flex"
+                data-dropdown-toggle aria-expanded="false" aria-controls="menu-consultations">
+                <span class="sr-only">Show the Consultations menu</span>
+                <svg class="size-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m5 8 5 5 5-5" />
+                </svg>
+              </button>
+            </div>
+            <ul id="menu-consultations"
+              class="ml-4 border-l border-brand-700 pl-3 lg:invisible lg:absolute lg:top-full lg:left-0 lg:z-50 lg:ml-0 lg:w-72 lg:rounded-card lg:border lg:border-sand-200 lg:bg-white lg:p-2 lg:pl-2 lg:opacity-0 lg:shadow-lg lg:transition-opacity lg:group-hover:visible lg:group-hover:opacity-100 lg:group-focus-within:visible lg:group-focus-within:opacity-100 lg:group-has-[[aria-expanded=true]]:visible lg:group-has-[[aria-expanded=true]]:opacity-100">
+              <li>
+                <a href="{{href}}" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                  Behavioural Consultations
                 </a>
               </li>
-            {{/isActive}}
-            {{#isActive
-              this
-              href="/behavioural-consultations"
-              folderMatch=true
-            }}
-              <li class="{{active}}">
-                <a
-                  href="{{href}}"
-                  class="dropdown-toggle"
-                  data-toggle="dropdown"
-                >
-                  Consultations
-                  <b class="caret hidden-xs"></b>
-                </a>
-                <ul class="dropdown-menu hidden-xs">
-                  <li>
-                    <a href="{{href}}">
-                      Behavioural Consultations
-                    </a>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                    <a href="{{href}}/dog-on-dog-aggression">
-                      Dog-on-Dog Aggression
-                    </a>
-                  </li>
-                  <li>
-                    <a href="{{href}}/dog-on-person-aggression">
-                      Dog-on-Person Aggression
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            {{/isActive}}
-            {{#isActive this href="/courses" folderMatch=true}}
-              <li class="{{active}}">
-                <a
-                  href="{{href}}"
-                  class="dropdown-toggle"
-                  data-toggle="dropdown"
-                >
-                  Courses
-                  <b class="caret hidden-xs"></b>
-                </a>
-                <ul class="dropdown-menu hidden-xs">
-                  <li>
-                    <a href="{{href}}">
-                      About our Courses
-                    </a>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                    <a href="{{href}}/puppy-socialisation">
-                      Puppy Socialisation
-                    </a>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                    <a href="{{href}}/junior-obedience">
-                      Junior Course
-                    </a>
-                  </li>
-                  <li>
-                    <a href="{{href}}/bronze-obedience">
-                      Bronze Obedience
-                    </a>
-                  </li>
-                  <li>
-                    <a href="{{href}}/silver-obedience">
-                      Silver Obedience
-                    </a>
-                  </li>
-                  <li>
-                    <a href="{{href}}/gold-obedience">
-                      Gold Obedience
-                    </a>
-                  </li>
-                  <li>
-                    <a href="{{href}}/platinum-obedience">
-                      Platinum Obedience
-                    </a>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                    <a href="{{href}}/one-to-one">
-                      One to One
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            {{/isActive}}
-            {{#isActive this href="/about" folderMatch=true}}
-              <li class="{{active}}">
-                <a
-                  href="{{href}}"
-                  class="dropdown-toggle"
-                  data-toggle="dropdown"
-                >
-                  About Us
-                  <b class="caret hidden-xs"></b>
-                </a>
-                <ul class="dropdown-menu hidden-xs">
-                  <li>
-                    <a href="{{href}}">
-                      Philosophy
-                    </a>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                    <a href="{{href}}/facilities">
-                      Facilities
-                    </a>
-                  </li>
-                  <li>
-                    <a href="{{href}}/gaynor-probert">
-                      Gaynor Probert
-                    </a>
-                  </li>
-                  <li>
-                    <a href="{{href}}/sara-thomas">
-                      Sara Thomas
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            {{/isActive}}
-            {{#isActive this href="/find-us"}}
-              <li class="{{active}}">
-                <a href="{{href}}">
-                  <span class="glyphicon glyphicon-envelope"></span>
-                  Contact
+              <li aria-hidden="true" class="my-1 border-t border-brand-700 lg:border-sand-200"></li>
+              <li>
+                <a href="{{href}}/dog-on-dog-aggression" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                  Dog-on-Dog Aggression
                 </a>
               </li>
-            {{/isActive}}
-          </ul>
-        </div>
-      </div>
+              <li>
+                <a href="{{href}}/dog-on-person-aggression" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                  Dog-on-Person Aggression
+                </a>
+              </li>
+            </ul>
+          </li>
+        {{/isActive}}
+
+        {{#isActive this href="/courses" folderMatch=true active="true"}}
+          <li class="group relative" data-dropdown>
+            <div class="flex items-center rounded-pill data-[active=true]:bg-brand-900 lg:group-hover:bg-brand-700" data-active="{{active}}">
+              <a href="{{href}}" data-active="{{active}}"
+                class="block grow rounded-pill px-4 py-2 font-medium text-sand-100 no-underline hover:text-white data-[active=true]:text-white">
+                Courses
+              </a>
+              <button type="button" class="mr-1 hidden rounded-pill p-1.5 text-sand-100 hover:text-white lg:inline-flex"
+                data-dropdown-toggle aria-expanded="false" aria-controls="menu-courses">
+                <span class="sr-only">Show the Courses menu</span>
+                <svg class="size-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m5 8 5 5 5-5" />
+                </svg>
+              </button>
+            </div>
+            <ul id="menu-courses"
+              class="ml-4 border-l border-brand-700 pl-3 lg:invisible lg:absolute lg:top-full lg:left-0 lg:z-50 lg:ml-0 lg:w-72 lg:rounded-card lg:border lg:border-sand-200 lg:bg-white lg:p-2 lg:pl-2 lg:opacity-0 lg:shadow-lg lg:transition-opacity lg:group-hover:visible lg:group-hover:opacity-100 lg:group-focus-within:visible lg:group-focus-within:opacity-100 lg:group-has-[[aria-expanded=true]]:visible lg:group-has-[[aria-expanded=true]]:opacity-100">
+              <li>
+                <a href="{{href}}" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                  About our Courses
+                </a>
+              </li>
+              <li aria-hidden="true" class="my-1 border-t border-brand-700 lg:border-sand-200"></li>
+              <li>
+                <a href="{{href}}/puppy-socialisation" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                  Puppy Socialisation
+                </a>
+              </li>
+              <li aria-hidden="true" class="my-1 border-t border-brand-700 lg:border-sand-200"></li>
+              <li>
+                <a href="{{href}}/junior-obedience" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                  Junior Course
+                </a>
+              </li>
+              <li>
+                <a href="{{href}}/bronze-obedience" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                  Bronze Obedience
+                </a>
+              </li>
+              <li>
+                <a href="{{href}}/silver-obedience" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                  Silver Obedience
+                </a>
+              </li>
+              <li>
+                <a href="{{href}}/gold-obedience" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                  Gold Obedience
+                </a>
+              </li>
+              <li>
+                <a href="{{href}}/platinum-obedience" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                  Platinum Obedience
+                </a>
+              </li>
+              <li aria-hidden="true" class="my-1 border-t border-brand-700 lg:border-sand-200"></li>
+              <li>
+                <a href="{{href}}/one-to-one" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                  One to One
+                </a>
+              </li>
+            </ul>
+          </li>
+        {{/isActive}}
+
+        {{#isActive this href="/about" folderMatch=true active="true"}}
+          <li class="group relative" data-dropdown>
+            <div class="flex items-center rounded-pill data-[active=true]:bg-brand-900 lg:group-hover:bg-brand-700" data-active="{{active}}">
+              <a href="{{href}}" data-active="{{active}}"
+                class="block grow rounded-pill px-4 py-2 font-medium text-sand-100 no-underline hover:text-white data-[active=true]:text-white">
+                About Us
+              </a>
+              <button type="button" class="mr-1 hidden rounded-pill p-1.5 text-sand-100 hover:text-white lg:inline-flex"
+                data-dropdown-toggle aria-expanded="false" aria-controls="menu-about">
+                <span class="sr-only">Show the About Us menu</span>
+                <svg class="size-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m5 8 5 5 5-5" />
+                </svg>
+              </button>
+            </div>
+            <ul id="menu-about"
+              class="ml-4 border-l border-brand-700 pl-3 lg:invisible lg:absolute lg:top-full lg:right-0 lg:left-auto lg:z-50 lg:ml-0 lg:w-64 lg:rounded-card lg:border lg:border-sand-200 lg:bg-white lg:p-2 lg:pl-2 lg:opacity-0 lg:shadow-lg lg:transition-opacity lg:group-hover:visible lg:group-hover:opacity-100 lg:group-focus-within:visible lg:group-focus-within:opacity-100 lg:group-has-[[aria-expanded=true]]:visible lg:group-has-[[aria-expanded=true]]:opacity-100">
+              <li>
+                <a href="{{href}}" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                  Philosophy
+                </a>
+              </li>
+              <li aria-hidden="true" class="my-1 border-t border-brand-700 lg:border-sand-200"></li>
+              <li>
+                <a href="{{href}}/facilities" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                  Facilities
+                </a>
+              </li>
+              <li>
+                <a href="{{href}}/gaynor-probert" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                  Gaynor Probert
+                </a>
+              </li>
+              <li>
+                <a href="{{href}}/sara-thomas" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                  Sara Thomas
+                </a>
+              </li>
+            </ul>
+          </li>
+        {{/isActive}}
+
+        {{#isActive this href="/find-us" active="true"}}
+          <li>
+            <a href="{{href}}" data-active="{{active}}"
+              class="block rounded-pill px-4 py-2 font-medium text-sand-100 no-underline hover:bg-brand-700 hover:text-white data-[active=true]:bg-brand-900 data-[active=true]:text-white">
+              Contact
+            </a>
+          </li>
+        {{/isActive}}
+
+      </ul>
     </div>
   </div>
-</div>
+</nav>

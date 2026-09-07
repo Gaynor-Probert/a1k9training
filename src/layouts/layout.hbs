@@ -1,42 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>{{title}}</title>
+  {{> "layout/header"}}
 
+  <title>{{title}}</title>
   {{#if description}}
     <meta name="description" content="{{description}}">
   {{/if}}
 
-  {{#block "head"}}
-    {{> "layout/header"}}
-  {{/block}}
+  <link rel="preload" href="/fonts/buenard-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/{{asset "css/site.css"}}">
+
+  {{#block "head"}}{{/block}}
 </head>
-<body>
-  {{> "layout/navbar"}}
-  <div class="carousel">
-    <div class="carousel-inner">
-      <div class="item active">
-        <div class="fill video-section" style="background-image: url('{{model.image}}'); z-index: -99;">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-6 {{model.caption-class}}">
-                <div class="caption" style="{{model.caption-class}}">
-                  {{#block "intro"}}{{/block}}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+<body class="flex min-h-screen flex-col bg-sand-50 text-ink-700 antialiased">
+  <a href="#main-content"
+    class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-pill focus:bg-white focus:px-4 focus:py-2 focus:font-semibold focus:text-brand-800">
+    Skip to content
+  </a>
+
+  <header class="sticky top-0 z-40">
+    {{> "layout/navbar"}}
+  </header>
+
+  <section class="relative isolate flex min-h-[60vh] items-center overflow-hidden bg-brand-900 lg:min-h-[70vh]">
+    {{#if model.image}}
+      <img src="{{model.image}}" alt="" width="1600" height="787"
+        class="absolute inset-0 -z-20 size-full object-cover"
+        fetchpriority="high" loading="eager" decoding="async">
+    {{/if}}
+    <div class="absolute inset-0 -z-10 bg-linear-to-b from-ink-900/65 via-ink-900/40 to-ink-900/75" aria-hidden="true"></div>
+
+    <div class="mx-auto flex w-full max-w-content px-4 py-14 sm:px-6 lg:px-8 {{#if (eq model.caption "right")}}justify-end{{else}}justify-start{{/if}}">
+      <div class="w-full max-w-2xl rounded-card bg-ink-900/80 p-6 text-sand-100 shadow-sm sm:p-8 {{#if model.captionOffset}}lg:mt-40{{/if}}
+        [&_h1]:mb-3 [&_h1]:text-3xl [&_h1]:leading-tight [&_h1]:text-white sm:[&_h1]:text-4xl lg:[&_h1]:text-5xl
+        [&_h2]:mb-3 [&_h2]:text-xl [&_h2]:font-normal [&_h2]:text-sand-100 sm:[&_h2]:text-2xl
+        [&_h3]:mb-2 [&_h3]:font-sans [&_h3]:text-base [&_h3]:leading-relaxed [&_h3]:font-normal [&_h3]:text-sand-100 sm:[&_h3]:text-lg
+        [&_p]:font-sans [&_p]:text-sand-100 [&_strong]:text-white [&_a]:text-accent-300 [&_a]:underline
+        [&_:last-child]:mb-0">
+        {{#block "intro"}}{{/block}}
       </div>
     </div>
-  </div>
-  <div class="container">
+  </section>
+
+  <main id="main-content" class="mx-auto w-full max-w-content grow px-4 py-12 sm:px-6 lg:px-8">
     {{#block "main"}}{{/block}}
-    {{> "layout/footer"}}
-  </div>
-  <div>
-    {{> "layout/scripts"}}
-    {{#block "scripts"}}{{/block}}
-  </div>
+  </main>
+
+  {{> "layout/footer"}}
+
+  {{> "layout/scripts"}}
+  {{#block "scripts"}}{{/block}}
 </body>
 </html>

@@ -10,9 +10,17 @@ const kiss = new Kiss({
   dev: args.length > 0,
   verbose: true,
   folders: { build: './docs' },
-  sass: { includePaths: ['./node_modules/bootstrap/scss'] },
+  siteUrl: 'https://www.a1k9training.co.uk',
+  // Every emitted .css/.js is renamed to carry a hash of its own bytes, so the
+  // host can cache them for ever. Templates keep asking for the plain name via
+  // the {{asset}} helper — see src/layouts/*.hbs.
+  assets: { hash: true },
   year: year,
 })
+
+// Equality test for template conditionals — the hero uses it to place the
+// caption: {{#if (eq model.caption "right")}}. Handlebars ships no such helper.
+kiss.handlebars.registerHelper('eq', (a, b) => a === b)
 
 // v2 renders .md partials with remarkable's `breaks: true`, so every hard-wrapped
 // line in a markdown partial becomes a <br> — v1 used `breaks: false`. Keeping the
@@ -33,8 +41,8 @@ kiss
   .page({
     view: 'behavioural-consultations/index.hbs',
     model: {
-      image: '/images/consultations/consultations-v1.png',
-      'caption-class': 'pull-right',
+      image: '/images/consultations/consultations-v1.webp',
+      caption: 'right',
     },
     title: 'Dog Behavioural Consultations in South Wales by Gaynor Probert',
   })
@@ -48,8 +56,8 @@ kiss
   .page({
     view: 'courses/index.hbs',
     model: {
-      image: '/images/courses/classes-v1.1.png',
-      'caption-class': 'pull-left',
+      image: '/images/courses/classes-v1.1.webp',
+      caption: 'left',
       faqs: '../models/faqs/courses.json',
     },
     controller: 'faqMapper.js',
@@ -71,8 +79,9 @@ kiss
   .page({
     view: 'find-us.hbs',
     model: {
-      image: '/images/about/horse-sit-v1.png',
-      'caption-class': 'pull-right push-down',
+      image: '/images/about/horse-sit-v1.webp',
+      caption: 'right',
+      captionOffset: true,
     },
     title: 'Find A1K9 Training',
     path: 'find-us',
