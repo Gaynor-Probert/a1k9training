@@ -1,0 +1,943 @@
+{
+  "label": "baseline",
+  "generated": "2026-09-08T06:46:06.820Z",
+  "runs": 3,
+  "pages": {
+    "/": {
+      "runs": [
+        {
+          "performanceScore": 72,
+          "lcpMs": 16057.209499999999,
+          "cls": 0,
+          "tbtMs": 18,
+          "speedIndexMs": 2406.1505,
+          "totalByteWeight": 2926285,
+          "largestImage": {
+            "url": "http://localhost:46293/images/gaynor-probert-home-v1.1.png",
+            "bytes": 1631823
+          }
+        },
+        {
+          "performanceScore": 72,
+          "lcpMs": 16071.249249999995,
+          "cls": 0,
+          "tbtMs": 26,
+          "speedIndexMs": 2408.9497499999998,
+          "totalByteWeight": 2926285,
+          "largestImage": {
+            "url": "http://localhost:46293/images/gaynor-probert-home-v1.1.png",
+            "bytes": 1631823
+          }
+        },
+        {
+          "performanceScore": 72,
+          "lcpMs": 16054.0386,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2406.0579,
+          "totalByteWeight": 2926282,
+          "largestImage": {
+            "url": "http://localhost:46293/images/gaynor-probert-home-v1.1.png",
+            "bytes": 1631823
+          }
+        }
+      ],
+      "median": {
+        "performanceScore": 72,
+        "lcpMs": 16057.209499999999,
+        "cls": 0,
+        "tbtMs": 18,
+        "speedIndexMs": 2406.1505,
+        "totalByteWeight": 2926285,
+        "largestImage": {
+          "url": "http://localhost:46293/images/gaynor-probert-home-v1.1.png",
+          "bytes": 1631823
+        }
+      }
+    },
+    "/about/": {
+      "runs": [
+        {
+          "performanceScore": 73,
+          "lcpMs": 16520.778700000013,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2042.4760499999998,
+          "totalByteWeight": 3087517,
+          "largestImage": {
+            "url": "http://localhost:46293/images/about/philosophy-v4.png",
+            "bytes": 2455925
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 16665.710399999985,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2103.7794000000004,
+          "totalByteWeight": 3087512,
+          "largestImage": {
+            "url": "http://localhost:46293/images/about/philosophy-v4.png",
+            "bytes": 2455925
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 16665.96220000001,
+          "cls": 0,
+          "tbtMs": 20,
+          "speedIndexMs": 2157.9624,
+          "totalByteWeight": 3087512,
+          "largestImage": {
+            "url": "http://localhost:46293/images/about/philosophy-v4.png",
+            "bytes": 2455925
+          }
+        }
+      ],
+      "median": {
+        "performanceScore": 73,
+        "lcpMs": 16665.710399999985,
+        "cls": 0,
+        "tbtMs": 0,
+        "speedIndexMs": 2103.7794000000004,
+        "totalByteWeight": 3087512,
+        "largestImage": {
+          "url": "http://localhost:46293/images/about/philosophy-v4.png",
+          "bytes": 2455925
+        }
+      }
+    },
+    "/about/facilities": {
+      "runs": [
+        {
+          "performanceScore": 73,
+          "lcpMs": 19897.363175000006,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2039.2768500000002,
+          "totalByteWeight": 3646191,
+          "largestImage": {
+            "url": "http://localhost:46293/images/about/facilities-v2.png",
+            "bytes": 2107963
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 19885.784674999995,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2104.3678999999997,
+          "totalByteWeight": 3646191,
+          "largestImage": {
+            "url": "http://localhost:46293/images/about/facilities-v2.png",
+            "bytes": 2107963
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 19877.9144,
+          "cls": 0,
+          "tbtMs": 4,
+          "speedIndexMs": 2102.9144,
+          "totalByteWeight": 3646192,
+          "largestImage": {
+            "url": "http://localhost:46293/images/about/facilities-v2.png",
+            "bytes": 2107963
+          }
+        }
+      ],
+      "median": {
+        "performanceScore": 73,
+        "lcpMs": 19885.784674999995,
+        "cls": 0,
+        "tbtMs": 0,
+        "speedIndexMs": 2102.9144,
+        "totalByteWeight": 3646191,
+        "largestImage": {
+          "url": "http://localhost:46293/images/about/facilities-v2.png",
+          "bytes": 2107963
+        }
+      }
+    },
+    "/about/gaynor-probert": {
+      "runs": [
+        {
+          "performanceScore": 73,
+          "lcpMs": 14333.850125000006,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2104.388,
+          "totalByteWeight": 2534197,
+          "largestImage": {
+            "url": "http://localhost:46293/images/about/gaynor-probert-v1.png",
+            "bytes": 1437015
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 14346.670474999997,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2042.89235,
+          "totalByteWeight": 2534197,
+          "largestImage": {
+            "url": "http://localhost:46293/images/about/gaynor-probert-v1.png",
+            "bytes": 1437015
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 14328.0622,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 1994.0622,
+          "totalByteWeight": 2534197,
+          "largestImage": {
+            "url": "http://localhost:46293/images/about/gaynor-probert-v1.png",
+            "bytes": 1437015
+          }
+        }
+      ],
+      "median": {
+        "performanceScore": 73,
+        "lcpMs": 14333.850125000006,
+        "cls": 0,
+        "tbtMs": 0,
+        "speedIndexMs": 2042.89235,
+        "totalByteWeight": 2534197,
+        "largestImage": {
+          "url": "http://localhost:46293/images/about/gaynor-probert-v1.png",
+          "bytes": 1437015
+        }
+      }
+    },
+    "/about/sara-thomas": {
+      "runs": [
+        {
+          "performanceScore": 72,
+          "lcpMs": 11715.773600000004,
+          "cls": 0,
+          "tbtMs": 2,
+          "speedIndexMs": 2309.1457500000006,
+          "totalByteWeight": 2127844,
+          "largestImage": {
+            "url": "http://localhost:46293/images/about/sara-thomas-v2.png",
+            "bytes": 1865794
+          }
+        },
+        {
+          "performanceScore": 72,
+          "lcpMs": 11705.036800000005,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2293.94835,
+          "totalByteWeight": 2127995,
+          "largestImage": {
+            "url": "http://localhost:46293/images/about/sara-thomas-v2.png",
+            "bytes": 1865794
+          }
+        },
+        {
+          "performanceScore": 72,
+          "lcpMs": 11713.220899999997,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2298.6042,
+          "totalByteWeight": 2127844,
+          "largestImage": {
+            "url": "http://localhost:46293/images/about/sara-thomas-v2.png",
+            "bytes": 1865794
+          }
+        }
+      ],
+      "median": {
+        "performanceScore": 72,
+        "lcpMs": 11713.220899999997,
+        "cls": 0,
+        "tbtMs": 0,
+        "speedIndexMs": 2298.6042,
+        "totalByteWeight": 2127844,
+        "largestImage": {
+          "url": "http://localhost:46293/images/about/sara-thomas-v2.png",
+          "bytes": 1865794
+        }
+      }
+    },
+    "/behavioural-consultations/": {
+      "runs": [
+        {
+          "performanceScore": 73,
+          "lcpMs": 13656.547149999995,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2103.9021999999995,
+          "totalByteWeight": 2469597,
+          "largestImage": {
+            "url": "http://localhost:46293/images/consultations/consultations-v1.png",
+            "bytes": 1761387
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 13653.1973,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2103.1973,
+          "totalByteWeight": 2469597,
+          "largestImage": {
+            "url": "http://localhost:46293/images/consultations/consultations-v1.png",
+            "bytes": 1761387
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 13654.336,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2104.336,
+          "totalByteWeight": 2469597,
+          "largestImage": {
+            "url": "http://localhost:46293/images/consultations/consultations-v1.png",
+            "bytes": 1761387
+          }
+        }
+      ],
+      "median": {
+        "performanceScore": 73,
+        "lcpMs": 13654.336,
+        "cls": 0,
+        "tbtMs": 0,
+        "speedIndexMs": 2103.9021999999995,
+        "totalByteWeight": 2469597,
+        "largestImage": {
+          "url": "http://localhost:46293/images/consultations/consultations-v1.png",
+          "bytes": 1761387
+        }
+      }
+    },
+    "/behavioural-consultations/dog-on-dog-aggression": {
+      "runs": [
+        {
+          "performanceScore": 73,
+          "lcpMs": 12757.002950000011,
+          "cls": 0,
+          "tbtMs": 9,
+          "speedIndexMs": 2254.2414499999995,
+          "totalByteWeight": 2350545,
+          "largestImage": {
+            "url": "http://localhost:46293/images/consultations/dog-on-dog-aggression/dog-on-dog-aggression-v1.png",
+            "bytes": 2086546
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 12762.003300000008,
+          "cls": 0,
+          "tbtMs": 7,
+          "speedIndexMs": 2254.6953,
+          "totalByteWeight": 2350545,
+          "largestImage": {
+            "url": "http://localhost:46293/images/consultations/dog-on-dog-aggression/dog-on-dog-aggression-v1.png",
+            "bytes": 2086546
+          }
+        },
+        {
+          "performanceScore": 72,
+          "lcpMs": 12757.402249999996,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2294.61975,
+          "totalByteWeight": 2350545,
+          "largestImage": {
+            "url": "http://localhost:46293/images/consultations/dog-on-dog-aggression/dog-on-dog-aggression-v1.png",
+            "bytes": 2086546
+          }
+        }
+      ],
+      "median": {
+        "performanceScore": 73,
+        "lcpMs": 12757.402249999996,
+        "cls": 0,
+        "tbtMs": 7,
+        "speedIndexMs": 2254.6953,
+        "totalByteWeight": 2350545,
+        "largestImage": {
+          "url": "http://localhost:46293/images/consultations/dog-on-dog-aggression/dog-on-dog-aggression-v1.png",
+          "bytes": 2086546
+        }
+      }
+    },
+    "/behavioural-consultations/dog-on-person-aggression": {
+      "runs": [
+        {
+          "performanceScore": 73,
+          "lcpMs": 14108.168700000002,
+          "cls": 0,
+          "tbtMs": 9,
+          "speedIndexMs": 2254.36485,
+          "totalByteWeight": 2630220,
+          "largestImage": {
+            "url": "http://localhost:46293/images/consultations/dog-on-person-aggression/dog-on-person-aggression-v3.png",
+            "bytes": 2366206
+          }
+        },
+        {
+          "performanceScore": 72,
+          "lcpMs": 14260.112349999996,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2300.78835,
+          "totalByteWeight": 2630220,
+          "largestImage": {
+            "url": "http://localhost:46293/images/consultations/dog-on-person-aggression/dog-on-person-aggression-v3.png",
+            "bytes": 2366206
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 14257.498500000016,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2254.0665,
+          "totalByteWeight": 2630220,
+          "largestImage": {
+            "url": "http://localhost:46293/images/consultations/dog-on-person-aggression/dog-on-person-aggression-v3.png",
+            "bytes": 2366206
+          }
+        }
+      ],
+      "median": {
+        "performanceScore": 73,
+        "lcpMs": 14257.498500000016,
+        "cls": 0,
+        "tbtMs": 0,
+        "speedIndexMs": 2254.36485,
+        "totalByteWeight": 2630220,
+        "largestImage": {
+          "url": "http://localhost:46293/images/consultations/dog-on-person-aggression/dog-on-person-aggression-v3.png",
+          "bytes": 2366206
+        }
+      }
+    },
+    "/courses/": {
+      "runs": [
+        {
+          "performanceScore": 73,
+          "lcpMs": 19887.778800000004,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 1996.0351999999998,
+          "totalByteWeight": 3714739,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/classes-v1.1.png",
+            "bytes": 2318099
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 19899.376849999997,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2105.2865,
+          "totalByteWeight": 3714739,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/classes-v1.1.png",
+            "bytes": 2318099
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 19877.3612,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2036.3612,
+          "totalByteWeight": 3714739,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/classes-v1.1.png",
+            "bytes": 2318099
+          }
+        }
+      ],
+      "median": {
+        "performanceScore": 73,
+        "lcpMs": 19887.778800000004,
+        "cls": 0,
+        "tbtMs": 0,
+        "speedIndexMs": 2036.3612,
+        "totalByteWeight": 3714739,
+        "largestImage": {
+          "url": "http://localhost:46293/images/courses/classes-v1.1.png",
+          "bytes": 2318099
+        }
+      }
+    },
+    "/courses/bronze-obedience": {
+      "runs": [
+        {
+          "performanceScore": 73,
+          "lcpMs": 13066.965749999992,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2104.9755,
+          "totalByteWeight": 2409713,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/bronze/bronze-course-v2.png",
+            "bytes": 2032782
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 13213.344999999996,
+          "cls": 0,
+          "tbtMs": 5,
+          "speedIndexMs": 2156.6769000000004,
+          "totalByteWeight": 2409713,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/bronze/bronze-course-v2.png",
+            "bytes": 2032782
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 13056.645800000006,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2143.4483999999998,
+          "totalByteWeight": 2409713,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/bronze/bronze-course-v2.png",
+            "bytes": 2032782
+          }
+        }
+      ],
+      "median": {
+        "performanceScore": 73,
+        "lcpMs": 13066.965749999992,
+        "cls": 0,
+        "tbtMs": 0,
+        "speedIndexMs": 2143.4483999999998,
+        "totalByteWeight": 2409713,
+        "largestImage": {
+          "url": "http://localhost:46293/images/courses/bronze/bronze-course-v2.png",
+          "bytes": 2032782
+        }
+      }
+    },
+    "/courses/gold-obedience": {
+      "runs": [
+        {
+          "performanceScore": 73,
+          "lcpMs": 20556.860500000003,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2150.8605,
+          "totalByteWeight": 3804646,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/gold/gold-course-v1.png",
+            "bytes": 2397581
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 20553.5925,
+          "cls": 0,
+          "tbtMs": 15,
+          "speedIndexMs": 1992.4349000000002,
+          "totalByteWeight": 3804646,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/gold/gold-course-v1.png",
+            "bytes": 2397581
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 20562.865500000007,
+          "cls": 0,
+          "tbtMs": 24,
+          "speedIndexMs": 2052.9375,
+          "totalByteWeight": 3804646,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/gold/gold-course-v1.png",
+            "bytes": 2397581
+          }
+        }
+      ],
+      "median": {
+        "performanceScore": 73,
+        "lcpMs": 20556.860500000003,
+        "cls": 0,
+        "tbtMs": 15,
+        "speedIndexMs": 2052.9375,
+        "totalByteWeight": 3804646,
+        "largestImage": {
+          "url": "http://localhost:46293/images/courses/gold/gold-course-v1.png",
+          "bytes": 2397581
+        }
+      }
+    },
+    "/courses/junior-obedience": {
+      "runs": [
+        {
+          "performanceScore": 73,
+          "lcpMs": 20570.517650000023,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2105.0381,
+          "totalByteWeight": 3874103,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/junior/junior-course-v3.png",
+            "bytes": 3252699
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 20627.02630000002,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2150.7982,
+          "totalByteWeight": 3874103,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/junior/junior-course-v3.png",
+            "bytes": 3252699
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 20570.513500000012,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2149.4952,
+          "totalByteWeight": 3874108,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/junior/junior-course-v3.png",
+            "bytes": 3252699
+          }
+        }
+      ],
+      "median": {
+        "performanceScore": 73,
+        "lcpMs": 20570.517650000023,
+        "cls": 0,
+        "tbtMs": 0,
+        "speedIndexMs": 2149.4952,
+        "totalByteWeight": 3874103,
+        "largestImage": {
+          "url": "http://localhost:46293/images/courses/junior/junior-course-v3.png",
+          "bytes": 3252699
+        }
+      }
+    },
+    "/courses/one-to-one": {
+      "runs": [
+        {
+          "performanceScore": 73,
+          "lcpMs": 17261.191100000007,
+          "cls": 0,
+          "tbtMs": 15,
+          "speedIndexMs": 1995.2142999999996,
+          "totalByteWeight": 3221510,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/one-to-one/one-to-one-v3.png",
+            "bytes": 2496763
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 17416.9024,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2153.7902999999997,
+          "totalByteWeight": 3221364,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/one-to-one/one-to-one-v3.png",
+            "bytes": 2496763
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 17411.9064,
+          "cls": 0,
+          "tbtMs": 3,
+          "speedIndexMs": 2104.3635,
+          "totalByteWeight": 3221359,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/one-to-one/one-to-one-v3.png",
+            "bytes": 2496763
+          }
+        }
+      ],
+      "median": {
+        "performanceScore": 73,
+        "lcpMs": 17411.9064,
+        "cls": 0,
+        "tbtMs": 3,
+        "speedIndexMs": 2104.3635,
+        "totalByteWeight": 3221364,
+        "largestImage": {
+          "url": "http://localhost:46293/images/courses/one-to-one/one-to-one-v3.png",
+          "bytes": 2496763
+        }
+      }
+    },
+    "/courses/platinum-obedience": {
+      "runs": [
+        {
+          "performanceScore": 73,
+          "lcpMs": 21163.197549999993,
+          "cls": 0,
+          "tbtMs": 6,
+          "speedIndexMs": 2001.8855500000004,
+          "totalByteWeight": 3931235,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/platinum/platinum-course-v2.png",
+            "bytes": 2662516
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 21026.039500000003,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2051.68445,
+          "totalByteWeight": 3931235,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/platinum/platinum-course-v2.png",
+            "bytes": 2662516
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 21175.759700000002,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2049.9053000000004,
+          "totalByteWeight": 3931240,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/platinum/platinum-course-v2.png",
+            "bytes": 2662516
+          }
+        }
+      ],
+      "median": {
+        "performanceScore": 73,
+        "lcpMs": 21163.197549999993,
+        "cls": 0,
+        "tbtMs": 0,
+        "speedIndexMs": 2049.9053000000004,
+        "totalByteWeight": 3931235,
+        "largestImage": {
+          "url": "http://localhost:46293/images/courses/platinum/platinum-course-v2.png",
+          "bytes": 2662516
+        }
+      }
+    },
+    "/courses/puppy-socialisation": {
+      "runs": [
+        {
+          "performanceScore": 73,
+          "lcpMs": 16811.327200000003,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2105.1679000000004,
+          "totalByteWeight": 3067901,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/puppy/puppy-class-v2.png",
+            "bytes": 1943144
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 16811.68580000001,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2104.3946,
+          "totalByteWeight": 3067901,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/puppy/puppy-class-v2.png",
+            "bytes": 1943144
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 16817.65649999999,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2103.8532,
+          "totalByteWeight": 3067901,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/puppy/puppy-class-v2.png",
+            "bytes": 1943144
+          }
+        }
+      ],
+      "median": {
+        "performanceScore": 73,
+        "lcpMs": 16811.68580000001,
+        "cls": 0,
+        "tbtMs": 0,
+        "speedIndexMs": 2104.3946,
+        "totalByteWeight": 3067901,
+        "largestImage": {
+          "url": "http://localhost:46293/images/courses/puppy/puppy-class-v2.png",
+          "bytes": 1943144
+        }
+      }
+    },
+    "/courses/silver-obedience": {
+      "runs": [
+        {
+          "performanceScore": 73,
+          "lcpMs": 17403.962099999997,
+          "cls": 0,
+          "tbtMs": 2,
+          "speedIndexMs": 2144.2124000000003,
+          "totalByteWeight": 3200811,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/silver/silver-course-v1.png",
+            "bytes": 1878347
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 17415.88870000001,
+          "cls": 0,
+          "tbtMs": 5,
+          "speedIndexMs": 2145.3120999999996,
+          "totalByteWeight": 3200816,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/silver/silver-course-v1.png",
+            "bytes": 1878347
+          }
+        },
+        {
+          "performanceScore": 73,
+          "lcpMs": 17403.254800000002,
+          "cls": 0,
+          "tbtMs": 6,
+          "speedIndexMs": 2103.2548,
+          "totalByteWeight": 3200811,
+          "largestImage": {
+            "url": "http://localhost:46293/images/courses/silver/silver-course-v1.png",
+            "bytes": 1878347
+          }
+        }
+      ],
+      "median": {
+        "performanceScore": 73,
+        "lcpMs": 17403.962099999997,
+        "cls": 0,
+        "tbtMs": 5,
+        "speedIndexMs": 2144.2124000000003,
+        "totalByteWeight": 3200811,
+        "largestImage": {
+          "url": "http://localhost:46293/images/courses/silver/silver-course-v1.png",
+          "bytes": 1878347
+        }
+      }
+    },
+    "/find-us/": {
+      "runs": [
+        {
+          "performanceScore": 72,
+          "lcpMs": 12466.794950000007,
+          "cls": 0,
+          "tbtMs": 1,
+          "speedIndexMs": 2451.7700999999997,
+          "totalByteWeight": 2246609,
+          "largestImage": {
+            "url": "http://localhost:46293/images/about/horse-sit-v1.png",
+            "bytes": 1982737
+          }
+        },
+        {
+          "performanceScore": 72,
+          "lcpMs": 12457.361450000011,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2296.18925,
+          "totalByteWeight": 2246609,
+          "largestImage": {
+            "url": "http://localhost:46293/images/about/horse-sit-v1.png",
+            "bytes": 1982737
+          }
+        },
+        {
+          "performanceScore": 72,
+          "lcpMs": 12458.252350000004,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 2404.3228,
+          "totalByteWeight": 2246609,
+          "largestImage": {
+            "url": "http://localhost:46293/images/about/horse-sit-v1.png",
+            "bytes": 1982737
+          }
+        }
+      ],
+      "median": {
+        "performanceScore": 72,
+        "lcpMs": 12458.252350000004,
+        "cls": 0,
+        "tbtMs": 0,
+        "speedIndexMs": 2404.3228,
+        "totalByteWeight": 2246609,
+        "largestImage": {
+          "url": "http://localhost:46293/images/about/horse-sit-v1.png",
+          "bytes": 1982737
+        }
+      }
+    },
+    "/googleab62e0ee5f306664": {
+      "runs": [
+        {
+          "performanceScore": 100,
+          "lcpMs": 752.5911000000001,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 601.29555,
+          "totalByteWeight": 4693,
+          "largestImage": {
+            "url": "http://localhost:46293/favicon.ico",
+            "bytes": 4458
+          }
+        },
+        {
+          "performanceScore": 100,
+          "lcpMs": 751.9458,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 611.9729,
+          "totalByteWeight": 4693,
+          "largestImage": {
+            "url": "http://localhost:46293/favicon.ico",
+            "bytes": 4458
+          }
+        },
+        {
+          "performanceScore": 100,
+          "lcpMs": 752.2091,
+          "cls": 0,
+          "tbtMs": 0,
+          "speedIndexMs": 615.10455,
+          "totalByteWeight": 4693,
+          "largestImage": {
+            "url": "http://localhost:46293/favicon.ico",
+            "bytes": 4458
+          }
+        }
+      ],
+      "median": {
+        "performanceScore": 100,
+        "lcpMs": 752.2091,
+        "cls": 0,
+        "tbtMs": 0,
+        "speedIndexMs": 611.9729,
+        "totalByteWeight": 4693,
+        "largestImage": {
+          "url": "http://localhost:46293/favicon.ico",
+          "bytes": 4458
+        }
+      }
+    }
+  }
+}

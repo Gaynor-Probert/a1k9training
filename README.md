@@ -15,26 +15,28 @@ Node ≥ 22.12 (see `engines`).
 ## Build
 
 ```bash
-npm run build       # compile the stylesheet, then generate the site into docs/
+npm run build       # one command: Tailwind runs inside kiss, then the site is generated into docs/
 ```
 
 `npm run build` is the single command Netlify runs; the publish directory is
-`docs/`. It is `npm run css` followed by `node generate`.
+`docs/`. Tailwind is not a separate step: `generate.js` declares it as a kiss
+asset-pipeline step (`config.assets.pipeline`), so kiss compiles
+`src/styles/site.css` into `src/assets/css/site.css` before it copies and
+hashes the assets. The same happens under `npm run check` and `npm run dev`.
 
 | Script | What it does |
 | ------ | ------------ |
-| `npm run build` | `css` then `gen` — the production build |
-| `npm run css` | Tailwind: `src/styles/site.css` → `src/assets/css/site.css`, minified |
-| `npm run css:watch` | the same, rebuilding on every save |
-| `npm run gen` | kiss only: build `docs/` from `src/` |
-| `npm run dev` | kiss dev server with live reload — it prints the URL it took |
+| `npm run build` | the production build (`node generate`) |
+| `npm run check` | dry-run the build and print its report; publishes nothing |
+| `npm run dev` | kiss dev server with live reload; Tailwind keeps compiling through the pipeline's `watch` command |
+| `npm run images:optimise` | resize and convert any newly added source image to WebP (idempotent) |
+| `npm run qa` | build, then every QA gate: page count, no Bootstrap, SEO, snapshot, content parity, axe |
+| `npm run qa:lh` | Lighthouse mobile, median of 3 runs per page (slow) |
+| `npm run qa:dev-watch` | proves a template edit reaches the browser through the dev server |
 
-**While developing, run two terminals**: `npm run css:watch` in one and
-`npm run dev` in the other. kiss copies `src/assets/` into the build, so a
-Tailwind rebuild lands in `src/assets/css/site.css`, kiss's watcher sees the
-change and reloads the browser. A kiss asset-pipeline hook
-(`config.assets.pipeline`) will fold the Tailwind watcher into `npm run dev`
-shortly, and this note goes away with it.
+**Adding an image:** drop the original into `src/assets/images/...`, run
+`npm run images:optimise`, and reference the `.webp` it writes with the
+`width`/`height` recorded in `qa/images.json`.
 
 ## Layout
 
@@ -47,7 +49,8 @@ src/controllers/    per-page data reshaping
 src/styles/site.css Tailwind entry: @theme tokens + the shared component classes
 src/assets/         copied verbatim into the build (images, fonts, js, css)
 docs/               build output — never edited by hand, emptied on every build
-qa/                 Playwright and Lighthouse harness
+qa/                 Playwright, Lighthouse and axe harness — see qa/README.md
+scripts/            dev tooling (image optimisation)
 planning/           migration plan and session notes
 ```
 
@@ -80,4 +83,18 @@ config decides the caching policy.
 
 Netlify builds on push. Build command `npm run build`, publish directory
 `docs/`. Netlify must install devDependencies (Tailwind's CLI is one) and run
-Node ≥ 22.12.
+Node ≥ 22.12. `src/assets/_headers` sets long immutable caching for the hashed
+CSS and JS, a year for images and fonts, and the security headers;
+`src/assets/_redirects` keeps the pre-2015 URLs alive. `sitemap.xml` is
+written by kiss on every build.
+
+`kiss-ssg` is pinned to a git commit until the release that carries the asset
+pipeline hook and the trailing-slash canonical fix is published; switch the
+dependency back to a version range then.
+
+## QA
+
+`qa/.baseline-site` is a frozen build of the Bootstrap site (rebuild it from
+commit `41d7b3f` if it is missing) and `qa/baseline/*.json` are its content,
+Lighthouse and axe records. Every gate compares a fresh build against them —
+`qa/README.md` documents each script.
