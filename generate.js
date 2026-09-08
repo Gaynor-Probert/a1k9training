@@ -36,6 +36,13 @@ const kiss = new Kiss({
 // caption: {{#if (eq model.caption "right")}}. Handlebars ships no such helper.
 kiss.handlebars.registerHelper('eq', (a, b) => a === b)
 
+// The image pipeline (scripts/optimise-images.mjs) writes a 960px-wide sibling
+// beside every hero — `foo.webp` → `foo-960w.webp` — so a phone never downloads
+// the 1920px file. {{imageVariant model.image '960w'}} names that sibling.
+kiss.handlebars.registerHelper('imageVariant', (src, suffix) =>
+  typeof src === 'string' ? src.replace(/(\.[a-z0-9]+)$/i, `-${suffix}$1`) : '',
+)
+
 // The page's hero image, for og:image and the LocalBusiness JSON-LD in
 // src/partials/layout/header.hbs. Every inner page's model carries its own
 // `image` (see the *.json under src/models/); the one page that doesn't is

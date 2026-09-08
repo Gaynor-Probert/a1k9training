@@ -29,6 +29,7 @@
     interaction or a 6s idle timer) — data-video-id is the only thing it needs, and
     nothing YouTube-related is requested until then.
   --}}
+  <main id="main-content" class="grow">
   <section
     class="relative isolate flex min-h-[60vh] items-center overflow-hidden bg-brand-900 lg:min-h-[70vh]"
     data-hero-video
@@ -53,8 +54,9 @@
     </div>
   </section>
 
-  <main id="main-content" class="mx-auto w-full max-w-content grow px-4 py-12 sm:px-6 lg:px-8">
+  <div class="mx-auto w-full max-w-content px-4 py-12 sm:px-6 lg:px-8">
     {{#block "main"}}{{/block}}
+  </div>
   </main>
 
   {{> "layout/footer"}}

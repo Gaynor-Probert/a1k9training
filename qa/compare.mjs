@@ -6,7 +6,7 @@
 // text sentence longer than 40 chars, a lost internal link, a form field
 // difference, console errors, failed requests, or horizontal overflow.
 
-import { promises as fs } from 'node:fs'
+import { promises as fs, existsSync, readFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -29,8 +29,21 @@ function jaccard(a, b) {
 // lower-case alphanumerics so a CSS text-transform, a re-spaced "Q 1 :" label
 // or a moved footer link cannot masquerade as lost copy — only missing words can.
 function fold(text) {
-  return text.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
+  return text
+    .toLowerCase()
+    // "Q1:" and "Q 1 :" are the same label; split every letter/digit boundary
+    // on both sides so numbering style cannot read as missing copy.
+    .replace(/([a-z])(\d)/g, '$1 $2')
+    .replace(/(\d)([a-z])/g, '$1 $2')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
 }
+
+// Deliberate content changes, each with a reason: a folded text run listed
+// here for a page is reported but never gates. Keep this list short and
+// dated — it is the record of every place the rebuild changed the words.
+const ALLOW_FILE = path.join(path.dirname(fileURLToPath(import.meta.url)), 'compare-allow.json')
+const allowed = existsSync(ALLOW_FILE) ? JSON.parse(readFileSync(ALLOW_FILE, 'utf8')) : {}
 
 function sentences(text) {
   return text
@@ -100,7 +113,7 @@ function imageIssues(images = []) {
 /**
  * Compare one page's baseline vs current content record.
  */
-function comparePage(baseline, current) {
+function comparePage(baseline, current, pagePath = '') {
   const result = { status: 'ok', issues: [] }
 
   if (!baseline) {
@@ -124,7 +137,10 @@ function comparePage(baseline, current) {
   }
 
   const similarity = jaccard(baseline.visibleText || '', current.visibleText || '')
-  const missingText = missingSentences(baseline.visibleText || '', current.visibleText || '')
+  const allowedRuns = new Set((allowed[pagePath] || []).map((a) => fold(a.text)))
+  const missingText = missingSentences(baseline.visibleText || '', current.visibleText || '').filter(
+    (s) => !allowedRuns.has(s),
+  )
   result.textSimilarity = Number(similarity.toFixed(3))
   result.missingSentences = missingText
   const longMissingSentence = missingText.some((s) => s.length > 40)
@@ -181,7 +197,7 @@ export async function compare(label) {
   let failed = false
 
   for (const p of [...allPaths].sort()) {
-    const result = comparePage(baseline.pages[p], current.pages[p])
+    const result = comparePage(baseline.pages[p], current.pages[p], p)
     report[p] = result
     if (result.status === 'missing' || result.status === 'issues') failed = true
   }

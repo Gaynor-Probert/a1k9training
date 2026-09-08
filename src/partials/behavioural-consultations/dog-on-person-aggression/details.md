@@ -1,4 +1,4 @@
-### Training and Experience
+## Training and Experience
 
 Dog on person aggression consultations are highly skilled work in which Gaynor has had a great deal of experience,she has worked with dogs that exhibit this behaviour for 15 years and attended courses with the Canine and Feline Behaviour Association and Middlesex University to expand her knowledge of this behaviour.
 
