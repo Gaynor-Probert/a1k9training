@@ -7,7 +7,7 @@
 // <html> tag), then for every page asserts:
 //
 //   - exactly one <title>, exactly one <h1>
-//   - lang="en" on <html>
+//   - lang="en-GB" on <html>
 //   - a canonical <link> whose href matches the page's own pretty URL
 //   - og:title and og:url present
 //   - og:image resolves to a file that actually exists under siteDir
@@ -128,7 +128,7 @@ for (const page of pages) {
 
   const htmlTag = firstTag(/<html\b[^>]*>/i, html)
   const lang = htmlTag ? attr(htmlTag, 'lang') : null
-  if (lang !== 'en') failures.push(`lang="${lang}" (expected "en")`)
+  if (lang !== 'en-GB') failures.push(`lang="${lang}" (expected "en-GB")`)
 
   const canonicalTag = firstTag(
     /<link\b[^>]*rel="canonical"[^>]*>/i,

@@ -1,6 +1,6 @@
 ## Training and Experience
 
-Dog on dog aggression consultations are highly skilled work in which Gaynor has had a great deal of experience, she has worked with dogs that exhibit this behaviour for 15 years and attended courses with the Canine and Feline Behaviour Association and the Middlesex University to expand her knowledge of this behaviour.
+Dog on dog aggression consultations are highly skilled work in which Gaynor has had a great deal of experience, she has worked with dogs that exhibit this behaviour for 15 years and attended courses with the Canine and Feline Behaviour Association and Middlesex University to expand her knowledge of this behaviour.
 
 Gaynor works with all breeds of dogs and will deal with any dog no matter how serious the problem.
 

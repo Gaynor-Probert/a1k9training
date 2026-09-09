@@ -1,5 +1,14 @@
 {{#extend "layout"}}
 
+{{#content "head"}}
+<script type="application/ld+json">
+{{{stringify (serviceSchema model.heading description (canonical))}}}
+</script>
+<script type="application/ld+json">
+{{{stringify (breadcrumbList "Home" "/" "Consultations" "/behavioural-consultations/" model.heading (canonical))}}}
+</script>
+{{/content}}
+
 {{#content "intro"}}
   {{#if model.components.intro}}
     {{> (lookup model.components 'intro')}}

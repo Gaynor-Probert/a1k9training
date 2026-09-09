@@ -1,5 +1,11 @@
 {{#extend "layout"}}
 
+{{#content "head"}}
+<script type="application/ld+json">
+{{{stringify (breadcrumbList "Home" "/" "Courses" (canonical))}}}
+</script>
+{{/content}}
+
 {{#content "intro"}}
   {{> "courses/index/intro"}}
 {{/content}}
@@ -8,7 +14,7 @@
   <div class="page-header">
     <h2>Gaynor Probert offers a range of courses every weekend at A1K9 Behaviour and Training Academy</h2>
     <p>She holds courses to suit all levels of ability.
-        Gaynor has the specialist knowledge and techniques to help you to overcome any problems you may be have when you train your dog.</p>
+        Gaynor has the specialist knowledge and techniques to help you to overcome any problems you may have when you train your dog.</p>
   </div>
 
   {{> "courses/index/main" model }}
