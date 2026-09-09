@@ -115,10 +115,17 @@
     text-wrap: balance;
   }
 
-  /* Keyboard focus is a first-class state everywhere on this site. */
+  /* Keyboard focus is a first-class state everywhere on this site. The amber
+   * outline alone clears WCAG 1.4.11 (3:1 non-text contrast) against the site's
+   * dark surfaces (nav, hero) but not its light ones (white cards/buttons, the
+   * sand page background) — accent-500 only reaches ~2.3:1 there. The box-shadow
+   * adds a dark ring just outside the amber one; on light backgrounds that's the
+   * layer touching the page and it clears 3:1 easily (~15:1), while on dark
+   * backgrounds it sits behind the already-compliant amber and is never seen. */
   :focus-visible {
     outline: 3px solid var(--color-accent-500);
     outline-offset: 2px;
+    box-shadow: 0 0 0 7px var(--color-ink-900);
   }
 }
 
