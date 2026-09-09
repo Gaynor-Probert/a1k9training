@@ -1,5 +1,14 @@
 {{#extend "layout"}}
 
+{{#content "head"}}
+<script type="application/ld+json">
+{{{stringify (serviceSchema model.heading description (canonical))}}}
+</script>
+<script type="application/ld+json">
+{{{stringify (breadcrumbList "Home" "/" "Consultations" "/behavioural-consultations/" model.heading (canonical))}}}
+</script>
+{{/content}}
+
 {{#content "intro"}}
   {{#if model.components.intro}}
     {{> (lookup model.components 'intro')}}
@@ -8,26 +17,23 @@
 
 {{#content "main"}}
 <div class="page-header">
-    <h1>{{model.heading}}</h1>
+  <h1 class="mb-0 text-3xl sm:text-4xl">{{model.heading}}</h1>
 </div>
 
-<div class="row">
-
-	<div class="col-xs-12 col-sm-6 col-md-6">
-      {{#if  model.components.details}}
-        {{> (lookup model.components 'details')}}
-      {{/if}}
-	</div>
-
-	<div class="col-xs-12 col-sm-6 col-md-6">
+<div class="grid gap-8 lg:grid-cols-2">
+  <div class="prose-site">
+    {{#if model.components.details}}
+      {{> (lookup model.components 'details')}}
+    {{/if}}
+  </div>
+  <div class="space-y-6">
     {{> "behavioural-consultations/shared/vet-referrals" }}
-		{{> "behavioural-consultations/shared/what-to-expect-in-a-behavioural-consultation" }}
-	</div>
+    {{> "behavioural-consultations/shared/what-to-expect-in-a-behavioural-consultation" }}
+  </div>
+</div>
 
-	<div class="col-xs-12 col-sm-12 col-md-12">
-		<a href="https://cprobert.wufoo.com/forms/gaynor-probert/" class="sendmail btn btn-success" target="_blank">Contact Me</a>
-	</div>
-
+<div class="mt-8">
+  <a href="https://cprobert.wufoo.com/forms/gaynor-probert/" class="btn btn-accent" target="_blank" rel="noopener">Contact Me</a>
 </div>
 
 {{/content}}

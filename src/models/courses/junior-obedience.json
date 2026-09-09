@@ -1,9 +1,10 @@
 {
   "slug": "junior-obedience",
   "title": "Junior Dog Training Course | A1K9 Training",
-  "description": "",
-  "image": "/images/courses/junior/junior-course-v3.png",
-  "caption-class": "pull-right push-down",
+  "description": "Engagement training for puppies aged 5-9 months, with a natural progression from puppy socialisation classes for all dog breeds.",
+  "image": "/images/courses/junior/junior-course-v3.webp",
+  "caption": "right",
+  "captionOffset": true,
   "heading": "Engagement Training",
   "components": {
     "intro": "courses/junior/intro",

@@ -4,3 +4,6 @@ docs/**/*.json
 
 docs/
 
+qa/.baseline-site
+qa/out
+src/assets/css/site.css

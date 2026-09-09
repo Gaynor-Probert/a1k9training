@@ -1,4 +1,4 @@
-module.exports = ({ model }) => {
+export default ({ model }) => {
   return {
     slug: model.slug,
     title: model.title,

@@ -1,10 +1,10 @@
 {
   "slug": "dog-on-dog-aggression",
   "title": "Dog on Dog Aggression Behavioural Consultations South Wales",
-  "description": "",
-  "image": "/images/consultations/dog-on-dog-aggression/dog-on-dog-aggression-v1.png",
-  "caption-class": "pull-right",
-  "heading": "Behavioural Consultations for Dog on Person Aggression",
+  "description": "Behavioural consultations for dog on dog aggression in South Wales. Professional help improves your dog's rehabilitation chances.",
+  "image": "/images/consultations/dog-on-dog-aggression/dog-on-dog-aggression-v1.webp",
+  "caption": "right",
+  "heading": "Behavioural Consultations for Dog on Dog Aggression",
   "components": {
     "intro": "behavioural-consultations/dog-on-dog-aggression/intro",
     "details": "behavioural-consultations/dog-on-dog-aggression/details"

@@ -1,9 +1,20 @@
 {
   "slug": "gaynor-probert",
+  "heading": "Gaynor Probert",
   "title": "Gaynor Probert - About Me & A1K9 Training",
-  "description": "",
-  "image": "/images/about/gaynor-probert-v1.png",
-  "caption-class": "pull-left",
+  "description": "Gaynor Probert, founder of A1K9 near Swansea, has a lifetime of experience with dogs and established an international training reputation.",
+  "image": "/images/about/gaynor-probert-v1.webp",
+  "caption": "left",
+  "person": {
+    "name": "Gaynor Probert",
+    "jobTitle": "Founder & Lead Dog Behaviourist",
+    "credentials": [
+      "CFBA Practitioner of the Year 2014",
+      "Full Member, British Institute of Professional Dog Trainers (BIPDT)",
+      "Master Trainer, Guild of Dog Trainers",
+      "Member, National Training Inspectorate for Professional Dog Users (NTIPDU)"
+    ]
+  },
   "next": {
     "name": "About Sara Thomas",
     "link": "/about/sara-thomas"

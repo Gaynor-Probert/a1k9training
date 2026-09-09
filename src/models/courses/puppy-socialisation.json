@@ -1,9 +1,9 @@
 {
   "slug": "puppy-socialisation",
   "title": "Puppy Class Swansea | A1K9 Training",
-  "description": "",
-  "image": "/images/courses/puppy/puppy-class-v2.png",
-  "caption-class": "pull-right",
+  "description": "Puppy socialisation classes for pups up to 6 months, laying crucial foundations for good behaviour and preventing problem behaviours.",
+  "image": "/images/courses/puppy/puppy-class-v2.webp",
+  "caption": "right",
   "heading": "Congratulations! You have a new puppy.",
   "faqs": "../models/faqs/puppy.json",
   "components": {

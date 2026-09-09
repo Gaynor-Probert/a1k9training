@@ -2,23 +2,36 @@
   "name": "a1k9-training",
   "version": "1.0.0",
   "main": "generate.js",
-  "dependencies": {
-    "bootstrap": "^4.5.3"
-  },
+  "type": "module",
   "devDependencies": {
-    "chokidar": "^3.4.3",
-    "connect": "^3.7.0",
-    "connect-compiler": "^0.1.3",
+    "@axe-core/playwright": "^4.13.0",
+    "@tailwindcss/cli": "^4.3.3",
+    "@tailwindcss/typography": "^0.5.20",
+    "colors": "^1.4.0",
     "eslint-config-prettier": "^6.15.0",
-    "fs-extra": "^9.0.1",
-    "kiss-ssg": "^1.0.2",
-    "livereload": "^0.9.1",
-    "sass": "^1.29.0",
-    "serve-static": "^1.14.1"
+    "kiss-ssg": "github:cprobert/kiss-ssg#6f005aa600372c0cb1bbe272bafe3c84456ad574",
+    "lighthouse": "^13.4.1",
+    "playwright": "^1.56.1",
+    "sharp": "^0.35.4",
+    "tailwindcss": "^4.3.3"
   },
   "scripts": {
+    "build": "node generate",
     "gen": "node generate",
-    "dev": "node generate dev"
+    "dev": "node generate dev",
+    "check": "kiss-ssg check generate.js --summary",
+    "images:optimise": "node scripts/optimise-images.mjs",
+    "qa:serve": "node qa/serve.mjs",
+    "qa:pages": "node qa/pages.mjs docs --assert=18",
+    "qa:snapshot": "node qa/snapshot.mjs docs after",
+    "qa:lh": "node qa/lighthouse.mjs docs after",
+    "qa:axe": "node qa/axe.mjs docs after",
+    "qa:compare": "node qa/compare.mjs after",
+    "qa:no-bootstrap": "node qa/no-bootstrap.mjs docs",
+    "qa:seo": "node qa/seo-check.mjs docs",
+    "qa:dev-watch": "node qa/dev-watch.mjs",
+    "qa:baseline": "node qa/snapshot.mjs qa/.baseline-site baseline && node qa/lighthouse.mjs qa/.baseline-site baseline && node qa/axe.mjs qa/.baseline-site baseline",
+    "qa": "npm run build && npm run qa:pages && npm run qa:no-bootstrap && npm run qa:seo && npm run qa:snapshot && npm run qa:compare && npm run qa:axe"
   },
   "repository": {
     "type": "git",
@@ -26,6 +39,9 @@
   },
   "author": "Courtenay Probert",
   "license": "ISC",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "bugs": {
     "url": "https://github.com/Gaynor-Probert/a1k9training/issues"
   },

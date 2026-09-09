@@ -1,0 +1,41 @@
+# Netlify header rules — https://docs.netlify.com/routing/headers/
+# Netlify applies every rule whose path matches a request, and where two
+# matching rules set the same header the most specific path wins — so the
+# broad `/*` block below carries the page default plus the security headers,
+# and the four asset-specific blocks each override just Cache-Control.
+
+# Hashed build output (generate.js: `assets: { hash: true }`, run by the
+# Tailwind pipeline step and kiss's own asset copy) — css/site.<hash>.css and
+# js/site.<hash>.js. A changed file gets a new filename, so a cached copy
+# never needs to be checked again.
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images and fonts keep their filenames across an edit (nothing hashes them),
+# so cache for a year without `immutable` — a client can still revalidate if
+# the file underneath ever changes.
+/images/*
+  Cache-Control: public, max-age=31536000
+
+/fonts/*
+  Cache-Control: public, max-age=31536000
+
+# Everything else: HTML pages, including pretty-URL requests such as
+# /courses/bronze-obedience, which Netlify serves from the matching *.html
+# file on disk while keeping the extensionless path in the browser bar.
+# Always revalidate so a rebuild goes live immediately, and carry the
+# baseline security headers on every path on the site.
+/*
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  # No Content-Security-Policy: the home page's YouTube facade (src/assets/js/
+  # site.js, data-video-id on the hero in layout-video.hbs) drops in a
+  # youtube.com iframe and thumbnail image at runtime, and a CSP worth having
+  # needs careful frame-src/img-src/connect-src entries for that without
+  # breaking it. Left for a follow-up once that policy is worked out.

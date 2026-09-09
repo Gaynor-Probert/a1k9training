@@ -1,39 +1,48 @@
 {{#extend "layout"}}
 
+{{#content "head"}}
+<script type="application/ld+json">
+{{{stringify (serviceSchema "Behavioural Consultations" description (canonical))}}}
+</script>
+<script type="application/ld+json">
+{{{stringify (breadcrumbList "Home" "/" "Consultations" (canonical))}}}
+</script>
+{{/content}}
+
 {{#content "intro"}}
   {{#markdown}}
 # Behavioural Consultations
 
 Dogs are wonderful, intelligent animals, when raised correctly and conditioned to live with you, they truly are man&#39;s best friend but when things go wrong, the results can lead to dreadful suffering for the dog and terrible stress for the owner.
-
-<a href="/behavioural-consultations/dog-on-dog-aggression" class="btn btn-warning">Dog on Dog Aggression</a>
-<a href="/behavioural-consultations/dog-on-person-aggression" class="btn btn-danger" style="margin-top: 5px;">Dog on Person Aggression</a>
   {{/markdown}}
+  <div class="flex flex-wrap gap-3">
+    <a href="/behavioural-consultations/dog-on-dog-aggression" class="btn btn-primary">Dog on Dog Aggression</a>
+    <a href="/behavioural-consultations/dog-on-person-aggression" class="btn btn-secondary">Dog on Person Aggression</a>
+  </div>
 {{/content}}
 
 {{#content "main"}}
-<div class="row">
-	<div class="col-md-12 page-header">
-		<h2>A Mans Best Friend</h2>
-	</div>
-	<div class="col-xs-12 col-sm-6 col-md-7">
-		{{> "behavioural-consultations/left-col" }}
-	</div>
-	<div class="col-xs-12 col-sm-6 col-md-5">
+<div class="page-header">
+  <h2 class="mb-0 text-2xl sm:text-3xl">A Mans Best Friend</h2>
+</div>
+
+<div class="grid gap-8 lg:grid-cols-12">
+  <div class="prose-site lg:col-span-7">
+    {{> "behavioural-consultations/left-col" }}
+  </div>
+  <div class="space-y-6 lg:col-span-5">
     {{> "behavioural-consultations/shared/vet-referrals" }}
     {{> "behavioural-consultations/right-col" }}
-	</div>
+  </div>
+</div>
 
-	<div class="col-xs-12 col-sm-12 col-md-12">
-		<div class="callout callout-info">
-      {{> "behavioural-consultations/testimonial" }}
-		</div>
-	</div>
+<div class="callout flow-root">
+  {{> "behavioural-consultations/testimonial" }}
+</div>
 
-	<div class="col-xs-12 col-sm-12 col-md-12">
-		<a class="btn btn-warning" href="/behavioural-consultations/dog-on-dog-aggression">Next: Dog on Dog Aggression</a>
-		<a href="https://cprobert.wufoo.com/forms/gaynor-probert/" class="sendmail btn btn-success" target="_blank">Contact Me</a>
-	</div>
+<div class="flex flex-wrap gap-3">
+  <a class="btn btn-primary" href="/behavioural-consultations/dog-on-dog-aggression">Next: Dog on Dog Aggression</a>
+  <a href="https://cprobert.wufoo.com/forms/gaynor-probert/" class="btn btn-accent" target="_blank" rel="noopener">Contact Me</a>
 </div>
 {{/content}}
 

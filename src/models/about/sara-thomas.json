@@ -1,9 +1,14 @@
 {
   "slug": "sara-thomas",
+  "heading": "Sara Thomas",
   "title": "Sara Thomas",
-  "description": "",
-  "image": "/images/about/sara-thomas-v2.png",
-  "caption-class": "pull-right",
+  "description": "Meet Sara Thomas, who works with dog classes and loves seeing puppies progress to become well-behaved, obedient pets at A1K9 near Swansea.",
+  "image": "/images/about/sara-thomas-v2.webp",
+  "caption": "right",
+  "person": {
+    "name": "Sara Thomas",
+    "jobTitle": "Assistant Dog Trainer"
+  },
   "next": {
     "name": "Get in touch",
     "link": "/find-us"

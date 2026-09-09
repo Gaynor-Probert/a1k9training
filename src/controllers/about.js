@@ -1,6 +1,4 @@
-const colors = require('colors')
-
-module.exports = ({ model }) => {
+export default ({ model }) => {
   return {
     path: 'about',
     slug: model.slug,

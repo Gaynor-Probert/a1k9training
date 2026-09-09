@@ -1,0 +1,251 @@
+/* ---------------------------------------------------------------------------
+ * a1k9training — Tailwind v4 entry stylesheet.
+ *
+ * Built with:  npx tailwindcss -i src/styles/site.css -o src/assets/css/site.css --minify
+ * (npm run css / npm run css:watch). The OUTPUT lives in src/assets/css/site.css,
+ * which is gitignored and picked up by kiss's asset copy, so templates reach it
+ * as {{asset "css/site.css"}}.
+ * ------------------------------------------------------------------------- */
+
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+/* Explicit source globs. Tailwind's automatic detection would otherwise walk the
+ * repo root and scan its own output (src/assets/css/site.css) plus the built site
+ * in docs/. Paths are relative to this file. */
+@source '../pages';
+@source '../partials';
+@source '../layouts';
+@source '../models';
+@source '../../generate.js';
+
+/* src/assets holds vendored/binary files and the generated stylesheet itself —
+ * never a source of class names. */
+@source not '../assets';
+@source not '../../qa'; /* QA scripts mention utility names in their tests */
+
+/* ---------------------------------------------------------------------------
+ * Self-hosted display face. Latin subset pulled from the Google Fonts CSS API
+ * and committed to src/assets/fonts/; the layouts preload it.
+ * ------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Buenard';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/buenard-700.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------------------------------------------------------------------------
+ * Design tokens. Every text/background pair used by the shell is WCAG AA or
+ * better — ratios are recorded in the migration notes.
+ * ------------------------------------------------------------------------- */
+@theme {
+  /* Deep, outdoorsy green — nav, buttons, links. */
+  --color-brand-50: #eef5f0;
+  --color-brand-100: #d8e8de;
+  --color-brand-200: #b9d5c5;
+  --color-brand-600: #2c6a48;
+  --color-brand-700: #1f5136;
+  --color-brand-800: #173c28;
+  --color-brand-900: #0f281b;
+
+  /* Warm off-white page ground and card edges. */
+  --color-sand-50: #faf8f4;
+  --color-sand-100: #f3efe7;
+  --color-sand-200: #e7e0d4;
+  --color-sand-300: #d7cdb9;
+
+  /* Dark slate text. */
+  --color-ink-500: #647069;
+  --color-ink-600: #4d5b56;
+  --color-ink-700: #33403c;
+  --color-ink-900: #1b2422;
+
+  /* Amber — calls to action only, so it stays loud. */
+  --color-accent-300: #f9cf6d;
+  --color-accent-400: #f4b93f;
+  --color-accent-500: #e3a010;
+  --color-accent-700: #8a5a05;
+
+  --font-display: 'Buenard', Georgia, 'Times New Roman', serif;
+  --font-sans:
+    system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif;
+
+  --radius-card: 0.75rem;
+  --radius-pill: 9999px;
+
+  /* max-w-content — the site's one content measure. */
+  --container-content: 72rem;
+}
+
+/* ---------------------------------------------------------------------------
+ * Base
+ * ------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--color-sand-50);
+    color: var(--color-ink-700);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-ink-900);
+    text-wrap: balance;
+  }
+
+  /* Keyboard focus is a first-class state everywhere on this site. The amber
+   * outline alone clears WCAG 1.4.11 (3:1 non-text contrast) against the site's
+   * dark surfaces (nav, hero) but not its light ones (white cards/buttons, the
+   * sand page background) — accent-500 only reaches ~2.3:1 there. The box-shadow
+   * adds a dark ring just outside the amber one; on light backgrounds that's the
+   * layer touching the page and it clears 3:1 easily (~15:1), while on dark
+   * backgrounds it sits behind the already-compliant amber and is never seen. */
+  :focus-visible {
+    outline: 3px solid var(--color-accent-500);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 7px var(--color-ink-900);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Components
+ *
+ * Deliberately small. Templates should prefer plain utilities; these exist only
+ * because the markdown and raw-HTML partials under src/partials/** are migrated
+ * by other hands against this exact list, and a markdown file cannot carry a
+ * dozen utilities per element.
+ * ------------------------------------------------------------------------- */
+@layer components {
+  /* .btn — shared shape for every button/link-button. Replaces Bootstrap `.btn`. */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-pill border
+      border-transparent px-5 py-2.5 text-base font-semibold no-underline
+      transition-colors duration-150;
+  }
+
+  /* .btn-primary — the default action. Replaces Bootstrap `.btn-primary`/`.btn-success`. */
+  .btn-primary {
+    @apply bg-brand-700 text-white hover:bg-brand-800 active:bg-brand-900;
+  }
+
+  /* .btn-secondary — quiet action on a light ground. Replaces Bootstrap `.btn-default`. */
+  .btn-secondary {
+    @apply border-brand-700/30 bg-white text-brand-700 hover:border-brand-700
+      hover:bg-brand-50;
+  }
+
+  /* .btn-accent — the one amber call to action (phone, enquiry). No Bootstrap equivalent. */
+  .btn-accent {
+    @apply bg-accent-400 text-ink-900 hover:bg-accent-500;
+  }
+
+  /* .btn-sm — compact modifier. Replaces Bootstrap `.btn-sm`. */
+  .btn-sm {
+    @apply px-3.5 py-1.5 text-sm;
+  }
+
+  /* .btn-lg — hero/section modifier. Replaces Bootstrap `.btn-lg`. */
+  .btn-lg {
+    @apply px-7 py-3.5 text-lg;
+  }
+
+  /* .card — bordered white panel. Replaces Bootstrap `.thumbnail` and `.panel`. */
+  .card {
+    @apply flex flex-col overflow-hidden rounded-card border border-sand-200
+      bg-white;
+  }
+
+  /* .callout — aside with a coloured left rule. Replaces the old carousel.scss `.callout*`. */
+  .callout {
+    @apply my-6 rounded-card border border-sand-200 border-l-4 border-l-brand-700
+      bg-white px-5 py-4;
+  }
+
+  .callout > :first-child {
+    @apply mt-0;
+  }
+
+  .callout > :last-child {
+    @apply mb-0;
+  }
+
+  /* .page-header — section title with an underline. Replaces Bootstrap `.page-header`. */
+  .page-header {
+    @apply mb-6 border-b border-sand-200 pb-3;
+  }
+
+  .page-header > :last-child {
+    @apply mb-0;
+  }
+
+  /* The page title lives here on every inner page; size by level so an h1 reads
+   * as the title and an h4 (the FAQ heading) as a section label. */
+  .page-header h1 {
+    @apply font-display text-3xl leading-tight text-ink-900 md:text-4xl;
+  }
+
+  .page-header h2,
+  .page-header h3,
+  .page-header h4 {
+    @apply font-display text-2xl leading-tight text-ink-900;
+  }
+
+  /* .figure-right / .figure-left — floated thumbnail image with a soft border.
+   * Replace Bootstrap `img-thumbnail pull-right` / `pull-left`. Float only from
+   * the `sm` breakpoint up; full width and centred on a phone. */
+  .figure-right,
+  .figure-left {
+    @apply mx-auto mb-4 block h-auto max-w-full rounded-card border
+      border-sand-200 bg-white p-1.5;
+  }
+
+  @media (width >= 40rem) {
+    .figure-right {
+      @apply float-right mt-1 ml-6 w-1/2 max-w-xs;
+    }
+
+    .figure-left {
+      @apply float-left mt-1 mr-6 w-1/2 max-w-xs;
+    }
+  }
+
+  /* .badge — small pill label. Replaces Bootstrap `.label`/`.badge`. */
+  .badge {
+    @apply inline-flex items-center rounded-pill bg-brand-100 px-3 py-1 text-xs
+      font-semibold tracking-wide text-brand-800 uppercase;
+  }
+
+  /* .prose-site — the typography plugin, re-tuned to the palette. Applied by the
+   * layouts around markdown partial output; not for hand-written markup. */
+  .prose-site {
+    /* The plugin's defaults are a cool grey; keep body copy on the site's ink. */
+    --tw-prose-body: var(--color-ink-700);
+    --tw-prose-bullets: var(--color-brand-600);
+    --tw-prose-counters: var(--color-brand-700);
+    @apply prose max-w-none prose-headings:font-display prose-headings:text-ink-900
+      prose-a:font-medium prose-a:text-brand-700 prose-strong:text-ink-900
+      prose-img:rounded-card;
+  }
+}

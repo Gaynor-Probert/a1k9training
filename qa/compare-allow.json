@@ -1,0 +1,8 @@
+{
+  "/behavioural-consultations/dog-on-dog-aggression": [
+    {
+      "text": "Behavioural Consultations for Dog on Person Aggression",
+      "reason": "2026-09-07: the page heading read 'Dog on Person' on the dog-on-dog page; corrected to 'Dog on Dog' in src/models/behavioural-consultations/dog-on-dog-aggression.json"
+    }
+  ]
+}

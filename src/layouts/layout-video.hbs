@@ -1,33 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-  <title>{{title}}</title>
-  <meta name="description" content="{{description}}">
   {{> "layout/header"}}
-  <link href="/css/video.css" rel="stylesheet">
+
+  <title>{{title}}</title>
+  {{#if description}}
+    <meta name="description" content="{{description}}">
+  {{/if}}
+
+  <link rel="preload" href="/fonts/buenard-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/{{asset "css/site.css"}}">
+
+  {{#block "head"}}{{/block}}
 </head>
-<body>
-  {{> "layout/navbar"}}
-  <section class="content-section video-section" style="background-image: url('/images/gaynor-probert-home-v1.1.png');">
-    <div class="pattern-overlay">
-      <a id="bgndVideo" class="player"
-        data-property="{videoURL:'https://www.youtube.com/watch?v=XAHaVETM1sE', containment:'.video-section', quality:'large', autoPlay:true, mute:true, opacity:1, ratio: '16/9', loop:false}">bg</a>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            {{#block "intro"}}{{/block}}
-          </div>
-        </div>
+<body class="flex min-h-screen flex-col bg-sand-50 text-ink-700 antialiased">
+  <a href="#main-content"
+    class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-pill focus:bg-white focus:px-4 focus:py-2 focus:font-semibold focus:text-brand-800">
+    Skip to content
+  </a>
+
+  <header class="sticky top-0 z-40">
+    {{> "layout/navbar"}}
+  </header>
+
+  {{!--
+    The hero is a poster image first and always. site.js may later drop a muted,
+    controls-free YouTube iframe in behind the overlay (desktop only, after a user
+    interaction or a 6s idle timer) — data-video-id is the only thing it needs, and
+    nothing YouTube-related is requested until then.
+  --}}
+  <main id="main-content" class="grow">
+  <section
+    class="relative isolate flex min-h-[60vh] items-center overflow-hidden bg-brand-900 lg:min-h-[70vh]"
+    data-hero-video
+    data-video-id="XAHaVETM1sE">
+    <img src="/images/gaynor-probert-home-v1.1.webp"
+      srcset="/images/gaynor-probert-home-v1.1-960w.webp 960w, /images/gaynor-probert-home-v1.1.webp 1600w"
+      sizes="100vw"
+      alt="" width="1600" height="787"
+      class="absolute inset-0 -z-20 size-full object-cover"
+      fetchpriority="high" loading="eager" decoding="async">
+    <div class="absolute inset-0 -z-10 bg-linear-to-b from-ink-900/65 via-ink-900/45 to-ink-900/75" aria-hidden="true"></div>
+
+    <div class="mx-auto flex w-full max-w-content justify-center px-4 py-16 sm:px-6 lg:px-8">
+      <div class="w-full max-w-3xl rounded-card bg-ink-900/80 p-6 text-center text-sand-100 shadow-sm sm:p-10
+        [&_h1]:mb-3 [&_h1]:text-3xl [&_h1]:leading-tight [&_h1]:tracking-tight [&_h1]:text-white sm:[&_h1]:text-5xl lg:[&_h1]:text-6xl
+        [&_h2]:mb-4 [&_h2]:text-xl [&_h2]:font-normal [&_h2]:text-accent-300 sm:[&_h2]:text-2xl lg:[&_h2]:text-3xl
+        [&_h3]:font-sans [&_h3]:text-base [&_h3]:leading-relaxed [&_h3]:font-normal [&_h3]:text-sand-100 sm:[&_h3]:text-lg
+        [&_p]:mb-6 [&_p]:font-sans [&_p]:text-sand-100 [&_strong]:text-white [&_a:not(.btn)]:text-accent-300 [&_a:not(.btn)]:underline
+        [&_:last-child]:mb-0">
+        {{#block "intro"}}{{/block}}
       </div>
     </div>
   </section>
-  <div class="container marketing">
+
+  <div class="mx-auto w-full max-w-content px-4 py-12 sm:px-6 lg:px-8">
     {{#block "main"}}{{/block}}
-    {{> "layout/footer"}}
   </div>
-  <div>
-    {{>"layout/scripts"}}
-    {{#block "scripts"}}{{/block}}
-  </div>
+  </main>
+
+  {{> "layout/footer"}}
+
+  {{!--
+    No per-page {{#block "scripts"}} here on purpose. layout-video is used by the
+    home page alone, and the hero video is now the layout's own business:
+    data-video-id above plus the facade in site.js. The stale
+    {{#content "scripts"}} block still sitting in src/pages/index.hbs (jQuery +
+    jquery.mb.YTPlayer, both deleted) therefore renders nothing; Loop 4 deletes it
+    at source. layout.hbs keeps its "scripts" block for every other page.
+  --}}
+  {{> "layout/scripts"}}
 </body>
 </html>

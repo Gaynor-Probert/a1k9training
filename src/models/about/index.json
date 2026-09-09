@@ -1,9 +1,11 @@
 {
   "slug": "index",
+  "heading": "Philosophy",
   "title": "Gaynor Probert - My Philosophy",
-  "description": "",
-  "image": "/images/about/philosophy-v4.png",
-  "caption-class": "pull-right push-down",
+  "description": "Gaynor's philosophy on dog training emphasises free runs to help dogs become social and well-balanced at A1K9 near Swansea.",
+  "image": "/images/about/philosophy-v4.webp",
+  "caption": "right",
+  "captionOffset": true,
   "next": {
     "name": "About Facilities",
     "link": "/about/facilities"

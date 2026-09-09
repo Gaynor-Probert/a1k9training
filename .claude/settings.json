@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "kiss-ssg": {
+      "source": {
+        "source": "github",
+        "repo": "cprobert/kiss-ssg"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "kiss-ssg@kiss-ssg": true
+  }
+}

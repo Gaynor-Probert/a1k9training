@@ -1,9 +1,11 @@
 {
   "slug": "facilities",
+  "heading": "Facilities",
   "title": "About the A1K9 Training Facilities",
-  "description": "",
-  "image": "/images/about/facilities-v2.png",
-  "caption-class": "pull-right push-down",
+  "description": "A1K9 Training Facilities set in the South Wales countryside, conveniently located just 5 minutes from junction 47 of the M4.",
+  "image": "/images/about/facilities-v2.webp",
+  "caption": "right",
+  "captionOffset": true,
   "next": {
     "name": "About Gaynor Probert",
     "link": "/about/gaynor-probert"
