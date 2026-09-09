@@ -12,11 +12,15 @@ Tailwind CSS v4. It was migrated off Bootstrap 3 in place; `planning/` holds
 the migration plan and session notes, and `qa/` exists specifically to gate
 that migration against regressions (see below).
 
-**kiss-ssg API reference:** import `@node_modules/kiss-ssg/llms.txt` into
-context before making non-trivial `generate.js` changes — it's the package's
-own cheat sheet for `.page()`/`.pages()`/`.generate()`/`.watch()`, config,
-and every built-in Handlebars helper. Deeper per-topic notes live alongside
-it in `node_modules/kiss-ssg/AIKB/`.
+**kiss-ssg API reference:**
+
+@node_modules/kiss-ssg/llms.txt
+
+The file above is imported automatically into context on every session —
+it's the package's own cheat sheet for `.page()`/`.pages()`/`.generate()`/
+`.watch()`, config, and every built-in Handlebars helper. Consult it before
+making non-trivial `generate.js` changes. Deeper per-topic notes live
+alongside it in `node_modules/kiss-ssg/AIKB/`.
 
 ## Commands
 
