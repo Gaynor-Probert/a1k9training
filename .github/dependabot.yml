@@ -1,0 +1,26 @@
+version: 2
+updates:
+  # npm dependencies (package.json / package-lock.json). Patch and minor
+  # bumps are batched into one weekly PR — they're routine, low-risk, and
+  # reviewing them one at a time (as happened right after the Tailwind
+  # migration landed: three separate PRs for brace-expansion, handlebars
+  # and minimatch, all from one lockfile regen) is pure toil. A major
+  # version bump is left ungrouped, since those are more likely to need an
+  # actual code change and deserve their own look.
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    groups:
+      npm-patch-and-minor:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
+
+  # Keep the actions used by .github/workflows/qa.yml themselves up to date.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
