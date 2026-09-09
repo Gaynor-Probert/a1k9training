@@ -10,6 +10,7 @@
     if (!navToggle || !navPanel) return
     navToggle.setAttribute('aria-expanded', open ? 'true' : 'false')
     navPanel.classList.toggle('hidden', !open)
+    document.body.classList.toggle('overflow-hidden', open)
   }
 
   if (navToggle && navPanel) {

@@ -6,7 +6,9 @@
   reaches every sub-link) and when its chevron button reports aria-expanded="true".
   Mobile: one disclosure button toggles the panel, and the dropdowns are simply
   visible groups inside it — the chevron buttons are display:none there, so their
-  aria state never lies about a menu that is already open.
+  aria state never lies about a menu that is already open. The toggle's icon and
+  label swap (hamburger/Menu -> X/Close) purely off its own aria-expanded, via
+  the group-aria-expanded: variant — no extra JS needed for that part.
 
   Behaviour lives in /js/site.js. Nothing else.
 --}}
@@ -17,14 +19,18 @@
     </a>
 
     <button type="button"
-      class="inline-flex items-center gap-2 rounded-pill px-3 py-2 text-sm font-semibold text-sand-100 hover:bg-brand-700 hover:text-white lg:hidden"
+      class="group inline-flex min-h-11 items-center gap-2 rounded-pill px-3 py-2 text-sm font-semibold text-sand-100 hover:bg-brand-700 hover:text-white lg:hidden"
       data-nav-toggle
       aria-expanded="false"
       aria-controls="site-menu">
-      <svg class="size-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <svg class="size-5 group-aria-expanded:hidden" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
         <path d="M3 5h14M3 10h14M3 15h14" />
       </svg>
-      Menu
+      <svg class="hidden size-5 group-aria-expanded:block" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M5 5l10 10M15 5 5 15" />
+      </svg>
+      <span class="group-aria-expanded:hidden">Menu</span>
+      <span class="hidden group-aria-expanded:inline">Close</span>
     </button>
 
     <div id="site-menu" class="hidden w-full basis-full lg:block lg:w-auto lg:basis-auto" data-nav-panel>
