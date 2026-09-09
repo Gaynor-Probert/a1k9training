@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-07T21:39:26.483Z",
+  "generated": "2026-09-09T16:42:51.547Z",
   "images": {
     "/images/index/gaynor-probert-award-v1.png": {
       "src": "/images/index/gaynor-probert-award-v1.webp",
@@ -563,6 +563,41 @@
           "bytes": 78548
         }
       }
+    },
+    "/images/find-us/llys-nini-cafe-exterior-v1.jpg": {
+      "src": "/images/find-us/llys-nini-cafe-exterior-v1.webp",
+      "width": 900,
+      "height": 675,
+      "role": "content",
+      "bytes": 131686
+    },
+    "/images/find-us/llys-nini-cafe-interior-v1.jpg": {
+      "src": "/images/find-us/llys-nini-cafe-interior-v1.webp",
+      "width": 900,
+      "height": 675,
+      "role": "content",
+      "bytes": 89174
+    },
+    "/images/find-us/llys-nini-car-park-v1.jpg": {
+      "src": "/images/find-us/llys-nini-car-park-v1.webp",
+      "width": 900,
+      "height": 675,
+      "role": "content",
+      "bytes": 96188
+    },
+    "/images/consultations/behavioural-assessment-v1.jpg": {
+      "src": "/images/consultations/behavioural-assessment-v1.webp",
+      "width": 900,
+      "height": 641,
+      "role": "content",
+      "bytes": 95270
+    },
+    "/images/courses/silver/group-stay-v1.jpg": {
+      "src": "/images/courses/silver/group-stay-v1.webp",
+      "width": 900,
+      "height": 1200,
+      "role": "content",
+      "bytes": 163438
     }
   },
   "unreferenced": [
@@ -732,7 +767,7 @@
     }
   ],
   "totals": {
-    "beforeBytes": 46940801,
-    "afterBytes": 5381090
+    "beforeBytes": 63889329,
+    "afterBytes": 5956846
   }
 }
