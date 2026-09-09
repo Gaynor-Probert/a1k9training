@@ -11,7 +11,7 @@
     "eslint-config-prettier": "^6.15.0",
     "kiss-ssg": "github:cprobert/kiss-ssg#6f005aa600372c0cb1bbe272bafe3c84456ad574",
     "lighthouse": "^13.4.1",
-    "playwright": "^1.56.1",
+    "playwright": "^1.63.0",
     "sharp": "^0.35.4",
     "tailwindcss": "^4.3.3"
   },
