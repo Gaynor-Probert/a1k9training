@@ -1,0 +1,46 @@
+name: QA
+
+# Runs `npm run qa:ci` (package.json): build, page-count, no-Bootstrap,
+# SEO, axe — then qa/check-axe.mjs, which is what actually turns the axe
+# report into a pass/fail gate (qa/axe.mjs only ever writes the report;
+# its own process.exit(1) is just a CLI-usage guard, not a violation gate).
+#
+# qa:ci deliberately skips two things the local `npm run qa` aggregate
+# includes: qa:compare (and the qa:snapshot it depends on) compares the
+# built site against qa/baseline/content.json, a frozen snapshot of the
+# pre-Tailwind-migration Bootstrap 3 site — that was the migration's own
+# safety net (catch lost text/links along the way), not a permanent
+# regression test, and every ordinary content change now will legitimately
+# differ from that old Bootstrap baseline. qa:lh (Lighthouse) is slow
+# (3 runs/page) and already excluded from `npm run qa` for the same
+# not-a-permanent-gate reason.
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Point qa/*.mjs at the installed Chromium
+        # qa/axe.mjs, qa/snapshot.mjs and qa/lighthouse.mjs all default
+        # CHROME_PATH to a path that only exists in Anthropic's sandbox
+        # (see qa/README.md); resolve the real one Playwright just
+        # installed instead of hardcoding a browser revision that will
+        # go stale.
+        run: echo "CHROME_PATH=$(node -e "console.log(require('playwright').chromium.executablePath())")" >> "$GITHUB_ENV"
+
+      - run: npm run qa:ci

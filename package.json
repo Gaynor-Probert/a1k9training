@@ -26,12 +26,14 @@
     "qa:snapshot": "node qa/snapshot.mjs docs after",
     "qa:lh": "node qa/lighthouse.mjs docs after",
     "qa:axe": "node qa/axe.mjs docs after",
+    "qa:axe:check": "node qa/check-axe.mjs after",
     "qa:compare": "node qa/compare.mjs after",
     "qa:no-bootstrap": "node qa/no-bootstrap.mjs docs",
     "qa:seo": "node qa/seo-check.mjs docs",
     "qa:dev-watch": "node qa/dev-watch.mjs",
     "qa:baseline": "node qa/snapshot.mjs qa/.baseline-site baseline && node qa/lighthouse.mjs qa/.baseline-site baseline && node qa/axe.mjs qa/.baseline-site baseline",
-    "qa": "npm run build && npm run qa:pages && npm run qa:no-bootstrap && npm run qa:seo && npm run qa:snapshot && npm run qa:compare && npm run qa:axe"
+    "qa": "npm run build && npm run qa:pages && npm run qa:no-bootstrap && npm run qa:seo && npm run qa:snapshot && npm run qa:compare && npm run qa:axe",
+    "qa:ci": "npm run build && npm run qa:pages && npm run qa:no-bootstrap && npm run qa:seo && npm run qa:axe && npm run qa:axe:check"
   },
   "repository": {
     "type": "git",
