@@ -1,4 +1,9 @@
 {{#extend "layout"}}
+{{#content "head"}}
+<script type="application/ld+json">
+{{{stringify (breadcrumbList "Home" "/" "Contact" (canonical))}}}
+</script>
+{{/content}}
 {{#content "intro"}}
 <h2 id="get_in_touch">
   How to contact/find A1K9 Training

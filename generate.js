@@ -78,6 +78,88 @@ kiss.handlebars.registerHelper('localBusiness', function (model) {
   }
 })
 
+const BUSINESS_REF = {
+  '@type': 'LocalBusiness',
+  name: 'A1K9 Behaviour and Training Academy',
+  url: `${kiss.config.siteUrl}/`,
+}
+
+// FAQPage JSON-LD, for src/partials/faqs.hbs — used on /courses/ and every
+// course page that carries a `faqs` field (see src/models/courses/*.json).
+// `this` inside faqs.hbs is already the plain [{q, a}] array the faqMapper/
+// course controllers load, so the helper just reshapes it.
+kiss.handlebars.registerHelper('faqPage', (faqs) => ({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: (faqs || []).map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: { '@type': 'Answer', text: faq.a },
+  })),
+}))
+
+// Service JSON-LD for a course or consultation page — src/pages/courses/course.hbs
+// and src/pages/behavioural-consultations/{index,consultation}.hbs. `provider`
+// points back at the same LocalBusiness the header's JSON-LD describes.
+kiss.handlebars.registerHelper('serviceSchema', (name, description, url) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: name,
+  name,
+  description,
+  provider: BUSINESS_REF,
+  areaServed: 'South Wales',
+  url,
+}))
+
+// Person JSON-LD for a team member's About page — src/pages/about.hbs, gated
+// on the model carrying a `person` object (only gaynor-probert.json and
+// sara-thomas.json do; Philosophy and Facilities don't get one). `credentials`
+// is an optional array of plain strings, e.g. accreditation names.
+kiss.handlebars.registerHelper(
+  'personSchema',
+  (name, jobTitle, description, image, url, credentials) => {
+    const siteUrl = kiss.config.siteUrl
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name,
+      jobTitle,
+      description,
+      image: `${siteUrl}${image}`,
+      url,
+      worksFor: BUSINESS_REF,
+    }
+    if (Array.isArray(credentials) && credentials.length) {
+      schema.hasCredential = credentials.map((c) => ({
+        '@type': 'EducationalOccupationalCredential',
+        name: c,
+      }))
+    }
+    return schema
+  },
+)
+
+// BreadcrumbList JSON-LD. Called with (name, url) pairs in order, e.g.
+// {{{stringify (breadcrumbList "Home" "/" "Courses" "/courses/" model.heading (canonical))}}}
+// — the trailing Handlebars options object is popped off, not a real pair.
+kiss.handlebars.registerHelper('breadcrumbList', (...args) => {
+  args.pop()
+  const siteUrl = kiss.config.siteUrl
+  const items = []
+  for (let i = 0; i < args.length; i += 2) items.push([args[i], args[i + 1]])
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map(([name, url], index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name,
+      item: /^https?:\/\//.test(url) ? url : `${siteUrl}${url}`,
+    })),
+  }
+})
+
 // v2 renders .md partials with remarkable's `breaks: true`, so every hard-wrapped
 // line in a markdown partial becomes a <br> — v1 used `breaks: false`. Keeping the
 // v1 setting stops paragraphs in src/partials/**/*.md breaking mid-sentence at the

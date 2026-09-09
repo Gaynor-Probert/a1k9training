@@ -1,5 +1,14 @@
 {{#extend "layout"}}
 
+{{#content "head"}}
+<script type="application/ld+json">
+{{{stringify (serviceSchema "Behavioural Consultations" description (canonical))}}}
+</script>
+<script type="application/ld+json">
+{{{stringify (breadcrumbList "Home" "/" "Consultations" (canonical))}}}
+</script>
+{{/content}}
+
 {{#content "intro"}}
   {{#markdown}}
 # Behavioural Consultations
