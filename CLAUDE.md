@@ -49,19 +49,27 @@ plus the QA harness below for anything beyond a one-off visual check.
 
 Playwright + Lighthouse + axe-core, driven by plain Node ESM scripts — full
 detail in `qa/README.md`. Everything here inspects an **already-built**
-directory (`docs/`, or the frozen pre-migration `qa/.baseline-site`); the
+directory (`docs/`, or `qa/.baseline-site`, a frozen build of the last merged master); the
 harness itself never builds the site.
 
 ```bash
 npm run qa                # build, then every gate: page count, no-Bootstrap, SEO, snapshot, compare, axe
 npm run qa:lh              # Lighthouse mobile, median of 3 runs per page (slow)
 npm run qa:serve -- docs 8123   # serve a built dir locally with Netlify's pretty-URL rules
+npm run qa:preview -- <url>     # verify a DEPLOYED site: real headers, redirect-free URLs, llms.txt, schema, Playwright
 ```
 
+After opening a PR, run `/pr-verify` (`.claude/skills/pr-verify/SKILL.md`): it
+finds the Netlify deploy-preview URL on the PR's commit status and runs
+`qa:preview` against it. `.github/workflows/preview-qa.yml` does the same
+automatically as the `Preview QA` check.
+
 - `qa/snapshot.mjs` + `qa/compare.mjs` gate against `qa/baseline/content.json`
-  (a frozen pre-migration Bootstrap build) on: lost text, lost internal
-  links, form-field diffs, console errors, failed requests, horizontal
-  overflow at 375px.
+  (a snapshot of the last merged master build; refresh it by building master
+  into `qa/.baseline-site` and running `npm run qa:baseline` whenever copy
+  changes land on master) on: lost text, lost internal links, form-field
+  diffs, console errors, failed requests, horizontal overflow at 375px.
+  `qa/baseline/pre-migration/` keeps the original Bootstrap-site records.
 - `qa/no-bootstrap.mjs` fails if any Bootstrap 3 class/idiom shows up in the
   built output — the guard against regressing the migration.
 - `qa/axe.mjs` scans every page at 375/1440px; group violations by impact.
@@ -156,6 +164,15 @@ unhashed name through kiss's `{{asset}}` helper
 year for images/fonts, and security headers; `src/assets/_redirects` keeps
 pre-2015 URLs alive.
 
+**Cache busting is by URL, never by header.** CSS and JS bust themselves:
+kiss renames them with a content hash on every change, so a changed file is
+a new URL. Images and fonts are **not** hashed and are cached for a year, so
+a browser that has one will not ask again until it expires — **never
+overwrite an image or font in place.** Change the file, bump its version
+suffix (`hero-v1.webp` → `hero-v2.webp`, the convention every image already
+follows), and update the references; the old file can stay or go. The same
+applies to the self-hosted font (`buenard-700-v1.woff2`).
+
 **Adding an image:** drop the original into `src/assets/images/...`, run
 `npm run images:optimise`, then reference the `.webp` it writes with the
 `width`/`height` it records in `qa/images.json`.
@@ -164,7 +181,6 @@ pre-2015 URLs alive.
 
 Netlify builds on push (`npm run build`, publish dir `docs/`); it must
 install devDependencies (Tailwind's CLI is one) on Node ≥ 22.12.
-`kiss-ssg` is on the published `^2.0.0` release, which carries the
-asset-pipeline hook and trailing-slash canonical fix this project depends
-on (it was previously pinned to a pre-release git commit while waiting for
-that release to ship).
+`kiss-ssg` is on the published `^2.1.0` release, which carries the
+asset-pipeline hook, the trailing-slash canonical fix and `.llms()` (the
+generated `llms.txt`) this project depends on.

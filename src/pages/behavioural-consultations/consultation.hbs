@@ -36,6 +36,12 @@
   <a href="https://cprobert.wufoo.com/forms/gaynor-probert/" class="btn btn-accent" target="_blank" rel="noopener">Contact Me</a>
 </div>
 
+{{#if model.faqs}}
+  <div class="mt-10">
+    {{> "faqs" model.faqs }}
+  </div>
+{{/if}}
+
 {{/content}}
 
 {{#content "scripts"}}{{/content}}

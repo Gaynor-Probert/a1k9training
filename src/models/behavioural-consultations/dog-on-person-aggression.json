@@ -8,5 +8,6 @@
   "components": {
     "intro": "behavioural-consultations/dog-on-person-aggression/intro",
     "details": "behavioural-consultations/dog-on-person-aggression/details"
-  }
+  },
+  "faqs": "../models/faqs/consultations.json"
 }

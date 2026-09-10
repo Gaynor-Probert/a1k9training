@@ -88,13 +88,15 @@ CSS and JS, a year for images and fonts, and the security headers;
 `src/assets/_redirects` keeps the pre-2015 URLs alive. `sitemap.xml` is
 written by kiss on every build.
 
-`kiss-ssg` is pinned to a git commit until the release that carries the asset
-pipeline hook and the trailing-slash canonical fix is published; switch the
-dependency back to a version range then.
+`kiss-ssg` is on the published `^2.1.0`, which carries the asset pipeline hook,
+the trailing-slash canonical fix and `.llms()`, all of which this site uses.
 
 ## QA
 
-`qa/.baseline-site` is a frozen build of the Bootstrap site (rebuild it from
-commit `41d7b3f` if it is missing) and `qa/baseline/*.json` are its content,
-Lighthouse and axe records. Every gate compares a fresh build against them —
+`qa/.baseline-site` is a frozen build of the last merged master (rebuild it by
+building master and copying `docs/` there) and `qa/baseline/content.json` is
+its content record, refreshed with `npm run qa:baseline`. The parity gate
+compares a fresh build against it, so a branch can add copy but never lose
+any. `qa/baseline/pre-migration/` keeps the original Bootstrap site's content,
+Lighthouse and axe records as the before-and-after history —
 `qa/README.md` documents each script.

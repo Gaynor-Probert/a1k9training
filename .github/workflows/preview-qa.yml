@@ -1,0 +1,52 @@
+name: Preview QA
+
+# Netlify builds a Deploy Preview for every pull request and reports it as a
+# GitHub deployment. When that deployment's status turns to success, run
+# qa/preview.mjs against the preview URL: the checks a local docs/ build
+# cannot make — real Cache-Control headers, redirect-free canonical URLs,
+# llms.txt / robots / sitemap as served, structured data, a Playwright pass.
+# The same script runs by hand via `npm run qa:preview -- <url>` (see
+# .claude/skills/pr-verify/SKILL.md).
+on:
+  deployment_status:
+
+jobs:
+  preview-qa:
+    # Only successful Deploy Previews (production deploys have no
+    # deploy-preview- host and are verified after merge instead).
+    if: >-
+      github.event.deployment_status.state == 'success' &&
+      contains(github.event.deployment_status.environment_url, 'deploy-preview-')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # The commit the preview was built from, not the default branch.
+          ref: ${{ github.event.deployment.sha }}
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: ".nvmrc"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Point qa/*.mjs at the installed Chromium
+        run: echo "CHROME_PATH=$(node -e "console.log(require('playwright').chromium.executablePath())")" >> "$GITHUB_ENV"
+
+      - name: Verify the deploy preview
+        run: node qa/preview.mjs "${{ github.event.deployment_status.environment_url }}" --md=qa/out/preview/report.md --json=qa/out/preview/report.json
+
+      - name: Publish the table to the job summary
+        if: always()
+        run: cat qa/out/preview/report.md >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: preview-qa
+          path: qa/out/preview/
+          if-no-files-found: ignore

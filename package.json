@@ -8,7 +8,7 @@
     "@tailwindcss/cli": "^4.3.3",
     "@tailwindcss/typography": "^0.5.20",
     "colors": "^1.4.0",
-    "kiss-ssg": "^2.0.0",
+    "kiss-ssg": "^2.1.0",
     "lighthouse": "^13.4.1",
     "playwright": "^1.63.0",
     "sharp": "^0.35.4",
@@ -32,7 +32,8 @@
     "qa:dev-watch": "node qa/dev-watch.mjs",
     "qa:baseline": "node qa/snapshot.mjs qa/.baseline-site baseline && node qa/lighthouse.mjs qa/.baseline-site baseline && node qa/axe.mjs qa/.baseline-site baseline",
     "qa": "npm run build && npm run qa:pages && npm run qa:no-bootstrap && npm run qa:seo && npm run qa:snapshot && npm run qa:compare && npm run qa:axe",
-    "qa:ci": "npm run build && npm run qa:pages && npm run qa:no-bootstrap && npm run qa:seo && npm run qa:axe && npm run qa:axe:check"
+    "qa:ci": "npm run build && npm run qa:pages && npm run qa:no-bootstrap && npm run qa:seo && npm run qa:snapshot && npm run qa:compare && npm run qa:axe && npm run qa:axe:check",
+    "qa:preview": "node qa/preview.mjs"
   },
   "repository": {
     "type": "git",

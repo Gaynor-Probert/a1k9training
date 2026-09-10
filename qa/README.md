@@ -17,9 +17,12 @@ qa/
   axe.mjs              axe-core accessibility scan
   compare.mjs          content.json vs baseline, pass/fail gate
   no-bootstrap.mjs     Bootstrap 3 class/asset grep, pass/fail gate
-  .baseline-site/     (gitignored) frozen copy of the pre-migration Bootstrap build
-  baseline/           committed JSON baselines (content.json, lighthouse.json, axe.json)
+  preview.mjs           live-HTTP checks against a deployed URL (deploy preview or prod)
+  .baseline-site/     (gitignored) frozen build of the last merged master — the parity reference
+  baseline/           committed content.json of that build; pre-migration/ keeps the
+                      original Bootstrap-site records (content, Lighthouse, axe) as history
   out/<label>/        (gitignored) per-run output: screenshots + JSON
+  out/preview/        (gitignored) preview.mjs's own output: screenshots + report.md/report.json
 ```
 
 ## Scripts
@@ -148,6 +151,68 @@ npm run qa:no-bootstrap -- qa/.baseline-site   # expected to exit 1
 npm run qa:no-bootstrap -- docs                # should exit 0 post-migration
 ```
 
+### `qa/preview.mjs <url> [--pages=/,/courses/,...] [--json=<file>] [--md=<file>]`
+
+The one script in `qa/` that talks to a **deployed** site over real HTTP
+instead of inspecting a built directory — a Netlify deploy preview or
+production. It proves what nothing else here can: real `Cache-Control`
+headers, whether a canonical URL 301s instead of answering 200, and the
+pages a browser actually receives once Netlify's `_headers`/`_redirects`
+and edge caching are in the loop.
+
+Every check is a pass/fail row (never stops at the first failure):
+
+- **Home**: `GET <url>/` is 200; the hashed CSS/JS `<link>`/`<script>` hrefs
+  and the preloaded font href are parsed out of the HTML for the checks
+  below.
+- **Cache headers**: the hashed CSS and JS carry `max-age=31536000` +
+  `immutable`; the preloaded font and the first `<img src="/images/...">`
+  carry `max-age=31536000` (immutable not required); the HTML itself
+  carries `max-age=0` + `must-revalidate`; `X-Content-Type-Options:
+  nosniff` and `X-Frame-Options: DENY` are present.
+- **GEO files**: `llms.txt`, `robots.txt`, `sitemap.xml` each 200 and well
+  formed (`llms.txt` has an H1 and ≥ 1 entry; `robots.txt` names `GPTBot`
+  and `ClaudeBot` and a `Sitemap:` line; `sitemap.xml` has ≥ 1 `<loc>`).
+- **Sitemap agreement**: every `<loc>` — fetched **as the literal URL it
+  is** (`redirect: 'manual'`, fail on any 3xx) — and every `llms.txt` URL
+  agree with each other and with the sitemap, and the fetched page's own
+  `<link rel="canonical">` equals the URL it was fetched from. `siteUrl` is
+  pinned to production in `generate.js`, so every `<loc>`/canonical is a
+  `https://www.a1k9training.co.uk/...` URL even when `<url>` is a deploy
+  preview — this row is therefore always a production reachability/redirect
+  check, whichever host you point the script at.
+- **Structured data**: on `/` and every sitemap path under
+  `/behavioural-consultations/`, fetched from **the host under test**
+  (`<url>` + that path — unlike the row above, since the point here is what
+  the deploy actually serves): every ld+json block parses, the
+  `LocalBusiness` object carries a `location` array of ≥ 2 entries each
+  with `address.postalCode`, and the consultation pages carry a `FAQPage`.
+- **Browser pass** (Playwright, `--pages` default `/`, `/courses/`,
+  `/courses/bronze-obedience`, `/behavioural-consultations/dog-on-dog-aggression`,
+  `/find-us/`, at 375×812 and 1440×900): no same-origin console errors or
+  failed requests (third-party hosts — Google, YouTube — are excluded, as
+  is Netlify's own deploy-preview visual-editor script, confirmed absent
+  from production), no horizontal overflow, exactly one `<h1>`, every
+  `<img>` has `alt` and `width`/`height`. Screenshots go to
+  `qa/out/preview/<slug>-<width>.png`.
+- **Timing** (informational, never gates the exit code): TTFB and decoded
+  byte size of the home page.
+
+`--json=<file>` writes `{ url, checkedAt, passed, failed, rows }`;
+`--md=<file>` writes the printed table + summary line (the PR-comment
+body `.claude/skills/pr-verify/SKILL.md` pastes verbatim). Exit 1 if any
+row fails. 20 s timeout per request, one retry on a network error, and a
+URL with or without a trailing slash both work.
+
+```
+npm run qa:preview -- https://deploy-preview-23--a1k9-training.netlify.app
+npm run qa:preview -- https://www.a1k9training.co.uk --md=qa/out/preview/report.md
+```
+
+Run after opening a PR (`.claude/skills/pr-verify/SKILL.md` sequences
+finding the preview URL and running this) and automatically by
+`.github/workflows/preview-qa.yml` on every Netlify deploy-preview success.
+
 ## npm scripts
 
 | Script | What it runs |
@@ -159,6 +224,7 @@ npm run qa:no-bootstrap -- docs                # should exit 0 post-migration
 | `qa:compare` | `node qa/compare.mjs` — pass `-- <label>` |
 | `qa:no-bootstrap` | `node qa/no-bootstrap.mjs` — pass `-- <siteDir>` |
 | `qa:baseline` | snapshot + lighthouse + axe against `qa/.baseline-site`, label `baseline` |
+| `qa:preview` | `node qa/preview.mjs` — pass `-- <url> [--pages=...] [--json=<file>] [--md=<file>]` |
 
 ## Running a QA pass on a new build
 
@@ -199,3 +265,15 @@ node qa/no-bootstrap.mjs docs                   # gates on leftover Bootstrap 3
 - `axe.mjs` scans two widths (375, 1440) per page, not the same three
   viewports `snapshot.mjs` screenshots — deliberate, to keep the accessibility
   pass around 2× rather than 3× the page count.
+- `preview.mjs`'s "sitemap agreement" row fetches each sitemap `<loc>` as
+  the literal, always-production URL it is (see that script's own header
+  comment) — a real reachability/redirect check, but not a preview-specific
+  one; the "structured data" row deliberately fetches the same paths from
+  `<url>` instead, since that one is about what the deploy under test
+  actually serves. In a sandbox that transparently re-terminates outbound
+  HTTPS behind its own CA (`CCR_AGENT_PROXY_ENABLED` in the environment),
+  Chromium's own cert store doesn't trust that CA the way curl/Node's do —
+  `preview.mjs` detects the same env var and relaxes only Playwright's TLS
+  check for that case; it is a no-op anywhere else, so a real invalid cert
+  is never masked in the environments this script normally runs in
+  (Netlify CI, a developer's machine).
