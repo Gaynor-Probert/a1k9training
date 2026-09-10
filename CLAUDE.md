@@ -166,7 +166,6 @@ pre-2015 URLs alive.
 
 Netlify builds on push (`npm run build`, publish dir `docs/`); it must
 install devDependencies (Tailwind's CLI is one) on Node ≥ 22.12.
-`kiss-ssg` is on the published `^2.0.0` release, which carries the
-asset-pipeline hook and trailing-slash canonical fix this project depends
-on (it was previously pinned to a pre-release git commit while waiting for
-that release to ship).
+`kiss-ssg` is on the published `^2.1.0` release, which carries the
+asset-pipeline hook, the trailing-slash canonical fix and `.llms()` (the
+generated `llms.txt`) this project depends on.

@@ -88,9 +88,8 @@ CSS and JS, a year for images and fonts, and the security headers;
 `src/assets/_redirects` keeps the pre-2015 URLs alive. `sitemap.xml` is
 written by kiss on every build.
 
-`kiss-ssg` is pinned to a git commit until the release that carries the asset
-pipeline hook and the trailing-slash canonical fix is published; switch the
-dependency back to a version range then.
+`kiss-ssg` is on the published `^2.1.0`, which carries the asset pipeline hook,
+the trailing-slash canonical fix and `.llms()`, all of which this site uses.
 
 ## QA
 

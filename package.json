@@ -8,7 +8,7 @@
     "@tailwindcss/cli": "^4.3.3",
     "@tailwindcss/typography": "^0.5.20",
     "colors": "^1.4.0",
-    "kiss-ssg": "github:cprobert/kiss-ssg#87ca643cdd6c022623aa70a3581c61fb7ae0d6f9",
+    "kiss-ssg": "^2.1.0",
     "lighthouse": "^13.4.1",
     "playwright": "^1.63.0",
     "sharp": "^0.35.4",
