@@ -49,7 +49,7 @@ plus the QA harness below for anything beyond a one-off visual check.
 
 Playwright + Lighthouse + axe-core, driven by plain Node ESM scripts — full
 detail in `qa/README.md`. Everything here inspects an **already-built**
-directory (`docs/`, or the frozen pre-migration `qa/.baseline-site`); the
+directory (`docs/`, or `qa/.baseline-site`, a frozen build of the last merged master); the
 harness itself never builds the site.
 
 ```bash
@@ -59,9 +59,11 @@ npm run qa:serve -- docs 8123   # serve a built dir locally with Netlify's prett
 ```
 
 - `qa/snapshot.mjs` + `qa/compare.mjs` gate against `qa/baseline/content.json`
-  (a frozen pre-migration Bootstrap build) on: lost text, lost internal
-  links, form-field diffs, console errors, failed requests, horizontal
-  overflow at 375px.
+  (a snapshot of the last merged master build; refresh it by building master
+  into `qa/.baseline-site` and running `npm run qa:baseline` whenever copy
+  changes land on master) on: lost text, lost internal links, form-field
+  diffs, console errors, failed requests, horizontal overflow at 375px.
+  `qa/baseline/pre-migration/` keeps the original Bootstrap-site records.
 - `qa/no-bootstrap.mjs` fails if any Bootstrap 3 class/idiom shows up in the
   built output — the guard against regressing the migration.
 - `qa/axe.mjs` scans every page at 375/1440px; group violations by impact.

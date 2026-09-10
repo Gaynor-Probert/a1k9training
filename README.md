@@ -94,7 +94,10 @@ dependency back to a version range then.
 
 ## QA
 
-`qa/.baseline-site` is a frozen build of the Bootstrap site (rebuild it from
-commit `41d7b3f` if it is missing) and `qa/baseline/*.json` are its content,
-Lighthouse and axe records. Every gate compares a fresh build against them —
+`qa/.baseline-site` is a frozen build of the last merged master (rebuild it by
+building master and copying `docs/` there) and `qa/baseline/content.json` is
+its content record, refreshed with `npm run qa:baseline`. The parity gate
+compares a fresh build against it, so a branch can add copy but never lose
+any. `qa/baseline/pre-migration/` keeps the original Bootstrap site's content,
+Lighthouse and axe records as the before-and-after history —
 `qa/README.md` documents each script.

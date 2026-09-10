@@ -11,13 +11,16 @@
 //   - a canonical <link> whose href matches the page's own pretty URL
 //   - og:title and og:url present
 //   - og:image resolves to a file that actually exists under siteDir
-//   - the LocalBusiness JSON-LD parses
+//   - the LocalBusiness JSON-LD parses, and carries a `location` array of
+//     exactly two Place entries, each with a postalCode
 //   - (warning, not failure — see generate.js's per-model `description`)
 //     a non-empty meta description
 //
 // Also checks that sitemap.xml exists, parses, and lists exactly the same
-// page set (in the same pretty-URL shape) as the HTML files on disk, and
-// that _headers and _redirects are present in siteDir.
+// page set (in the same pretty-URL shape) as the HTML files on disk; that
+// _headers and _redirects are present in siteDir and that _headers' `/*`
+// block precedes every other path block (see that file's own comment); and
+// that robots.txt allows the named AI crawlers and lists the sitemap.
 //
 // No HTML/XML parsing library is used — the site is minified, single-line
 // HTML this script itself doesn't control the shape of elsewhere, so every
@@ -175,7 +178,23 @@ for (const page of pages) {
     failures.push('JSON-LD script missing')
   } else {
     try {
-      JSON.parse(ldJsonMatch[1])
+      const localBusiness = JSON.parse(ldJsonMatch[1])
+      // generate.js's localBusiness helper is always the first ld+json
+      // script in <head> (src/partials/layout/header.hbs) — see its
+      // `location` array of the two venues src/pages/find-us.hbs names.
+      const locations = Array.isArray(localBusiness.location)
+        ? localBusiness.location
+        : []
+      if (locations.length !== 2) {
+        failures.push(
+          `LocalBusiness location array has ${locations.length} entries (expected 2)`,
+        )
+      } else {
+        locations.forEach((loc, i) => {
+          if (!loc?.address?.postalCode)
+            failures.push(`LocalBusiness location[${i}] has no postalCode`)
+        })
+      }
     } catch (err) {
       failures.push(`JSON-LD does not parse: ${err.message}`)
     }
@@ -191,6 +210,27 @@ for (const page of pages) {
 
   if (failures.length) anyFailure = true
   rows.push({ url: page.url, failures, warnings })
+}
+
+// --- llms.txt ---------------------------------------------------------
+// kiss writes it from the page registry; every entry URL must be one the
+// sitemap also lists, and every sitemap URL must have an entry.
+const llmsFailures = []
+const llmsPath = path.join(siteDirAbs, 'llms.txt')
+if (!fs.existsSync(llmsPath)) {
+  llmsFailures.push('llms.txt does not exist')
+} else {
+  const txt = fs.readFileSync(llmsPath, 'utf8')
+  if (!/^# .+/m.test(txt)) llmsFailures.push('llms.txt has no H1 title')
+  if (!/^> .+/m.test(txt)) llmsFailures.push('llms.txt has no blockquote summary')
+  const entryUrls = [...txt.matchAll(/^- \[[^\]]+\]\((https?:[^)]+)\)/gm)].map((m) => m[1])
+  const smXml = fs.existsSync(path.join(siteDirAbs, 'sitemap.xml'))
+    ? fs.readFileSync(path.join(siteDirAbs, 'sitemap.xml'), 'utf8')
+    : ''
+  const smUrls = [...smXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1])
+  for (const u of entryUrls) if (!smUrls.includes(u)) llmsFailures.push(`llms.txt entry not in sitemap: ${u}`)
+  for (const u of smUrls) if (!entryUrls.includes(u)) llmsFailures.push(`sitemap URL missing from llms.txt: ${u}`)
+  if (entryUrls.length === 0) llmsFailures.push('llms.txt has no entries')
 }
 
 // --- sitemap.xml -----------------------------------------------------
@@ -220,6 +260,7 @@ if (!fs.existsSync(sitemapPath)) {
     sitemapFailures.push(`sitemap.xml has extra entries: ${extra.join(', ')}`)
 }
 if (sitemapFailures.length) anyFailure = true
+if (llmsFailures.length) anyFailure = true
 
 // --- _headers / _redirects -----------------------------------------------
 
@@ -228,6 +269,45 @@ for (const name of ['_headers', '_redirects']) {
   if (!fs.existsSync(path.join(siteDirAbs, name)))
     siteFailures.push(`${name} is missing from ${siteDir}`)
 }
+
+// _headers rule order: Netlify lets a later, more specific rule win over an
+// earlier one for the same header, so the broad `/*` block (page default +
+// security headers) has to come first, with the asset-specific blocks
+// (/css/*, /js/*, /images/*, /fonts/*) after it — see src/assets/_headers'
+// own top comment. A `/*` block placed last would let it win over
+// /css/*'s immutable Cache-Control, which is the live defect this guards.
+const headersPath = path.join(siteDirAbs, '_headers')
+if (fs.existsSync(headersPath)) {
+  const headersText = fs.readFileSync(headersPath, 'utf8')
+  const pathBlocks = [...headersText.matchAll(/^(\/\S*)/gm)].map(
+    (m) => m[1],
+  )
+  const catchAllIndex = pathBlocks.indexOf('/*')
+  if (catchAllIndex === -1) {
+    siteFailures.push('_headers has no /* block')
+  } else if (catchAllIndex !== 0) {
+    siteFailures.push(
+      `_headers: /* block must precede every other path block (found after ${pathBlocks.slice(0, catchAllIndex).join(', ')})`,
+    )
+  }
+}
+
+// robots.txt: the deliberate AI-crawler allow policy (src/assets/robots.txt)
+// must survive the build — GPTBot and ClaudeBot standing for the named-crawler
+// block, plus the Sitemap line the rest of this script already depends on.
+const robotsPath = path.join(siteDirAbs, 'robots.txt')
+if (!fs.existsSync(robotsPath)) {
+  siteFailures.push('robots.txt is missing from ' + siteDir)
+} else {
+  const robotsText = fs.readFileSync(robotsPath, 'utf8')
+  if (!/^User-agent:\s*GPTBot/m.test(robotsText))
+    siteFailures.push('robots.txt has no GPTBot entry')
+  if (!/^User-agent:\s*ClaudeBot/m.test(robotsText))
+    siteFailures.push('robots.txt has no ClaudeBot entry')
+  if (!robotsText.includes(`Sitemap: ${SITE_URL}/sitemap.xml`))
+    siteFailures.push('robots.txt has no Sitemap: line')
+}
+
 if (siteFailures.length) anyFailure = true
 
 // --- report ------------------------------------------------------------
@@ -252,6 +332,9 @@ console.log('')
 console.log('sitemap.xml / site files:')
 if (sitemapFailures.length === 0) console.log(`  ${'ok'.green}`)
 for (const f of sitemapFailures) console.log(`  ${'✗'.red} ${f}`)
+console.log('\nllms.txt:')
+if (llmsFailures.length === 0) console.log(`  ${'ok'.green}`)
+for (const f of llmsFailures) console.log(`  ${'✗'.red} ${f}`)
 for (const f of siteFailures) console.log(`  ${'✗'.red} ${f}`)
 
 const failedPages = rows.filter((r) => r.failures.length).length
@@ -259,8 +342,8 @@ const warnedPages = rows.filter((r) => r.warnings.length).length
 console.log('')
 console.log(
   `${pages.length} page(s) checked, ${failedPages} failed, ${warnedPages} warned` +
-    (sitemapFailures.length || siteFailures.length
-      ? `, ${sitemapFailures.length + siteFailures.length} site-level failure(s)`
+    (sitemapFailures.length || llmsFailures.length || siteFailures.length
+      ? `, ${sitemapFailures.length + llmsFailures.length + siteFailures.length} site-level failure(s)`
       : ''),
 )
 

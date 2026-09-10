@@ -17,8 +17,9 @@ qa/
   axe.mjs              axe-core accessibility scan
   compare.mjs          content.json vs baseline, pass/fail gate
   no-bootstrap.mjs     Bootstrap 3 class/asset grep, pass/fail gate
-  .baseline-site/     (gitignored) frozen copy of the pre-migration Bootstrap build
-  baseline/           committed JSON baselines (content.json, lighthouse.json, axe.json)
+  .baseline-site/     (gitignored) frozen build of the last merged master — the parity reference
+  baseline/           committed content.json of that build; pre-migration/ keeps the
+                      original Bootstrap-site records (content, Lighthouse, axe) as history
   out/<label>/        (gitignored) per-run output: screenshots + JSON
 ```
 

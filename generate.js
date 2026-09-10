@@ -55,6 +55,49 @@ kiss.handlebars.registerHelper(
   (model) => (model && model.image) || HOME_HERO_IMAGE,
 )
 
+// The two venues named on src/pages/find-us.hbs ("A1K9 Dog Training Academy
+// now runs from two venues near Swansea"). Only fields this repo actually
+// sources are included:
+//  - A1K9 Training Grounds: locality + postcode come from that page's first
+//    map embed's `pb=` query string ("Pontarddulais,+Swansea+SA4+8NP"); the
+//    lat/long come from the same embed's `!2d…!3d…` pair (longitude then
+//    latitude).
+//  - Llys Nini Animal Centre (RSPCA): the page states its locality and
+//    postcode directly in the heading text, but the repo holds no
+//    coordinates for it (its map is a plain `?q=` search embed, not a
+//    `pb=` embed with a lat/long pair) — so it gets an address and no `geo`,
+//    rather than an invented one.
+// No street address or opening hours are invented for either venue.
+const LOCATIONS = [
+  {
+    '@type': 'Place',
+    name: 'A1K9 Training Grounds',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Pontarddulais',
+      addressRegion: 'West Glamorgan',
+      postalCode: 'SA4 8NP',
+      addressCountry: 'GB',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 51.7053036589514,
+      longitude: -3.9974988901576323,
+    },
+  },
+  {
+    '@type': 'Place',
+    name: 'Llys Nini Animal Centre (RSPCA)',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Penllergaer',
+      addressRegion: 'West Glamorgan',
+      postalCode: 'SA4 9WB',
+      addressCountry: 'GB',
+    },
+  },
+]
+
 // LocalBusiness JSON-LD (src/partials/layout/header.hbs, every page). Built
 // as a helper rather than hand-typed JSON in the template so title/description
 // text and image paths go through JSON.stringify's own escaping instead of
@@ -62,6 +105,7 @@ kiss.handlebars.registerHelper(
 // street address or opening hours live anywhere in it, so none are invented
 // here. The Facebook link comes from src/pages/index.hbs's "Open Page »" card
 // (tracking query string dropped); the phone number is the site's tel: link.
+// `location` is the LOCATIONS pair above, sourced from src/pages/find-us.hbs.
 kiss.handlebars.registerHelper('localBusiness', function (model) {
   const siteUrl = kiss.config.siteUrl
   const image = (model && model.image) || HOME_HERO_IMAGE
@@ -75,6 +119,7 @@ kiss.handlebars.registerHelper('localBusiness', function (model) {
     areaServed: 'South Wales',
     image: `${siteUrl}${image}`,
     sameAs: ['https://www.facebook.com/A1K9PDT'],
+    location: LOCATIONS,
   }
 })
 
@@ -183,7 +228,9 @@ kiss
     model: {
       image: '/images/consultations/consultations-v1.webp',
       caption: 'right',
+      faqs: '../models/faqs/consultations.json',
     },
+    controller: 'faqMapper.js',
     title: 'Dog Behavioural Consultations in South Wales by Gaynor Probert',
     description:
       'Professional behavioural consultations for dog aggression in South Wales. Expert help from Gaynor Probert to rehabilitate your dog.',
@@ -254,6 +301,22 @@ kiss
 
   .generate()
   .sitemap()
+  // llms.txt (llmstxt.org): the index answer engines read first. kiss derives
+  // every entry from the page registry — the same titles, descriptions and
+  // canonical URLs as the sitemap — so it cannot drift; the two things only a
+  // human can write live in src/llms/.
+  .llms({
+    title: 'A1K9 Behaviour and Training Academy',
+    summary: 'src/llms/summary.md',
+    notes: 'src/llms/notes.md',
+    sections: {
+      root: 'Home and contact',
+      courses: 'Dog training courses',
+      'behavioural-consultations': 'Behavioural consultations',
+      about: 'About',
+      'find-us': 'Home and contact',
+    },
+  })
 
 // v2 reports a page, controller or dev-server failure by rejecting complete().
 // Without this catch a broken build still exits 0 and deploys a site with
