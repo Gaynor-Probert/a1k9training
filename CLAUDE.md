@@ -56,7 +56,13 @@ harness itself never builds the site.
 npm run qa                # build, then every gate: page count, no-Bootstrap, SEO, snapshot, compare, axe
 npm run qa:lh              # Lighthouse mobile, median of 3 runs per page (slow)
 npm run qa:serve -- docs 8123   # serve a built dir locally with Netlify's pretty-URL rules
+npm run qa:preview -- <url>     # verify a DEPLOYED site: real headers, redirect-free URLs, llms.txt, schema, Playwright
 ```
+
+After opening a PR, run `/pr-verify` (`.claude/skills/pr-verify/SKILL.md`): it
+finds the Netlify deploy-preview URL on the PR's commit status and runs
+`qa:preview` against it. `.github/workflows/preview-qa.yml` does the same
+automatically as the `Preview QA` check.
 
 - `qa/snapshot.mjs` + `qa/compare.mjs` gate against `qa/baseline/content.json`
   (a snapshot of the last merged master build; refresh it by building master

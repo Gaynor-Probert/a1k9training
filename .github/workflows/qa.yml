@@ -5,15 +5,11 @@ name: QA
 # report into a pass/fail gate (qa/axe.mjs only ever writes the report;
 # its own process.exit(1) is just a CLI-usage guard, not a violation gate).
 #
-# qa:ci deliberately skips two things the local `npm run qa` aggregate
-# includes: qa:compare (and the qa:snapshot it depends on) compares the
-# built site against qa/baseline/content.json, a frozen snapshot of the
-# pre-Tailwind-migration Bootstrap 3 site — that was the migration's own
-# safety net (catch lost text/links along the way), not a permanent
-# regression test, and every ordinary content change now will legitimately
-# differ from that old Bootstrap baseline. qa:lh (Lighthouse) is slow
-# (3 runs/page) and already excluded from `npm run qa` for the same
-# not-a-permanent-gate reason.
+# qa:ci now includes qa:snapshot + qa:compare: the parity baseline
+# (qa/baseline/content.json) is a snapshot of the last merged master build,
+# so a branch may add copy but must never lose text, links or form fields.
+# Refresh the baseline when copy changes land on master (qa/README.md).
+# qa:lh (Lighthouse) stays out: slow (3 runs/page) and machine-dependent.
 on:
   pull_request:
   push:
