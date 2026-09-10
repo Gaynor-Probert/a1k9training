@@ -1,5 +1,5 @@
 import 'colors'
-import Kiss from 'kiss-ssg'
+import Kiss, { utils } from 'kiss-ssg'
 
 const args = process.argv.slice(2)
 
@@ -185,18 +185,69 @@ kiss.handlebars.registerHelper(
   },
 )
 
-// BreadcrumbList JSON-LD. Called with (name, url) pairs in order, e.g.
-// {{{stringify (breadcrumbList "Home" "/" "Courses" "/courses/" model.heading (canonical))}}}
-// — the trailing Handlebars options object is popped off, not a real pair.
-kiss.handlebars.registerHelper('breadcrumbList', (...args) => {
-  args.pop()
+// The site's four sections — one entry per top-level folder: the label used for
+// it wherever it is named, and the URL its index page builds to. The navbar
+// still carries its own copy of these labels in markup, so renaming a section
+// means editing src/partials/layout/navbar.hbs too.
+const SECTIONS = {
+  'behavioural-consultations': {
+    label: 'Consultations',
+    url: '/behavioural-consultations/',
+  },
+  courses: { label: 'Courses', url: '/courses/' },
+  about: { label: 'About Us', url: '/about/' },
+  'find-us': { label: 'Contact', url: '/find-us/' },
+}
+
+// The breadcrumb trail for the page being rendered, derived from that page's own
+// URL rather than declared page by page — so the visual trail
+// (src/partials/layout/breadcrumb.hbs) and the BreadcrumbList JSON-LD below are
+// always the same list, which is what Google asks for and what stops the two
+// drifting as pages are added.
+//
+// This site is exactly two levels deep: a page URL is either a section index
+// ('courses') or one child of it ('courses/bronze-obedience'). A child's own
+// crumb comes from `model.crumb`, a short label matching the navbar — NOT
+// `model.heading`, which on this site is a marketing headline ("Solid
+// Foundation Training", "Congratulations! You have a new puppy.") and made a
+// nonsense of the trail while it was being used for this.
+//
+// Returns [] for the home page: it is the root, and gets no trail.
+kiss.handlebars.registerHelper('breadcrumb', function (options) {
+  const key = utils.toURLKey(options?.data?.root?.pageURL ?? '')
+  if (!key) return []
+
+  const [sectionSlug, childSlug] = key.split('/')
+  const section = SECTIONS[sectionSlug]
+  if (!section) return []
+
+  const trail = [{ name: 'Home', url: '/' }]
+  if (!childSlug) {
+    trail.push({ name: section.label, url: section.url, current: true })
+    return trail
+  }
+
+  trail.push({ name: section.label, url: section.url })
+  const model = options?.data?.root?.model
+  trail.push({
+    name: model?.crumb || model?.heading || childSlug,
+    url: `${section.url}${childSlug}`,
+    current: true,
+  })
+  return trail
+})
+
+// BreadcrumbList JSON-LD, built from the trail the visual breadcrumb renders:
+// {{{stringify (breadcrumbList (breadcrumb))}}} in a page's head. Passing one
+// array to both is what keeps the markup describing a trail the visitor can
+// actually see.
+kiss.handlebars.registerHelper('breadcrumbList', (trail) => {
   const siteUrl = kiss.config.siteUrl
-  const items = []
-  for (let i = 0; i < args.length; i += 2) items.push([args[i], args[i + 1]])
+  const items = Array.isArray(trail) ? trail : []
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: items.map(([name, url], index) => ({
+    itemListElement: items.map(({ name, url }, index) => ({
       '@type': 'ListItem',
       position: index + 1,
       name,

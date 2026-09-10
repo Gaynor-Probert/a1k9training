@@ -5,6 +5,7 @@
   "image": "/images/courses/junior/junior-course-v3.webp",
   "caption": "right",
   "captionOffset": true,
+  "crumb": "Junior Course",
   "heading": "Engagement Training",
   "components": {
     "intro": "courses/junior/intro",

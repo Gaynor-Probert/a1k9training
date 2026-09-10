@@ -116,12 +116,13 @@ per-section.
   with a muted, lazy-loaded YouTube background (`data-video-id`, driven by
   `src/assets/js/site.js`).
 - Both layouts style every element inside the hero caption box with
-  arbitrary-variant selectors, e.g. `[&_p]:mb-6`, `[&_a:not(.btn)]:text-accent-300`.
+  arbitrary-variant selectors, e.g. `[&_p]:mb-6`, `[&_a:not(.btn):not(.crumb)]:text-accent-300`.
   **A descendant selector like `[&_a]:...` beats a single class like
-  `.btn-secondary` on specificity** — any `.btn` placed inside hero content
-  needs the `:not(.btn)` exclusion already applied to `a`/similar rules, or
-  it silently inherits the wrong color/underline. This has bitten real
-  pages before; check for it when adding markup inside a hero block.
+  `.btn-secondary` on specificity** — any `.btn` or breadcrumb link placed
+  inside hero content needs the matching `:not()` exclusion already applied
+  to `a`/similar rules, or it silently inherits the wrong color/underline.
+  This has bitten real pages before; check for it when adding markup inside
+  a hero block, and keep the two layouts' rules identical.
 - `src/pages/*.hbs` extend a layout (`{{#extend "layout"}}`) and fill its
   named blocks (`{{#content "intro"}}` / `{{#content "main"}}`).
 - `src/partials/` holds `.md` and `.hbs`/`.html` fragments referenced by

@@ -40,8 +40,9 @@
         [&_h1]:mb-3 [&_h1]:text-3xl [&_h1]:leading-tight [&_h1]:text-white sm:[&_h1]:text-4xl lg:[&_h1]:text-5xl
         [&_h2]:mb-3 [&_h2]:text-xl [&_h2]:font-normal [&_h2]:text-sand-100 sm:[&_h2]:text-2xl
         [&_h3]:mb-2 [&_h3]:font-sans [&_h3]:text-base [&_h3]:leading-relaxed [&_h3]:font-normal [&_h3]:text-sand-100 sm:[&_h3]:text-lg
-        [&_p]:mb-6 [&_p]:font-sans [&_p]:text-sand-100 [&_strong]:text-white [&_a:not(.btn)]:text-accent-300 [&_a:not(.btn)]:underline
+        [&_p]:mb-6 [&_p]:font-sans [&_p]:text-sand-100 [&_strong]:text-white [&_a:not(.btn):not(.crumb)]:text-accent-300 [&_a:not(.btn):not(.crumb)]:underline
         [&_:last-child]:mb-0">
+        {{> "layout/breadcrumb"}}
         {{#block "intro"}}{{/block}}
       </div>
     </div>

@@ -4,6 +4,7 @@
   "description": "Off lead obedience training to teach your dog to respond to commands despite distractions. Learn new skills with A1K9 near Swansea.",
   "image": "/images/courses/gold/gold-course-v1.webp",
   "captionOffset": true,
+  "crumb": "Gold Obedience",
   "heading": "Focusing When There Are Distractions",
   "faqs": "../models/faqs/gold.json",
   "components": {
