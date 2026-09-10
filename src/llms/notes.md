@@ -1,0 +1,5 @@
+- Telephone: +44 7798 500390. Enquiries and bookings go through the contact form on the Find us page.
+- Classes and consultations run from two venues near Swansea, listed with maps on the Find us page.
+- Gaynor Probert is a practitioner with the Canine and Feline Behaviour Association, a full member of the British Institute of Professional Dog Trainers, a Master Trainer with the Guild of Dog Trainers, and a member of the National Training Inspectorate for Professional Dog Users.
+- Vet referrals: see the Behavioural Consultations page for how referrals work.
+- Every course page ends with the course it leads on to; the Courses page carries the general FAQ (booking, payment, children, what to bring, weather).
