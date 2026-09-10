@@ -158,6 +158,15 @@ unhashed name through kiss's `{{asset}}` helper
 year for images/fonts, and security headers; `src/assets/_redirects` keeps
 pre-2015 URLs alive.
 
+**Cache busting is by URL, never by header.** CSS and JS bust themselves:
+kiss renames them with a content hash on every change, so a changed file is
+a new URL. Images and fonts are **not** hashed and are cached for a year, so
+a browser that has one will not ask again until it expires — **never
+overwrite an image or font in place.** Change the file, bump its version
+suffix (`hero-v1.webp` → `hero-v2.webp`, the convention every image already
+follows), and update the references; the old file can stay or go. The same
+applies to the self-hosted font (`buenard-700-v1.woff2`).
+
 **Adding an image:** drop the original into `src/assets/images/...`, run
 `npm run images:optimise`, then reference the `.webp` it writes with the
 `width`/`height` it records in `qa/images.json`.
