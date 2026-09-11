@@ -367,11 +367,28 @@ if (sitemapLocs.length && llmsEntryUrls.length) {
 const pageFetches = new Map()
 
 for (const loc of sitemapLocs) {
+  // Fetch from the host under test, not the <loc> itself — for the same
+  // reason section 5 does it (siteUrl is pinned to production in generate.js,
+  // so every <loc> is a production URL even when this script is pointed at a
+  // deploy preview). Fetching the loc directly made this check exercise the
+  // LIVE SITE rather than the deploy, so a preview serving 500s everywhere
+  // still went green, and a PR introducing a new URL went red because
+  // production does not have that page yet.
+  //
+  // The canonical is still compared against `loc`: a preview's pages should
+  // carry the production canonical, and on production baseUrl + path IS loc.
+  let target = loc
+  try {
+    target = `${baseUrl}${new URL(loc).pathname}`
+  } catch {
+    // not a parseable URL — fall back to the loc and let the fetch report it
+  }
+
   let res
   let html = ''
   let requestFailed = null
   try {
-    res = await fetchSafe(loc, { redirect: 'manual' })
+    res = await fetchSafe(target, { redirect: 'manual' })
     if (res.status === 200) html = await res.text()
   } catch (err) {
     requestFailed = err.message
