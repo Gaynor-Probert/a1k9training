@@ -56,7 +56,7 @@ harness itself never builds the site.
 npm run qa                # build, then every gate: page count, no-Bootstrap, SEO, snapshot, compare, axe
 npm run qa:lh              # Lighthouse mobile, median of 3 runs per page (slow)
 npm run qa:serve -- docs 8123   # serve a built dir locally with Netlify's pretty-URL rules
-npm run qa:preview -- <url>     # verify a DEPLOYED site: real headers, redirect-free URLs, llms.txt, schema, Playwright
+npm run qa:preview -- <url>     # verify a DEPLOYED site: real headers, redirect-free URLs, _redirects rules, llms.txt, schema, Playwright
 ```
 
 After opening a PR, run `/pr-verify` (`.claude/skills/pr-verify/SKILL.md`): it

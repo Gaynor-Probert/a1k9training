@@ -36,7 +36,7 @@ const DEFAULT_PAGES = [
   '/courses/',
   '/courses/bronze-obedience',
   '/behavioural-consultations/dog-on-dog-aggression',
-  '/find-us/',
+  '/contact/',
 ]
 
 const VIEWPORTS = [
@@ -291,6 +291,55 @@ let llmsEntryUrls = []
     )
   } catch (err) {
     row('sitemap.xml', false, `request failed: ${err.message}`)
+  }
+}
+
+// ======================================================================
+// 3b. Redirects actually redirect.
+//
+// Every rule in src/assets/_redirects is a URL that was live once and may
+// still be linked from somewhere we don't control — the pre-2015 paths, and
+// /find-us/, which was the contact page's URL until it became /contact/.
+// Nothing tested that these resolve: qa/serve.mjs implements pretty-URL
+// resolution only, not _redirects, so a broken rule looks identical locally
+// to a working one and only shows up on a deploy. Hence checking it here.
+// ======================================================================
+
+{
+  const redirectsFile = 'src/assets/_redirects'
+  let rules = []
+  try {
+    rules = (await fs.readFile(redirectsFile, 'utf8'))
+      .split('\n')
+      .map((line) => line.trim())
+      .filter((line) => line && !line.startsWith('#'))
+      .map((line) => line.split(/\s+/))
+      .filter((parts) => parts.length >= 2)
+      .map(([from, to]) => ({ from, to }))
+  } catch (err) {
+    row('Redirects: read _redirects', false, `${redirectsFile}: ${err.message}`)
+  }
+
+  for (const { from, to } of rules) {
+    let res
+    try {
+      res = await fetchSafe(`${baseUrl}${from}`, { redirect: 'manual' })
+    } catch (err) {
+      row(`Redirect ${from}`, false, `request failed: ${err.message}`)
+      continue
+    }
+    const location = res.headers.get('location') ?? ''
+    // Netlify may answer with an absolute URL; compare on the path only.
+    const path = location.replace(/^https?:\/\/[^/]+/, '')
+    const isRedirect = res.status >= 300 && res.status < 400
+    const ok = isRedirect && path === to
+    row(
+      `Redirect ${from}`,
+      ok,
+      ok
+        ? `${res.status} -> ${to}`
+        : `status ${res.status}, Location: ${location || '(none)'} (expected ${to})`,
+    )
   }
 }
 

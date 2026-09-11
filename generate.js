@@ -56,7 +56,7 @@ kiss.handlebars.registerHelper(
   (model) => (model && model.image) || HOME_HERO_IMAGE,
 )
 
-// The two venues named on src/pages/find-us.hbs ("A1K9 Dog Training Academy
+// The two venues named on src/pages/contact.hbs ("A1K9 Dog Training Academy
 // now runs from two venues near Swansea"). Only fields this repo actually
 // sources are included:
 //  - A1K9 Training Grounds: locality + postcode come from that page's first
@@ -106,7 +106,7 @@ const LOCATIONS = [
 // street address or opening hours live anywhere in it, so none are invented
 // here. The Facebook link comes from src/pages/index.hbs's "Open Page »" card
 // (tracking query string dropped); the phone number is the site's tel: link.
-// `location` is the LOCATIONS pair above, sourced from src/pages/find-us.hbs.
+// `location` is the LOCATIONS pair above, sourced from src/pages/contact.hbs.
 kiss.handlebars.registerHelper('localBusiness', function (model) {
   const siteUrl = kiss.config.siteUrl
   const image = (model && model.image) || HOME_HERO_IMAGE
@@ -197,7 +197,7 @@ const SECTIONS = {
   },
   courses: { label: 'Courses', url: '/courses/' },
   about: { label: 'About Us', url: '/about/' },
-  'find-us': { label: 'Contact', url: '/find-us/' },
+  contact: { label: 'Contact', url: '/contact/' },
 }
 
 // The breadcrumb trail for the page being rendered, derived from that page's own
@@ -398,16 +398,16 @@ kiss
   })
 
   .page({
-    view: 'find-us.hbs',
+    view: 'contact.hbs',
     model: {
       image: '/images/about/horse-sit-v1.webp',
       caption: 'right',
       captionOffset: true,
     },
-    title: 'Find A1K9 Training',
+    title: 'Contact A1K9 Training',
     description:
       'Contact A1K9 Dog Training Academy near Swansea in South Wales to book dog training courses or a behavioural consultation, and find us on the map.',
-    path: 'find-us',
+    path: 'contact',
     slug: 'index',
     sitemapPriority: '0.80',
     sitemapChangefreq: 'monthly',
@@ -443,7 +443,7 @@ kiss
       courses: 'Dog training courses',
       'behavioural-consultations': 'Behavioural consultations',
       about: 'About',
-      'find-us': 'Home and contact',
+      contact: 'Home and contact',
     },
   })
 

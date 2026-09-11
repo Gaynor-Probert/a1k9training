@@ -181,7 +181,7 @@ for (const page of pages) {
       const localBusiness = JSON.parse(ldJsonMatch[1])
       // generate.js's localBusiness helper is always the first ld+json
       // script in <head> (src/partials/layout/header.hbs) — see its
-      // `location` array of the two venues src/pages/find-us.hbs names.
+      // `location` array of the two venues src/pages/contact.hbs names.
       const locations = Array.isArray(localBusiness.location)
         ? localBusiness.location
         : []
