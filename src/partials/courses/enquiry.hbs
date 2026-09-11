@@ -7,10 +7,12 @@
   value is baked in at build time from the model's `crumb`, so no query
   string and no JavaScript is involved.
 
-  Deliberately shorter than the consultation form on /contact/: a course
-  enquiry needs to know how old the dog is, because that is what decides
-  which course suits. It does not need the dog's name or breed, which are a
-  behavioural consultation's questions.
+  The fields are the five Gaynor asked for after reading a test submission —
+  name, email, mobile, dog's name, dog's age — plus an optional free-text box.
+  All five are required: the mobile number because she adds people to the
+  class WhatsApp group, which is why the field says so rather than leaving the
+  visitor to wonder. Breed is deliberately absent; she did not ask for it, and
+  it is a behavioural consultation's question rather than a course enquiry's.
 
   Inputs keep the site's global :focus-visible ring rather than the
   `focus-visible:outline-none` the older form on /contact/ uses — that
@@ -71,10 +73,18 @@
     </div>
 
     <div>
-      <label for="enquiry-phone" class="block font-medium">Phone</label>
-      <input id="enquiry-phone" name="phone" type="tel" autocomplete="tel"
+      <label for="enquiry-mobile" class="block font-medium">Mobile number</label>
+      <input id="enquiry-mobile" name="mobile" type="tel" autocomplete="tel" required
         class="mt-1 w-full rounded-md border border-sand-300 bg-white px-3 py-2">
-      <p class="mt-1 text-sm text-ink-500">Optional — only if you would rather Gaynor rang you.</p>
+      <p class="mt-1 text-sm text-ink-500">So Gaynor can add you to the class WhatsApp group.</p>
+    </div>
+
+    <div>
+      <label for="enquiry-dog-name" class="block font-medium">
+        Your dog&rsquo;s name
+      </label>
+      <input id="enquiry-dog-name" name="dog-name" type="text" required
+        class="mt-1 w-full rounded-md border border-sand-300 bg-white px-3 py-2">
     </div>
 
     <div>
