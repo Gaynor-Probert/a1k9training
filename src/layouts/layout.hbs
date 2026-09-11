@@ -24,6 +24,10 @@
   </header>
 
   <main id="main-content" class="grow">
+  {{!-- `noHero` drops the photo hero for a page whose job is to be read
+        immediately rather than introduced — the 404, where a 60vh photo would
+        push the routes back below the fold. Everything else keeps the hero. --}}
+  {{#unless model.noHero}}
   <section class="relative isolate flex min-h-[60vh] items-center overflow-hidden bg-brand-900 lg:min-h-[70vh]">
     {{#if model.image}}
       <img src="{{model.image}}"
@@ -47,6 +51,7 @@
       </div>
     </div>
   </section>
+  {{/unless}}
 
   <div class="mx-auto w-full max-w-content px-4 py-12 sm:px-6 lg:px-8">
     {{#block "main"}}{{/block}}

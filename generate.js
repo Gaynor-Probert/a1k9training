@@ -413,6 +413,21 @@ kiss
     sitemapChangefreq: 'monthly',
   })
 
+  // Netlify serves docs/404.html for any unmatched path. It is a real page in
+  // the build but not a destination: kept out of sitemap.xml and llms.txt so
+  // neither search engines nor answer engines offer it as a result, and given
+  // `noHero` so the routes back sit above the fold instead of below a 60vh photo.
+  .page({
+    view: '404.hbs',
+    model: { noHero: true },
+    title: 'Page not found | A1K9 Training',
+    description:
+      'That page could not be found. Find dog training courses, behavioural consultations and contact details for A1K9 Training near Swansea.',
+    slug: '404',
+    ignoreSitemap: true,
+    ignoreLlms: true,
+  })
+
   .generate()
   .sitemap()
   // llms.txt (llmstxt.org): the index answer engines read first. kiss derives

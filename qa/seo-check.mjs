@@ -251,7 +251,14 @@ if (!fs.existsSync(sitemapPath)) {
   const sitemapUrls = new Set(
     locs.map((loc) => loc.replace(SITE_URL, '') || '/'),
   )
-  const pageUrls = new Set(pages.map((p) => p.url))
+  // Pages that are built but deliberately not destinations, so they are
+  // registered with `ignoreSitemap`/`ignoreLlms` in generate.js and must not
+  // appear in sitemap.xml. Listed here so their absence stays an assertion
+  // rather than a hole in the check.
+  const NOT_INDEXED = new Set(['/404'])
+  const pageUrls = new Set(
+    pages.map((p) => p.url).filter((u) => !NOT_INDEXED.has(u)),
+  )
   const missing = [...pageUrls].filter((u) => !sitemapUrls.has(u))
   const extra = [...sitemapUrls].filter((u) => !pageUrls.has(u))
   if (missing.length)
