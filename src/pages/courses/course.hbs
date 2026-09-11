@@ -13,6 +13,11 @@
   {{#if model.components.intro}}
     {{> (lookup model.components 'intro')}}
   {{/if}}
+  {{!-- An action above the fold. Anchors to the enquiry form at the foot
+        rather than to another page, so deciding and asking are one step. --}}
+  <p class="mt-6 mb-0">
+    <a href="#enquire" class="btn btn-accent">Ask about this course</a>
+  </p>
 {{/content}}
 
 {{#content "main"}}
@@ -38,14 +43,12 @@
     </div>
   {{/if}}
 
-  {{!-- The ladder supplies its own next-step call to action; a course that is
-        not on the ladder (One to One) keeps a hand-written foot partial. --}}
-  {{> "courses/ladder"}}
+  {{!-- Booking this course is the page's primary action; the ladder's next
+        step is genuinely secondary, so it renders after the enquiry form and
+        styles its link accordingly. --}}
+  {{> "courses/enquiry"}}
 
-  {{#if  model.components.foot}}
-    <hr class="my-8 border-sand-200" />
-    {{> (lookup model.components 'foot')}}
-  {{/if}}
+  {{> "courses/ladder"}}
 
 {{/content}}
 

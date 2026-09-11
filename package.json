@@ -21,7 +21,7 @@
     "check": "kiss-ssg check generate.js --summary",
     "images:optimise": "node scripts/optimise-images.mjs",
     "qa:serve": "node qa/serve.mjs",
-    "qa:pages": "node qa/pages.mjs docs --assert=19",
+    "qa:pages": "node qa/pages.mjs docs --assert=20",
     "qa:snapshot": "node qa/snapshot.mjs docs after",
     "qa:lh": "node qa/lighthouse.mjs docs after",
     "qa:axe": "node qa/axe.mjs docs after",

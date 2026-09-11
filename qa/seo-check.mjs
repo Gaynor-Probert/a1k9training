@@ -255,7 +255,7 @@ if (!fs.existsSync(sitemapPath)) {
   // registered with `ignoreSitemap`/`ignoreLlms` in generate.js and must not
   // appear in sitemap.xml. Listed here so their absence stays an assertion
   // rather than a hole in the check.
-  const NOT_INDEXED = new Set(['/404'])
+  const NOT_INDEXED = new Set(['/404', '/thanks/'])
   const pageUrls = new Set(
     pages.map((p) => p.url).filter((u) => !NOT_INDEXED.has(u)),
   )

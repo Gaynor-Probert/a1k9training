@@ -413,6 +413,22 @@ kiss
     sitemapChangefreq: 'monthly',
   })
 
+  // Where Netlify sends a visitor after a successful form post (the forms'
+  // `action`). Like the 404 it is a real page but not a destination — kept out
+  // of sitemap.xml and llms.txt, and given `noHero` so the confirmation is the
+  // first thing on screen.
+  .page({
+    view: 'thanks.hbs',
+    model: { noHero: true },
+    title: 'Thank you | A1K9 Training',
+    description:
+      'Your enquiry has been sent to Gaynor Probert at A1K9 Training. She will get back to you shortly.',
+    path: 'thanks',
+    slug: 'index',
+    ignoreSitemap: true,
+    ignoreLlms: true,
+  })
+
   // Netlify serves docs/404.html for any unmatched path. It is a real page in
   // the build but not a destination: kept out of sitemap.xml and llms.txt so
   // neither search engines nor answer engines offer it as a result, and given
