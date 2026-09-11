@@ -7,3 +7,11 @@ docs/
 qa/.baseline-site
 qa/out
 src/assets/css/site.css
+
+# Never commit secrets. .mcp.json reads the Netlify PAT from the environment
+# rather than holding it; these are the files that would carry a real one.
+# .env.example is the committed template and is deliberately excluded.
+.env
+.env.*
+!.env.example
+.claude/settings.local.json
