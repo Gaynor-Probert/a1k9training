@@ -16,6 +16,12 @@
   `focus-visible:outline-none` the older form on /contact/ uses — that
   override drops the two-layer indicator the design system defines, and axe
   does not catch non-text contrast (see CLAUDE.md).
+
+  Labels carry no "*" and no screen-reader-only "required" text: Netlify
+  derives each field's display name in the dashboard and the notification
+  email from the <label>'s text, so that markup arrived as "Your name
+  required". The `required` attribute already conveys the same thing to a
+  screen reader, and the two optional fields say so in their own help text.
 --}}
 <section id="enquire" class="mt-10 scroll-mt-24 rounded-card border border-sand-200 bg-white p-6 sm:p-8">
   <h2 class="mb-2 font-display text-xl text-ink-900">Ask about {{model.crumb}}</h2>
@@ -30,12 +36,19 @@
   </p>
 
   <form name="course-enquiry" method="POST" action="/thanks/" data-netlify="true"
-    netlify-honeypot="bot-field" class="grid gap-5 sm:grid-cols-2">
+    netlify-honeypot="bot-field" data-enquiry class="grid gap-5 sm:grid-cols-2">
 
     {{!-- Netlify pairs a submission to its form by this field. --}}
     <input type="hidden" name="form-name" value="course-enquiry">
     {{!-- Which page the enquiry came from. Baked in at build time. --}}
     <input type="hidden" name="course" value="{{model.crumb}}">
+    {{!-- Netlify uses a field literally named `subject` as the notification
+          email's subject line. This static value is the no-JavaScript
+          fallback; /js/site.js rewrites it on submit to include the sender's
+          name, because Gmail threads messages sharing a subject and a
+          course-only subject would collapse every enquiry about the same
+          course, from different people, into one conversation. --}}
+    <input type="hidden" name="subject" value="Course enquiry: {{model.crumb}}">
 
     <p class="hidden">
       <label>Don&rsquo;t fill this out if you&rsquo;re human: <input name="bot-field"></label>
@@ -43,7 +56,7 @@
 
     <div>
       <label for="enquiry-name" class="block font-medium">
-        Your name <span class="text-accent-700" aria-hidden="true">*</span><span class="sr-only"> required</span>
+        Your name
       </label>
       <input id="enquiry-name" name="name" type="text" autocomplete="name" required
         class="mt-1 w-full rounded-md border border-sand-300 bg-white px-3 py-2">
@@ -51,7 +64,7 @@
 
     <div>
       <label for="enquiry-email" class="block font-medium">
-        Email <span class="text-accent-700" aria-hidden="true">*</span><span class="sr-only"> required</span>
+        Email
       </label>
       <input id="enquiry-email" name="email" type="email" autocomplete="email" spellcheck="false" required
         class="mt-1 w-full rounded-md border border-sand-300 bg-white px-3 py-2">
@@ -66,7 +79,7 @@
 
     <div>
       <label for="enquiry-dog-age" class="block font-medium">
-        Your dog&rsquo;s age <span class="text-accent-700" aria-hidden="true">*</span><span class="sr-only"> required</span>
+        Your dog&rsquo;s age
       </label>
       <input id="enquiry-dog-age" name="dog-age" type="text" placeholder="e.g. 7 months" required
         class="mt-1 w-full rounded-md border border-sand-300 bg-white px-3 py-2">
