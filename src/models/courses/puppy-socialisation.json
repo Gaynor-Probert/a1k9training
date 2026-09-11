@@ -5,12 +5,14 @@
   "image": "/images/courses/puppy/puppy-class-v2.webp",
   "caption": "right",
   "crumb": "Puppy Socialisation",
+  "rung": "Puppy",
+  "onramp": true,
+  "nextLead": "If your puppy is 5 months of age or over it's time to move to the:",
   "heading": "Congratulations! You have a new puppy.",
-  "faqs": "../models/faqs/puppy.json",
   "components": {
     "intro": "courses/puppy/intro",
     "details": "courses/puppy/you-will-learn",
-    "testimonial": "courses/puppy/testimonial",
-    "foot": "courses/puppy/foot"
-  }
+    "testimonial": "courses/puppy/testimonial"
+  },
+  "faqs": "../models/faqs/puppy.json"
 }

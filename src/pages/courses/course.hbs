@@ -38,6 +38,10 @@
     </div>
   {{/if}}
 
+  {{!-- The ladder supplies its own next-step call to action; a course that is
+        not on the ladder (One to One) keeps a hand-written foot partial. --}}
+  {{> "courses/ladder"}}
+
   {{#if  model.components.foot}}
     <hr class="my-8 border-sand-200" />
     {{> (lookup model.components 'foot')}}
