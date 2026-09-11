@@ -183,6 +183,56 @@ function comparePage(baseline, current, pagePath = '') {
 }
 
 /**
+ * Refuse to compare a snapshot that predates the build it claims to describe.
+ *
+ * `npm run qa` is an `&&` chain, so a failure in an earlier gate (qa:seo, say)
+ * skips qa:snapshot while leaving the previous run's content.json in place. A
+ * later qa:compare then reads that stale file and reports a confident PASS for
+ * a build it never looked at — a false green, which is worse than an error
+ * because nothing about the output says anything is wrong.
+ *
+ * Comparing the snapshot's own timestamp against the newest built page catches
+ * exactly that. Snapshots written before `siteDir` was recorded are skipped
+ * rather than failed, so an old baseline still compares.
+ *
+ * @param {{ generated?: string, siteDir?: string, label?: string }} current
+ */
+async function assertSnapshotIsCurrent(current) {
+  if (!current.siteDir || !current.generated) return
+  if (!existsSync(current.siteDir)) return
+
+  const newest = await newestHtmlMtime(current.siteDir)
+  if (newest === null) return
+
+  const takenAt = Date.parse(current.generated)
+  if (!Number.isFinite(takenAt) || newest <= takenAt) return
+
+  const ago = Math.round((newest - takenAt) / 1000)
+  throw new Error(
+    `Stale snapshot: qa/out/${current.label}/content.json was taken at ` +
+      `${current.generated}, but ${current.siteDir} was rebuilt ${ago}s later. ` +
+      `Comparing would describe a build that no longer exists — re-run ` +
+      `qa:snapshot first. (A failing earlier gate in the qa chain skips it.)`,
+  )
+}
+
+/** @returns {Promise<number|null>} newest *.html mtime in ms, or null if none */
+async function newestHtmlMtime(dir) {
+  let newest = null
+  for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name)
+    if (entry.isDirectory()) {
+      const nested = await newestHtmlMtime(full)
+      if (nested !== null && (newest === null || nested > newest)) newest = nested
+    } else if (entry.isFile() && entry.name.endsWith('.html')) {
+      const { mtimeMs } = await fs.stat(full)
+      if (newest === null || mtimeMs > newest) newest = mtimeMs
+    }
+  }
+  return newest
+}
+
+/**
  * @param {string} label
  */
 export async function compare(label) {
@@ -191,6 +241,8 @@ export async function compare(label) {
 
   const baseline = JSON.parse(await fs.readFile(baselineFile, 'utf8'))
   const current = JSON.parse(await fs.readFile(currentFile, 'utf8'))
+
+  await assertSnapshotIsCurrent(current)
 
   const allPaths = new Set([...Object.keys(baseline.pages), ...Object.keys(current.pages)])
   const report = {}
@@ -238,7 +290,15 @@ if (isMain) {
     console.error('Usage: node qa/compare.mjs <label>')
     process.exit(1)
   }
-  const { report, failed } = await compare(label)
+  let report, failed
+  try {
+    ;({ report, failed } = await compare(label))
+  } catch (err) {
+    // A stale snapshot is an operator error, not a diff — report it as a line
+    // to read rather than a stack trace to decode.
+    console.error(`\n${err.message}`)
+    process.exit(1)
+  }
   printTable(report)
 
   const outFile = path.resolve('qa/out', label, 'compare.json')
