@@ -4,11 +4,12 @@
   "description": "Bespoke one-to-one obedience training with Gaynor Probert, an experienced, qualified dog trainer and behaviourist near Swansea.",
   "image": "/images/courses/one-to-one/one-to-one-v3.webp",
   "caption": "right",
+  "crumb": "One to One",
+  "enquiryLead": "One to one sessions are arranged to suit you and your dog. Tell Gaynor what you are working on and she will come back to you with times and prices.",
   "heading": "What's Right For You?",
   "components": {
     "intro": "courses/one-to-one/intro",
     "details": "courses/one-to-one/you-will-learn",
-    "testimonial": "courses/one-to-one/testimonial",
-    "foot": "courses/one-to-one/foot"
+    "testimonial": "courses/one-to-one/testimonial"
   }
 }

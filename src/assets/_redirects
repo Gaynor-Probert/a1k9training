@@ -13,3 +13,8 @@
 /about-facilities/       /about/facilities
 /about-gaynor-probert/   /about/gaynor-probert
 /about-sara-thomas/      /about/sara-thomas
+
+# The contact page moved from /find-us/ to /contact/ (the label the navbar
+# and breadcrumb already used). Unlike the pre-2015 paths above, this URL was
+# live and indexed until the rename, so the 301 is what carries its ranking.
+/find-us/          /contact/

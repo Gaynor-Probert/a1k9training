@@ -1,15 +1,9 @@
 {{#extend "layout"}}
 
 {{#content "head"}}
-{{#if (eq model.slug "index")}}
 <script type="application/ld+json">
-{{{stringify (breadcrumbList "Home" "/" "About Us" (canonical))}}}
+{{{stringify (breadcrumbList (breadcrumb))}}}
 </script>
-{{else}}
-<script type="application/ld+json">
-{{{stringify (breadcrumbList "Home" "/" "About Us" "/about/" model.heading (canonical))}}}
-</script>
-{{/if}}
 {{#if model.person}}
 <script type="application/ld+json">
 {{{stringify (personSchema model.person.name model.person.jobTitle description (heroImage model) (canonical) model.person.credentials)}}}

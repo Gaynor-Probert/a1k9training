@@ -4,12 +4,14 @@
   "description": "Advanced obedience training for enthusiasts, taking your skills to the highest level with distance control, off lead work and agility.",
   "image": "/images/courses/platinum/platinum-course-v2.webp",
   "caption": "right",
+  "crumb": "Platinum Obedience",
+  "level": 5,
+  "rung": "Platinum",
   "heading": "Training to the Highest Standards",
-  "faqs": "../models/faqs/platinum.json",
   "components": {
     "intro": "courses/platinum/intro",
     "details": "courses/platinum/you-will-learn",
-    "testimonial": "courses/platinum/testimonial",
-    "foot": "courses/platinum/foot"
-  }
+    "testimonial": "courses/platinum/testimonial"
+  },
+  "faqs": "../models/faqs/platinum.json"
 }

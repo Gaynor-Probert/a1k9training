@@ -98,4 +98,36 @@
     if (document.readyState === 'complete') startTimer()
     else window.addEventListener('load', startTimer, { once: true })
   }
+
+  /* ---- Enquiry subject line ---------------------------------------------
+   * Netlify uses a field named `subject` as the notification email's subject.
+   * The form ships with a static fallback ("Course enquiry: Bronze
+   * Obedience"), which is enough to tell course enquiries apart from
+   * consultation ones — but Gmail threads messages that share a subject, so a
+   * static one would collapse every enquiry about the same course, from
+   * different people, into a single conversation.
+   *
+   * Adding the sender's name makes each thread distinct. The name only exists
+   * at submit time, so it cannot be baked in at build time like the course is.
+   *
+   * Progressive enhancement: with JavaScript off the static subject is posted
+   * and the form works exactly as before — only the grouping is coarser. */
+  var enquiryForms = document.querySelectorAll('form[data-enquiry]')
+
+  Array.prototype.forEach.call(enquiryForms, function (form) {
+    form.addEventListener('submit', function () {
+      var subject = form.querySelector('input[name="subject"]')
+      var name = form.querySelector('input[name="name"]')
+      if (!subject || !name) return
+
+      var who = (name.value || '').trim().replace(/\s+/g, ' ')
+      if (!who) return // leave the static fallback in place
+
+      var course = form.querySelector('input[name="course"]')
+      var what = course ? course.value : ''
+      subject.value = what
+        ? 'Course enquiry: ' + who + ' — ' + what
+        : 'Course enquiry: ' + who
+    })
+  })
 })()

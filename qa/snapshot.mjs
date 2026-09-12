@@ -328,7 +328,14 @@ export async function snapshot(siteDir, label) {
   }
 
   const outFile = path.join(outDir, 'content.json')
-  const payload = { label, generated: new Date().toISOString(), pages: contentRecords }
+  // `siteDir` is recorded so qa/compare.mjs can tell whether the build moved on
+  // after this snapshot was taken — see its staleness guard.
+  const payload = {
+    label,
+    generated: new Date().toISOString(),
+    siteDir: path.resolve(siteDir),
+    pages: contentRecords,
+  }
   await fs.writeFile(outFile, JSON.stringify(payload, null, 2))
   console.log(`Wrote ${outFile}`)
 

@@ -5,7 +5,7 @@
 {{{stringify (serviceSchema model.heading description (canonical))}}}
 </script>
 <script type="application/ld+json">
-{{{stringify (breadcrumbList "Home" "/" "Courses" "/courses/" model.heading (canonical))}}}
+{{{stringify (breadcrumbList (breadcrumb))}}}
 </script>
 {{/content}}
 
@@ -13,6 +13,11 @@
   {{#if model.components.intro}}
     {{> (lookup model.components 'intro')}}
   {{/if}}
+  {{!-- An action above the fold. Anchors to the enquiry form at the foot
+        rather than to another page, so deciding and asking are one step. --}}
+  <p class="mt-6 mb-0">
+    <a href="#enquire" class="btn btn-accent">Ask about this course</a>
+  </p>
 {{/content}}
 
 {{#content "main"}}
@@ -38,10 +43,12 @@
     </div>
   {{/if}}
 
-  {{#if  model.components.foot}}
-    <hr class="my-8 border-sand-200" />
-    {{> (lookup model.components 'foot')}}
-  {{/if}}
+  {{!-- Booking this course is the page's primary action; the ladder's next
+        step is genuinely secondary, so it renders after the enquiry form and
+        styles its link accordingly. --}}
+  {{> "courses/enquiry"}}
+
+  {{> "courses/ladder"}}
 
 {{/content}}
 

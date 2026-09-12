@@ -4,12 +4,14 @@
   "description": "Engagement training for puppies aged 5-9 months, with a natural progression from puppy socialisation classes for all dog breeds.",
   "image": "/images/courses/junior/junior-course-v3.webp",
   "caption": "right",
-  "captionOffset": true,
+  "crumb": "Junior Course",
+  "level": 1,
+  "rung": "Junior",
   "heading": "Engagement Training",
   "components": {
     "intro": "courses/junior/intro",
     "details": "courses/junior/you-will-learn",
-    "testimonial": "courses/junior/testimonial",
-    "foot": "courses/junior/foot"
-  }
+    "testimonial": "courses/junior/testimonial"
+  },
+  "captionOffset": true
 }

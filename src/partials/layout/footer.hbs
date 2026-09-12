@@ -1,12 +1,54 @@
+{{!--
+  Site footer. Carries the contact details deliberately: the phone number used
+  to live only on the home page, and the footer is where people look for it
+  when the page they are on has not offered one.
+--}}
 <footer class="mt-auto border-t border-sand-200 bg-sand-100">
-  <div class="mx-auto flex max-w-content flex-col-reverse items-start justify-between gap-3 px-4 py-8 sm:flex-row sm:items-center sm:px-6 lg:px-8">
-    <p class="m-0 text-sm text-ink-600">
-      &copy; {{config.year}} Gaynor Probert
-    </p>
-    <p class="m-0">
-      <a href="#" class="text-sm font-medium text-brand-700 underline underline-offset-4 hover:text-brand-800">
-        Back to top
-      </a>
-    </p>
+  <div class="mx-auto grid max-w-content gap-8 px-4 py-10 sm:px-6 sm:grid-cols-2 lg:grid-cols-3 lg:px-8">
+
+    <div>
+      <h2 class="mb-2 font-display text-lg text-ink-900">Talk to Gaynor</h2>
+      <p class="mb-2">
+        <a href="tel:+447798500390"
+          class="text-lg font-semibold text-brand-700 no-underline hover:underline">07798 500390</a>
+      </p>
+      <p class="m-0 text-sm text-ink-600">
+        Or <a href="/contact/" class="font-medium text-brand-700 underline underline-offset-4 hover:text-brand-800">send a message</a>
+        and she will get back to you.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="mb-2 font-display text-lg text-ink-900">Where we train</h2>
+      <p class="m-0 text-sm text-ink-600">
+        Two venues near Swansea, South Wales — the A1K9 Training Grounds at
+        Pontarddulais, and Llys Nini Animal Centre at Penllergaer when the
+        weather is against us.
+        <a href="/contact/" class="font-medium text-brand-700 underline underline-offset-4 hover:text-brand-800">See both on the map</a>.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="mb-2 font-display text-lg text-ink-900">Explore</h2>
+      <ul class="m-0 space-y-1 text-sm">
+        <li><a href="/courses/" class="font-medium text-brand-700 underline underline-offset-4 hover:text-brand-800">Dog training courses</a></li>
+        <li><a href="/behavioural-consultations/" class="font-medium text-brand-700 underline underline-offset-4 hover:text-brand-800">Behavioural consultations</a></li>
+        <li><a href="/about/" class="font-medium text-brand-700 underline underline-offset-4 hover:text-brand-800">About Gaynor and the team</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="border-t border-sand-200">
+    <div class="mx-auto flex max-w-content flex-col-reverse items-start justify-between gap-3 px-4 py-6 sm:flex-row sm:items-center sm:px-6 lg:px-8">
+      <p class="m-0 text-sm text-ink-600">
+        &copy; {{config.year}} Gaynor Probert
+      </p>
+      <p class="m-0">
+        <a href="#" class="text-sm font-medium text-brand-700 underline underline-offset-4 hover:text-brand-800">
+          Back to top
+        </a>
+      </p>
+    </div>
   </div>
 </footer>

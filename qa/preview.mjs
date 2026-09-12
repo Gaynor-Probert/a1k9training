@@ -36,7 +36,7 @@ const DEFAULT_PAGES = [
   '/courses/',
   '/courses/bronze-obedience',
   '/behavioural-consultations/dog-on-dog-aggression',
-  '/find-us/',
+  '/contact/',
 ]
 
 const VIEWPORTS = [
@@ -295,6 +295,55 @@ let llmsEntryUrls = []
 }
 
 // ======================================================================
+// 3b. Redirects actually redirect.
+//
+// Every rule in src/assets/_redirects is a URL that was live once and may
+// still be linked from somewhere we don't control — the pre-2015 paths, and
+// /find-us/, which was the contact page's URL until it became /contact/.
+// Nothing tested that these resolve: qa/serve.mjs implements pretty-URL
+// resolution only, not _redirects, so a broken rule looks identical locally
+// to a working one and only shows up on a deploy. Hence checking it here.
+// ======================================================================
+
+{
+  const redirectsFile = 'src/assets/_redirects'
+  let rules = []
+  try {
+    rules = (await fs.readFile(redirectsFile, 'utf8'))
+      .split('\n')
+      .map((line) => line.trim())
+      .filter((line) => line && !line.startsWith('#'))
+      .map((line) => line.split(/\s+/))
+      .filter((parts) => parts.length >= 2)
+      .map(([from, to]) => ({ from, to }))
+  } catch (err) {
+    row('Redirects: read _redirects', false, `${redirectsFile}: ${err.message}`)
+  }
+
+  for (const { from, to } of rules) {
+    let res
+    try {
+      res = await fetchSafe(`${baseUrl}${from}`, { redirect: 'manual' })
+    } catch (err) {
+      row(`Redirect ${from}`, false, `request failed: ${err.message}`)
+      continue
+    }
+    const location = res.headers.get('location') ?? ''
+    // Netlify may answer with an absolute URL; compare on the path only.
+    const path = location.replace(/^https?:\/\/[^/]+/, '')
+    const isRedirect = res.status >= 300 && res.status < 400
+    const ok = isRedirect && path === to
+    row(
+      `Redirect ${from}`,
+      ok,
+      ok
+        ? `${res.status} -> ${to}`
+        : `status ${res.status}, Location: ${location || '(none)'} (expected ${to})`,
+    )
+  }
+}
+
+// ======================================================================
 // 4. Sitemap agreement: llms.txt <-> sitemap, and every <loc> is
 //    redirect-free + self-canonical. One fetch per sitemap URL, reused
 //    below for the structured-data pass.
@@ -318,11 +367,28 @@ if (sitemapLocs.length && llmsEntryUrls.length) {
 const pageFetches = new Map()
 
 for (const loc of sitemapLocs) {
+  // Fetch from the host under test, not the <loc> itself — for the same
+  // reason section 5 does it (siteUrl is pinned to production in generate.js,
+  // so every <loc> is a production URL even when this script is pointed at a
+  // deploy preview). Fetching the loc directly made this check exercise the
+  // LIVE SITE rather than the deploy, so a preview serving 500s everywhere
+  // still went green, and a PR introducing a new URL went red because
+  // production does not have that page yet.
+  //
+  // The canonical is still compared against `loc`: a preview's pages should
+  // carry the production canonical, and on production baseUrl + path IS loc.
+  let target = loc
+  try {
+    target = `${baseUrl}${new URL(loc).pathname}`
+  } catch {
+    // not a parseable URL — fall back to the loc and let the fetch report it
+  }
+
   let res
   let html = ''
   let requestFailed = null
   try {
-    res = await fetchSafe(loc, { redirect: 'manual' })
+    res = await fetchSafe(target, { redirect: 'manual' })
     if (res.status === 200) html = await res.text()
   } catch (err) {
     requestFailed = err.message

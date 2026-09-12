@@ -4,11 +4,13 @@
   "description": "Basic on-lead obedience for beginners near Swansea: adolescent dogs learn with an instructor and the support of other people training their dogs.",
   "image": "/images/courses/bronze/bronze-course-v2.webp",
   "caption": "left",
+  "crumb": "Bronze Obedience",
+  "level": 2,
+  "rung": "Bronze",
   "heading": "Solid Foundation Training",
   "components": {
     "intro": "courses/bronze/intro",
     "details": "courses/bronze/you-will-learn",
-    "testimonial": "courses/bronze/testimonial",
-    "foot": "courses/bronze/foot"
+    "testimonial": "courses/bronze/testimonial"
   }
 }

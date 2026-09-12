@@ -1,0 +1,36 @@
+{{!--
+  Visual breadcrumb trail, rendered as the first element inside the hero caption
+  box in src/layouts/layout.hbs. The trail itself comes from the `breadcrumb`
+  helper in generate.js, which derives it from the page's own URL — the same
+  array the BreadcrumbList JSON-LD in each page's head is built from, so the
+  markup always describes a trail the visitor can actually see.
+
+  The home page renders through layout-video.hbs and has no trail; `breadcrumb`
+  returns [] for it and for anything outside the four known sections, and #with
+  skips the block on an empty array, so nothing is emitted.
+
+  Links carry `.crumb` purely so the caption box's own link styling can exclude
+  them — the box sets `[&_a:not(.btn):not(.crumb)]:text-accent-300`, and a
+  descendant selector like that beats any class, so without the exclusion the
+  trail would render as permanently-underlined amber (amber is reserved for
+  calls to action on this site). Colours are picked to clear 4.5:1 against the
+  caption box at its worst case, an 80%-opaque ink ground over a white photo:
+  sand-100 links 7.2:1, the sand-300 current crumb 5.3:1.
+--}}
+{{#with (breadcrumb) as |trail|}}
+  <nav aria-label="Breadcrumb" class="mb-4 border-b border-white/15 pb-3">
+    <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs sm:text-sm">
+      {{#each trail}}
+        <li class="flex items-center gap-2">
+          {{#if current}}
+            <span class="text-sand-300" aria-current="page">{{name}}</span>
+          {{else}}
+            <a href="{{url}}"
+              class="crumb text-sand-100 no-underline hover:text-white hover:underline">{{name}}</a>
+            <span class="text-sand-300" aria-hidden="true">&rsaquo;</span>
+          {{/if}}
+        </li>
+      {{/each}}
+    </ol>
+  </nav>
+{{/with}}

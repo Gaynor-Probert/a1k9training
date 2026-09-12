@@ -1,7 +1,7 @@
 {{#extend "layout"}}
 {{#content "head"}}
 <script type="application/ld+json">
-{{{stringify (breadcrumbList "Home" "/" "Contact" (canonical))}}}
+{{{stringify (breadcrumbList (breadcrumb))}}}
 </script>
 {{/content}}
 {{#content "intro"}}
@@ -34,7 +34,7 @@
 
       <div>
         <label for="first-name" class="block font-medium">
-          Name <span class="text-accent-700" aria-hidden="true">*</span><span class="sr-only"> required</span>
+          Name
         </label>
         <div class="mt-1 grid gap-4 sm:grid-cols-2">
           <div>
@@ -52,7 +52,7 @@
 
       <div>
         <label for="tel" class="block font-medium">
-          Mobile number <span class="text-accent-700" aria-hidden="true">*</span><span class="sr-only"> required</span>
+          Mobile number
         </label>
         <input id="tel" name="mobile" type="tel" maxlength="15" required
           class="mt-1 w-full rounded-md border border-sand-300 bg-white px-3 py-2 focus-visible:border-brand-600 focus-visible:outline-none">
@@ -60,7 +60,7 @@
 
       <div>
         <label for="email" class="block font-medium">
-          Email <span class="text-accent-700" aria-hidden="true">*</span><span class="sr-only"> required</span>
+          Email
         </label>
         <input id="email" name="email" type="email" spellcheck="false" maxlength="255" required
           class="mt-1 w-full rounded-md border border-sand-300 bg-white px-3 py-2 focus-visible:border-brand-600 focus-visible:outline-none">
@@ -68,7 +68,7 @@
 
       <div>
         <label for="message" class="block font-medium">
-          Message <span class="text-accent-700" aria-hidden="true">*</span><span class="sr-only"> required</span>
+          Message
         </label>
         <textarea id="message" name="message" spellcheck="true" rows="10" required
           class="mt-1 w-full rounded-md border border-sand-300 bg-white px-3 py-2 focus-visible:border-brand-600 focus-visible:outline-none"></textarea>
@@ -83,7 +83,7 @@
 
       <div>
         <label for="dog-name" class="block font-medium">
-          Dog's name <span class="text-accent-700" aria-hidden="true">*</span><span class="sr-only"> required</span>
+          Dog's name
         </label>
         <input id="dog-name" name="dog-name" type="text" required
           class="mt-1 w-full rounded-md border border-sand-300 bg-white px-3 py-2 focus-visible:border-brand-600 focus-visible:outline-none">
@@ -91,7 +91,7 @@
 
       <div>
         <label for="dog-breed" class="block font-medium">
-          Dog's breed <span class="text-accent-700" aria-hidden="true">*</span><span class="sr-only"> required</span>
+          Dog's breed
         </label>
         <input id="dog-breed" name="dog-breed" type="text" maxlength="255" required
           class="mt-1 w-full rounded-md border border-sand-300 bg-white px-3 py-2 focus-visible:border-brand-600 focus-visible:outline-none">
@@ -99,7 +99,7 @@
 
       <div>
         <label for="dog-age-years" class="block font-medium">
-          Dog's age <span class="text-accent-700" aria-hidden="true">*</span><span class="sr-only"> required</span>
+          Dog's age
         </label>
 
         <div class="mt-1 grid gap-4 sm:grid-cols-2">

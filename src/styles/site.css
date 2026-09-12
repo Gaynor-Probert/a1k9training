@@ -231,6 +231,58 @@
     }
   }
 
+  /* .ladder — the course progression track on a course page. A rail of steps
+   * with one marked as where the visitor is. Vertical on a phone, where five
+   * labels cannot share a line legibly, and horizontal from `sm` up; the
+   * connector between two steps is a border on the step itself, so the rail
+   * survives wrapping and needs no absolute positioning.
+   *
+   * A dashed connector means the step before it is optional — Puppy
+   * Socialisation feeds into Junior without being a prerequisite. Solid means a
+   * strict prerequisite. That distinction is the whole point of the graphic, so
+   * it is carried by border-style rather than colour alone. */
+  .ladder {
+    @apply flex flex-col sm:flex-row;
+  }
+
+  .ladder-step {
+    @apply relative flex flex-1 items-center gap-3 pl-8 sm:block sm:pt-8 sm:pl-0
+      sm:text-center;
+  }
+
+  /* The connector running back to the previous step. */
+  .ladder-step + .ladder-step::before {
+    @apply absolute content-[''] border-sand-300;
+    @apply top-[-50%] bottom-[50%] left-[0.3rem] border-l-2;
+    @apply sm:top-[0.3rem] sm:right-[50%] sm:bottom-auto sm:left-[-50%]
+      sm:border-l-0 sm:border-t-2;
+  }
+
+  .ladder-step[data-dashed]::before {
+    @apply border-dashed;
+  }
+
+  /* Above the connectors: a step's line runs to the centre of its own dot, so
+   * without this the rail paints across the current dot's ring. */
+  .ladder-dot {
+    @apply absolute left-0 z-10 size-3 shrink-0 rounded-pill bg-sand-300
+      sm:top-0 sm:left-[50%] sm:-translate-x-1/2;
+  }
+
+  .ladder-step[data-current] .ladder-dot {
+    @apply size-4 bg-brand-700 ring-4 ring-brand-100 sm:-translate-x-1/2;
+    @apply left-[-0.125rem] sm:left-[50%];
+  }
+
+  .ladder-label {
+    @apply block py-1 text-sm text-ink-600 no-underline hover:text-brand-700
+      hover:underline sm:py-0;
+  }
+
+  .ladder-step[data-current] .ladder-label {
+    @apply font-semibold text-brand-800;
+  }
+
   /* .badge — small pill label. Replaces Bootstrap `.label`/`.badge`. */
   .badge {
     @apply inline-flex items-center rounded-pill bg-brand-100 px-3 py-1 text-xs

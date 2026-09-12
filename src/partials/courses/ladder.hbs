@@ -1,0 +1,67 @@
+{{!--
+  The course progression track, rendered at the foot of every course page that
+  sits on the ladder. The `courseLadder` helper in generate.js supplies the
+  steps and returns null for anything else — the courses index, One to One,
+  every page outside /courses/ — and #with skips the block on a null, so this
+  partial is safe to include unconditionally.
+
+  The track marks position, not progress: every step carries the same weight
+  with the current one emphasised. A filled-up-to-here treatment would assert
+  the visitor had completed the earlier courses, which nothing here knows.
+
+  The next-step button is the page's primary action and keeps the copy the old
+  per-course foot partials carried; a course whose lead-in sentence differs
+  (Puppy's is about the dog's age, not about graduating) sets `nextLead` in its
+  own model.
+--}}
+{{#with (courseLadder) as |ladder|}}
+  <section class="mt-10 rounded-card border border-sand-200 bg-white p-6 sm:p-8">
+    <h2 class="mb-8 font-display text-xl text-ink-900">Where {{ladder.current.name}} fits</h2>
+
+    <nav class="ladder" aria-label="Course progression">
+      {{#each ladder.steps}}
+        <div class="ladder-step"{{#if current}} data-current{{/if}}{{#if dashedIn}} data-dashed{{/if}}>
+          <span class="ladder-dot" aria-hidden="true"></span>
+          {{#if current}}
+            <span class="ladder-label" aria-current="page">{{rung}}</span>
+          {{else}}
+            <a href="{{url}}" class="ladder-label">{{rung}}</a>
+          {{/if}}
+        </div>
+      {{/each}}
+    </nav>
+
+    <p class="mt-8 mb-0 text-sm text-ink-500">
+      Junior through to Platinum is a step-by-step progression — each course prepares your dog for
+      the next. Puppy Socialisation is a standalone class, so your puppy does not need it before
+      starting Junior.
+    </p>
+
+    <hr class="my-8 border-sand-200">
+
+    {{#if ladder.next}}
+      <p class="mb-6">
+        {{#if @root.model.nextLead}}
+          {{@root.model.nextLead}}
+        {{else}}
+          Successful participants of this course are invited to graduate to our:
+        {{/if}}
+      </p>
+      <div>
+        <a href="{{ladder.next.url}}" class="btn btn-secondary">Next: {{ladder.next.name}}</a>
+      </div>
+      <p class="mt-6 mb-0 text-sm text-ink-500">
+        Would you rather train privately? Gaynor also offers
+        <a href="/courses/one-to-one" class="font-medium text-brand-700 underline">one to one sessions</a>.
+      </p>
+    {{else}}
+      <p class="mb-6">
+        Platinum is the highest of our group courses. To keep developing, Gaynor works one to one
+        with dogs and owners on whatever they want to take further.
+      </p>
+      <div>
+        <a href="/courses/one-to-one" class="btn btn-secondary">One to One training</a>
+      </div>
+    {{/if}}
+  </section>
+{{/with}}

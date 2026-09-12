@@ -4,6 +4,7 @@
   "description": "Behavioural consultations for dog aggression towards people in South Wales. Early professional intervention is crucial for safe rehabilitation.",
   "image": "/images/consultations/dog-on-person-aggression/dog-on-person-aggression-v3.webp",
   "caption": "left",
+  "crumb": "Dog-on-Person Aggression",
   "heading": "Rehabilitate your dog",
   "components": {
     "intro": "behavioural-consultations/dog-on-person-aggression/intro",
