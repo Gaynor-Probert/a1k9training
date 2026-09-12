@@ -1,0 +1,774 @@
+{
+  "site": {
+    "siteUrl": "https://www.a1k9training.co.uk",
+    "build": "./docs",
+    "folders": {
+      "aikb": "./AIKB",
+      "assets": "./src/assets",
+      "controllers": "./src/controllers",
+      "layouts": "./src/layouts",
+      "models": "./src/models",
+      "pages": "./src/pages",
+      "partials": "./src/partials",
+      "src": "./src"
+    }
+  },
+  "pages": [
+    {
+      "buildTo": "./docs/404.html",
+      "id": "404",
+      "view": "404.hbs",
+      "model": "inline",
+      "controller": "none",
+      "partials": [
+        "layout",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    },
+    {
+      "buildTo": "./docs/about/facilities.html",
+      "id": "about/facilities",
+      "view": "about.hbs",
+      "model": "folder:about",
+      "controller": "file:about.js",
+      "partials": [
+        "about/facilities/facilities",
+        "about/facilities/intro",
+        "about/facilities/main",
+        "layout",
+        "layout/breadcrumb",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    },
+    {
+      "buildTo": "./docs/about/gaynor-probert.html",
+      "id": "about/gaynor-probert",
+      "view": "about.hbs",
+      "model": "folder:about",
+      "controller": "file:about.js",
+      "partials": [
+        "about/gaynor-probert/2014",
+        "about/gaynor-probert/associations",
+        "about/gaynor-probert/awards",
+        "about/gaynor-probert/background",
+        "about/gaynor-probert/intro",
+        "layout",
+        "layout/breadcrumb",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    },
+    {
+      "buildTo": "./docs/about/index.html",
+      "id": "about/index",
+      "view": "about.hbs",
+      "model": "folder:about",
+      "controller": "file:about.js",
+      "partials": [
+        "about/index/intro",
+        "about/index/main",
+        "layout",
+        "layout/breadcrumb",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    },
+    {
+      "buildTo": "./docs/about/sara-thomas.html",
+      "id": "about/sara-thomas",
+      "view": "about.hbs",
+      "model": "folder:about",
+      "controller": "file:about.js",
+      "partials": [
+        "about/sara-thomas/background",
+        "about/sara-thomas/intro",
+        "layout",
+        "layout/breadcrumb",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    },
+    {
+      "buildTo": "./docs/behavioural-consultations/dog-on-dog-aggression.html",
+      "id": "behavioural-consultations/consultation/dog-on-dog-aggression",
+      "view": "behavioural-consultations/consultation.hbs",
+      "model": "folder:behavioural-consultations",
+      "controller": "file:behavioural-consultations.js",
+      "partials": [
+        "behavioural-consultations/dog-on-dog-aggression/details",
+        "behavioural-consultations/dog-on-dog-aggression/intro",
+        "behavioural-consultations/shared/vet-referrals",
+        "behavioural-consultations/shared/what-to-expect-in-a-behavioural-consultation",
+        "faqs",
+        "layout",
+        "layout/breadcrumb",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    },
+    {
+      "buildTo": "./docs/behavioural-consultations/dog-on-person-aggression.html",
+      "id": "behavioural-consultations/consultation/dog-on-person-aggression",
+      "view": "behavioural-consultations/consultation.hbs",
+      "model": "folder:behavioural-consultations",
+      "controller": "file:behavioural-consultations.js",
+      "partials": [
+        "behavioural-consultations/dog-on-person-aggression/details",
+        "behavioural-consultations/dog-on-person-aggression/intro",
+        "behavioural-consultations/shared/vet-referrals",
+        "behavioural-consultations/shared/what-to-expect-in-a-behavioural-consultation",
+        "faqs",
+        "layout",
+        "layout/breadcrumb",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    },
+    {
+      "buildTo": "./docs/behavioural-consultations/index.html",
+      "id": "behavioural-consultations/index",
+      "view": "behavioural-consultations/index.hbs",
+      "model": "inline",
+      "controller": "file:faqMapper.js",
+      "partials": [
+        "behavioural-consultations/left-col",
+        "behavioural-consultations/right-col",
+        "behavioural-consultations/shared/vet-referrals",
+        "behavioural-consultations/testimonial",
+        "faqs",
+        "layout",
+        "layout/breadcrumb",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    },
+    {
+      "buildTo": "./docs/contact/index.html",
+      "id": "contact",
+      "view": "contact.hbs",
+      "model": "inline",
+      "controller": "none",
+      "partials": [
+        "layout",
+        "layout/breadcrumb",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    },
+    {
+      "buildTo": "./docs/courses/bronze-obedience.html",
+      "id": "courses/course/bronze-obedience",
+      "view": "courses/course.hbs",
+      "model": "folder:courses",
+      "controller": "file:course.js",
+      "partials": [
+        "courses/bronze/intro",
+        "courses/bronze/testimonial",
+        "courses/bronze/you-will-learn",
+        "courses/enquiry",
+        "courses/ladder",
+        "layout",
+        "layout/breadcrumb",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    },
+    {
+      "buildTo": "./docs/courses/gold-obedience.html",
+      "id": "courses/course/gold-obedience",
+      "view": "courses/course.hbs",
+      "model": "folder:courses",
+      "controller": "file:course.js",
+      "partials": [
+        "courses/enquiry",
+        "courses/gold/intro",
+        "courses/gold/testimonial",
+        "courses/gold/you-will-learn",
+        "courses/ladder",
+        "faqs",
+        "layout",
+        "layout/breadcrumb",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    },
+    {
+      "buildTo": "./docs/courses/index.html",
+      "id": "courses/index",
+      "view": "courses/index.hbs",
+      "model": "inline",
+      "controller": "file:faqMapper.js",
+      "partials": [
+        "courses/index/intro",
+        "courses/index/main",
+        "faqs",
+        "layout",
+        "layout/breadcrumb",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    },
+    {
+      "buildTo": "./docs/courses/junior-obedience.html",
+      "id": "courses/course/junior-obedience",
+      "view": "courses/course.hbs",
+      "model": "folder:courses",
+      "controller": "file:course.js",
+      "partials": [
+        "courses/enquiry",
+        "courses/junior/intro",
+        "courses/junior/testimonial",
+        "courses/junior/you-will-learn",
+        "courses/ladder",
+        "layout",
+        "layout/breadcrumb",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    },
+    {
+      "buildTo": "./docs/courses/one-to-one.html",
+      "id": "courses/course/one-to-one",
+      "view": "courses/course.hbs",
+      "model": "folder:courses",
+      "controller": "file:course.js",
+      "partials": [
+        "courses/enquiry",
+        "courses/ladder",
+        "courses/one-to-one/intro",
+        "courses/one-to-one/testimonial",
+        "courses/one-to-one/you-will-learn",
+        "layout",
+        "layout/breadcrumb",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    },
+    {
+      "buildTo": "./docs/courses/platinum-obedience.html",
+      "id": "courses/course/platinum-obedience",
+      "view": "courses/course.hbs",
+      "model": "folder:courses",
+      "controller": "file:course.js",
+      "partials": [
+        "courses/enquiry",
+        "courses/ladder",
+        "courses/platinum/intro",
+        "courses/platinum/testimonial",
+        "courses/platinum/you-will-learn",
+        "faqs",
+        "layout",
+        "layout/breadcrumb",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    },
+    {
+      "buildTo": "./docs/courses/puppy-socialisation.html",
+      "id": "courses/course/puppy-socialisation",
+      "view": "courses/course.hbs",
+      "model": "folder:courses",
+      "controller": "file:course.js",
+      "partials": [
+        "courses/enquiry",
+        "courses/ladder",
+        "courses/puppy/intro",
+        "courses/puppy/testimonial",
+        "courses/puppy/you-will-learn",
+        "faqs",
+        "layout",
+        "layout/breadcrumb",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    },
+    {
+      "buildTo": "./docs/courses/silver-obedience.html",
+      "id": "courses/course/silver-obedience",
+      "view": "courses/course.hbs",
+      "model": "folder:courses",
+      "controller": "file:course.js",
+      "partials": [
+        "courses/enquiry",
+        "courses/ladder",
+        "courses/silver/intro",
+        "courses/silver/testimonial",
+        "courses/silver/you-will-learn",
+        "faqs",
+        "layout",
+        "layout/breadcrumb",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    },
+    {
+      "buildTo": "./docs/index.html",
+      "id": "index",
+      "view": "index.hbs",
+      "model": "none",
+      "controller": "none",
+      "partials": [
+        "layout-video",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    },
+    {
+      "buildTo": "./docs/thanks/index.html",
+      "id": "thanks",
+      "view": "thanks.hbs",
+      "model": "inline",
+      "controller": "none",
+      "partials": [
+        "layout",
+        "layout/footer",
+        "layout/header",
+        "layout/navbar",
+        "layout/scripts"
+      ]
+    }
+  ],
+  "partials": {
+    "about/facilities/facilities": [
+      "./docs/about/facilities.html"
+    ],
+    "about/facilities/intro": [
+      "./docs/about/facilities.html"
+    ],
+    "about/facilities/main": [
+      "./docs/about/facilities.html"
+    ],
+    "about/gaynor-probert/2014": [
+      "./docs/about/gaynor-probert.html"
+    ],
+    "about/gaynor-probert/associations": [
+      "./docs/about/gaynor-probert.html"
+    ],
+    "about/gaynor-probert/awards": [
+      "./docs/about/gaynor-probert.html"
+    ],
+    "about/gaynor-probert/background": [
+      "./docs/about/gaynor-probert.html"
+    ],
+    "about/gaynor-probert/intro": [
+      "./docs/about/gaynor-probert.html"
+    ],
+    "about/index/intro": [
+      "./docs/about/index.html"
+    ],
+    "about/index/main": [
+      "./docs/about/index.html"
+    ],
+    "about/sara-thomas/background": [
+      "./docs/about/sara-thomas.html"
+    ],
+    "about/sara-thomas/intro": [
+      "./docs/about/sara-thomas.html"
+    ],
+    "behavioural-consultations/dog-on-dog-aggression/details": [
+      "./docs/behavioural-consultations/dog-on-dog-aggression.html"
+    ],
+    "behavioural-consultations/dog-on-dog-aggression/intro": [
+      "./docs/behavioural-consultations/dog-on-dog-aggression.html"
+    ],
+    "behavioural-consultations/dog-on-person-aggression/details": [
+      "./docs/behavioural-consultations/dog-on-person-aggression.html"
+    ],
+    "behavioural-consultations/dog-on-person-aggression/intro": [
+      "./docs/behavioural-consultations/dog-on-person-aggression.html"
+    ],
+    "behavioural-consultations/left-col": [
+      "./docs/behavioural-consultations/index.html"
+    ],
+    "behavioural-consultations/right-col": [
+      "./docs/behavioural-consultations/index.html"
+    ],
+    "behavioural-consultations/shared/vet-referrals": [
+      "./docs/behavioural-consultations/dog-on-dog-aggression.html",
+      "./docs/behavioural-consultations/dog-on-person-aggression.html",
+      "./docs/behavioural-consultations/index.html"
+    ],
+    "behavioural-consultations/shared/what-to-expect-in-a-behavioural-consultation": [
+      "./docs/behavioural-consultations/dog-on-dog-aggression.html",
+      "./docs/behavioural-consultations/dog-on-person-aggression.html"
+    ],
+    "behavioural-consultations/testimonial": [
+      "./docs/behavioural-consultations/index.html"
+    ],
+    "courses/bronze/intro": [
+      "./docs/courses/bronze-obedience.html"
+    ],
+    "courses/bronze/testimonial": [
+      "./docs/courses/bronze-obedience.html"
+    ],
+    "courses/bronze/you-will-learn": [
+      "./docs/courses/bronze-obedience.html"
+    ],
+    "courses/enquiry": [
+      "./docs/courses/bronze-obedience.html",
+      "./docs/courses/gold-obedience.html",
+      "./docs/courses/junior-obedience.html",
+      "./docs/courses/one-to-one.html",
+      "./docs/courses/platinum-obedience.html",
+      "./docs/courses/puppy-socialisation.html",
+      "./docs/courses/silver-obedience.html"
+    ],
+    "courses/gold/intro": [
+      "./docs/courses/gold-obedience.html"
+    ],
+    "courses/gold/testimonial": [
+      "./docs/courses/gold-obedience.html"
+    ],
+    "courses/gold/you-will-learn": [
+      "./docs/courses/gold-obedience.html"
+    ],
+    "courses/index/intro": [
+      "./docs/courses/index.html"
+    ],
+    "courses/index/main": [
+      "./docs/courses/index.html"
+    ],
+    "courses/junior/intro": [
+      "./docs/courses/junior-obedience.html"
+    ],
+    "courses/junior/testimonial": [
+      "./docs/courses/junior-obedience.html"
+    ],
+    "courses/junior/you-will-learn": [
+      "./docs/courses/junior-obedience.html"
+    ],
+    "courses/ladder": [
+      "./docs/courses/bronze-obedience.html",
+      "./docs/courses/gold-obedience.html",
+      "./docs/courses/junior-obedience.html",
+      "./docs/courses/one-to-one.html",
+      "./docs/courses/platinum-obedience.html",
+      "./docs/courses/puppy-socialisation.html",
+      "./docs/courses/silver-obedience.html"
+    ],
+    "courses/one-to-one/intro": [
+      "./docs/courses/one-to-one.html"
+    ],
+    "courses/one-to-one/testimonial": [
+      "./docs/courses/one-to-one.html"
+    ],
+    "courses/one-to-one/you-will-learn": [
+      "./docs/courses/one-to-one.html"
+    ],
+    "courses/platinum/intro": [
+      "./docs/courses/platinum-obedience.html"
+    ],
+    "courses/platinum/testimonial": [
+      "./docs/courses/platinum-obedience.html"
+    ],
+    "courses/platinum/you-will-learn": [
+      "./docs/courses/platinum-obedience.html"
+    ],
+    "courses/puppy/intro": [
+      "./docs/courses/puppy-socialisation.html"
+    ],
+    "courses/puppy/testimonial": [
+      "./docs/courses/puppy-socialisation.html"
+    ],
+    "courses/puppy/you-will-learn": [
+      "./docs/courses/puppy-socialisation.html"
+    ],
+    "courses/silver/intro": [
+      "./docs/courses/silver-obedience.html"
+    ],
+    "courses/silver/testimonial": [
+      "./docs/courses/silver-obedience.html"
+    ],
+    "courses/silver/you-will-learn": [
+      "./docs/courses/silver-obedience.html"
+    ],
+    "faqs": [
+      "./docs/behavioural-consultations/dog-on-dog-aggression.html",
+      "./docs/behavioural-consultations/dog-on-person-aggression.html",
+      "./docs/behavioural-consultations/index.html",
+      "./docs/courses/gold-obedience.html",
+      "./docs/courses/index.html",
+      "./docs/courses/platinum-obedience.html",
+      "./docs/courses/puppy-socialisation.html",
+      "./docs/courses/silver-obedience.html"
+    ],
+    "layout": [
+      "./docs/404.html",
+      "./docs/about/facilities.html",
+      "./docs/about/gaynor-probert.html",
+      "./docs/about/index.html",
+      "./docs/about/sara-thomas.html",
+      "./docs/behavioural-consultations/dog-on-dog-aggression.html",
+      "./docs/behavioural-consultations/dog-on-person-aggression.html",
+      "./docs/behavioural-consultations/index.html",
+      "./docs/contact/index.html",
+      "./docs/courses/bronze-obedience.html",
+      "./docs/courses/gold-obedience.html",
+      "./docs/courses/index.html",
+      "./docs/courses/junior-obedience.html",
+      "./docs/courses/one-to-one.html",
+      "./docs/courses/platinum-obedience.html",
+      "./docs/courses/puppy-socialisation.html",
+      "./docs/courses/silver-obedience.html",
+      "./docs/thanks/index.html"
+    ],
+    "layout-video": [
+      "./docs/index.html"
+    ],
+    "layout/breadcrumb": [
+      "./docs/about/facilities.html",
+      "./docs/about/gaynor-probert.html",
+      "./docs/about/index.html",
+      "./docs/about/sara-thomas.html",
+      "./docs/behavioural-consultations/dog-on-dog-aggression.html",
+      "./docs/behavioural-consultations/dog-on-person-aggression.html",
+      "./docs/behavioural-consultations/index.html",
+      "./docs/contact/index.html",
+      "./docs/courses/bronze-obedience.html",
+      "./docs/courses/gold-obedience.html",
+      "./docs/courses/index.html",
+      "./docs/courses/junior-obedience.html",
+      "./docs/courses/one-to-one.html",
+      "./docs/courses/platinum-obedience.html",
+      "./docs/courses/puppy-socialisation.html",
+      "./docs/courses/silver-obedience.html"
+    ],
+    "layout/footer": [
+      "./docs/404.html",
+      "./docs/about/facilities.html",
+      "./docs/about/gaynor-probert.html",
+      "./docs/about/index.html",
+      "./docs/about/sara-thomas.html",
+      "./docs/behavioural-consultations/dog-on-dog-aggression.html",
+      "./docs/behavioural-consultations/dog-on-person-aggression.html",
+      "./docs/behavioural-consultations/index.html",
+      "./docs/contact/index.html",
+      "./docs/courses/bronze-obedience.html",
+      "./docs/courses/gold-obedience.html",
+      "./docs/courses/index.html",
+      "./docs/courses/junior-obedience.html",
+      "./docs/courses/one-to-one.html",
+      "./docs/courses/platinum-obedience.html",
+      "./docs/courses/puppy-socialisation.html",
+      "./docs/courses/silver-obedience.html",
+      "./docs/index.html",
+      "./docs/thanks/index.html"
+    ],
+    "layout/header": [
+      "./docs/404.html",
+      "./docs/about/facilities.html",
+      "./docs/about/gaynor-probert.html",
+      "./docs/about/index.html",
+      "./docs/about/sara-thomas.html",
+      "./docs/behavioural-consultations/dog-on-dog-aggression.html",
+      "./docs/behavioural-consultations/dog-on-person-aggression.html",
+      "./docs/behavioural-consultations/index.html",
+      "./docs/contact/index.html",
+      "./docs/courses/bronze-obedience.html",
+      "./docs/courses/gold-obedience.html",
+      "./docs/courses/index.html",
+      "./docs/courses/junior-obedience.html",
+      "./docs/courses/one-to-one.html",
+      "./docs/courses/platinum-obedience.html",
+      "./docs/courses/puppy-socialisation.html",
+      "./docs/courses/silver-obedience.html",
+      "./docs/index.html",
+      "./docs/thanks/index.html"
+    ],
+    "layout/navbar": [
+      "./docs/404.html",
+      "./docs/about/facilities.html",
+      "./docs/about/gaynor-probert.html",
+      "./docs/about/index.html",
+      "./docs/about/sara-thomas.html",
+      "./docs/behavioural-consultations/dog-on-dog-aggression.html",
+      "./docs/behavioural-consultations/dog-on-person-aggression.html",
+      "./docs/behavioural-consultations/index.html",
+      "./docs/contact/index.html",
+      "./docs/courses/bronze-obedience.html",
+      "./docs/courses/gold-obedience.html",
+      "./docs/courses/index.html",
+      "./docs/courses/junior-obedience.html",
+      "./docs/courses/one-to-one.html",
+      "./docs/courses/platinum-obedience.html",
+      "./docs/courses/puppy-socialisation.html",
+      "./docs/courses/silver-obedience.html",
+      "./docs/index.html",
+      "./docs/thanks/index.html"
+    ],
+    "layout/scripts": [
+      "./docs/404.html",
+      "./docs/about/facilities.html",
+      "./docs/about/gaynor-probert.html",
+      "./docs/about/index.html",
+      "./docs/about/sara-thomas.html",
+      "./docs/behavioural-consultations/dog-on-dog-aggression.html",
+      "./docs/behavioural-consultations/dog-on-person-aggression.html",
+      "./docs/behavioural-consultations/index.html",
+      "./docs/contact/index.html",
+      "./docs/courses/bronze-obedience.html",
+      "./docs/courses/gold-obedience.html",
+      "./docs/courses/index.html",
+      "./docs/courses/junior-obedience.html",
+      "./docs/courses/one-to-one.html",
+      "./docs/courses/platinum-obedience.html",
+      "./docs/courses/puppy-socialisation.html",
+      "./docs/courses/silver-obedience.html",
+      "./docs/index.html",
+      "./docs/thanks/index.html"
+    ]
+  },
+  "models": [
+    {
+      "source": "folder:about",
+      "pages": [
+        "./docs/about/facilities.html",
+        "./docs/about/gaynor-probert.html",
+        "./docs/about/index.html",
+        "./docs/about/sara-thomas.html"
+      ]
+    },
+    {
+      "source": "folder:behavioural-consultations",
+      "pages": [
+        "./docs/behavioural-consultations/dog-on-dog-aggression.html",
+        "./docs/behavioural-consultations/dog-on-person-aggression.html"
+      ]
+    },
+    {
+      "source": "folder:courses",
+      "pages": [
+        "./docs/courses/bronze-obedience.html",
+        "./docs/courses/gold-obedience.html",
+        "./docs/courses/junior-obedience.html",
+        "./docs/courses/one-to-one.html",
+        "./docs/courses/platinum-obedience.html",
+        "./docs/courses/puppy-socialisation.html",
+        "./docs/courses/silver-obedience.html"
+      ]
+    },
+    {
+      "source": "inline",
+      "pages": [
+        "./docs/404.html",
+        "./docs/behavioural-consultations/index.html",
+        "./docs/contact/index.html",
+        "./docs/courses/index.html",
+        "./docs/thanks/index.html"
+      ]
+    }
+  ],
+  "controllers": [
+    {
+      "source": "file:about.js",
+      "pages": [
+        "./docs/about/facilities.html",
+        "./docs/about/gaynor-probert.html",
+        "./docs/about/index.html",
+        "./docs/about/sara-thomas.html"
+      ]
+    },
+    {
+      "source": "file:behavioural-consultations.js",
+      "pages": [
+        "./docs/behavioural-consultations/dog-on-dog-aggression.html",
+        "./docs/behavioural-consultations/dog-on-person-aggression.html"
+      ]
+    },
+    {
+      "source": "file:course.js",
+      "pages": [
+        "./docs/courses/bronze-obedience.html",
+        "./docs/courses/gold-obedience.html",
+        "./docs/courses/junior-obedience.html",
+        "./docs/courses/one-to-one.html",
+        "./docs/courses/platinum-obedience.html",
+        "./docs/courses/puppy-socialisation.html",
+        "./docs/courses/silver-obedience.html"
+      ]
+    },
+    {
+      "source": "file:faqMapper.js",
+      "pages": [
+        "./docs/behavioural-consultations/index.html",
+        "./docs/courses/index.html"
+      ]
+    }
+  ],
+  "pipeline": [
+    {
+      "name": "tailwind",
+      "run": "npx @tailwindcss/cli -i src/styles/site.css -o src/assets/css/site.css --minify"
+    }
+  ],
+  "subjects": [
+    {
+      "kind": "controllers",
+      "id": "about.js",
+      "note": "notes/controllers/about.md",
+      "hash": "6f0c19f075e4e0088c40e725d9b2d8da5a50e946"
+    },
+    {
+      "kind": "controllers",
+      "id": "behavioural-consultations.js",
+      "note": "notes/controllers/behavioural-consultations.md",
+      "hash": "11f8b7629362a8a382d91c9bc8ba7f80df59aff0"
+    },
+    {
+      "kind": "controllers",
+      "id": "course.js",
+      "note": "notes/controllers/course.md",
+      "hash": "877201383d605184398e1913c4137ea16fb74ad3"
+    },
+    {
+      "kind": "controllers",
+      "id": "faqMapper.js",
+      "note": "notes/controllers/faqmapper.md",
+      "hash": "9f34e2fa9adf0d76eb66f601bb264c6f79483542"
+    },
+    {
+      "kind": "pipeline",
+      "id": "tailwind",
+      "note": "notes/pipeline/tailwind.md",
+      "hash": "56a316d5e0cbd20c0f34670fc23a9e6966bc2624"
+    }
+  ]
+}
