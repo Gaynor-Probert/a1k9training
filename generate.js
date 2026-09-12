@@ -427,6 +427,12 @@ kiss
       'Contact A1K9 Dog Training Academy near Swansea in South Wales to book dog training courses or a behavioural consultation, and find us on the map.',
     path: 'contact',
     slug: 'index',
+    // The contact page moved from /find-us/ to /contact/ (the label the navbar
+    // and breadcrumb already used). Unlike the pre-2015 paths the course,
+    // consultation and about records carry as their own `aliases`, this URL
+    // was live and indexed until the rename, so the 301 is what carries its
+    // ranking. kiss writes every alias into docs/_redirects.
+    aliases: ['/find-us/'],
     sitemapPriority: '0.80',
     sitemapChangefreq: 'monthly',
   })

@@ -1,5 +1,7 @@
 {
   "slug": "gaynor-probert",
+
+  "aliases": ["/about-gaynor-probert/"],
   "crumb": "Gaynor Probert",
   "heading": "Gaynor Probert",
   "title": "Gaynor Probert - About Me & A1K9 Training",
@@ -18,7 +20,7 @@
   },
   "next": {
     "name": "About Sara Thomas",
-    "link": "/about/sara-thomas"
+    "id": "about/sara-thomas"
   },
   "components": {
     "intro": "about/gaynor-probert/intro",

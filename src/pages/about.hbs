@@ -42,7 +42,7 @@
 
 {{#if model.next.name}}
   <div class="mt-8">
-    <a href="{{ model.next.link }}" class="btn btn-primary">Next: {{ model.next.name}}</a>
+    <a href="{{link model.next.id canonical=true}}" class="btn btn-primary">Next: {{ model.next.name}}</a>
   </div>
 {{/if}}
 

@@ -1,5 +1,7 @@
 {
   "slug": "sara-thomas",
+
+  "aliases": ["/about-sara-thomas/"],
   "crumb": "Sara Thomas",
   "heading": "Sara Thomas",
   "title": "Sara Thomas",
@@ -12,7 +14,7 @@
   },
   "next": {
     "name": "Get in touch",
-    "link": "/contact/"
+    "id": "contact"
   },
   "components": {
     "intro": "about/sara-thomas/intro",

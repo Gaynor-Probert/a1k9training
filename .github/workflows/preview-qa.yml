@@ -31,6 +31,12 @@ jobs:
 
       - run: npm ci
 
+      # qa/preview.mjs reads the redirect rules it tests from docs/_redirects,
+      # which kiss writes from each page's `aliases` at build time — so the
+      # site has to be built here before the preview is verified against it.
+      - name: Build the site (for docs/_redirects)
+        run: npm run build
+
       - name: Install Chromium for Playwright
         run: npx playwright install --with-deps chromium
 
