@@ -1,4 +1,8 @@
 {
+  "enabledPlugins": {
+    "kiss-ssg@kiss-ssg": true,
+    "kiss-memory@kiss-ssg": true
+  },
   "extraKnownMarketplaces": {
     "kiss-ssg": {
       "source": {
@@ -6,8 +10,5 @@
         "repo": "cprobert/kiss-ssg"
       }
     }
-  },
-  "enabledPlugins": {
-    "kiss-ssg@kiss-ssg": true
   }
 }
