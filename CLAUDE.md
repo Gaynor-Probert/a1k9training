@@ -8,9 +8,10 @@ The site of Gaynor Probert, a dog behaviourist and trainer in South Wales
 (`a1k9training.co.uk`). A static site built with
 [kiss-ssg](https://www.npmjs.com/package/kiss-ssg) (Handlebars views +
 Markdown partials, MVC-style: page → model → controller) and styled with
-Tailwind CSS v4. It was migrated off Bootstrap 3 in place; `planning/` holds
-the migration plan and session notes, and `qa/` exists specifically to gate
-that migration against regressions (see below).
+Tailwind CSS v4. It was migrated off Bootstrap 3 in place (PR #9, September
+2026); `planning/sessions/` holds one record per piece of work, the completed
+migration plan included, and `qa/` exists specifically to gate that migration
+against regressions (see below).
 
 **kiss-ssg API reference:**
 
@@ -81,6 +82,22 @@ automatically as the `Preview QA` check.
   `CHROME_PATH=".../ms-playwright/chromium-<rev>/chrome-win64/chrome.exe"`
   (the scripts default to a Linux CI path).
 
+### Knowledge base and session loop (`AIKB/`, `planning/sessions/`)
+
+`AIKB/` is kiss's recorded map of the site (`site-map.md` lists every page,
+its id, view, model, controller and the partials it rendered) plus authored
+notes under `AIKB/notes/` for each controller and pipeline step, stamped with
+the subject's hash. It is committed source, written only by
+`npx kiss-ssg aikb generate.js`, and `npm run check` diffs every build
+against `AIKB/last-build.json` and reports notes that are missing, stale,
+dead or dangling. A piece of work on the site runs through the kiss-memory
+plugin's loop: `kiss-branch-open` writes the intent to
+`planning/sessions/<date>-<slug>.md` and creates the branch,
+`kiss-branch-pulse` logs a checkpoint against the check diff after each
+slice, and `kiss-branch-close` verifies the criteria, re-records `AIKB/`
+and closes the file. Never re-record mid-branch: it moves the baseline and
+empties the diff. Changing a controller obliges restamping its note.
+
 ## Architecture
 
 ### Page pipeline: `generate.js` → model → controller → view
@@ -132,6 +149,19 @@ per-section.
   followed by another block (a CTA button, a card) needs an explicit margin
   utility (this repo's convention: `mb-6` on the paragraph, or `mt-8` on the
   wrapper that follows) — nothing restores it by default.
+- **Internal links are `{{link "<id>" canonical=true}}`, never a hand-written
+  path.** Ids are the view route without its extension (`index`, `contact`,
+  `courses/index`, `about/index`) and, for a fan-out item, the registration's
+  route plus the record's slug (`{{link "courses/course" slug="bronze-obedience"
+  canonical=true}}`, `{{link "about" slug="facilities" canonical=true}}`,
+  `{{link "behavioural-consultations/consultation" slug="…" canonical=true}}`);
+  `AIKB/site-map.md` lists every id. An id no page claims fails the build.
+  `canonical=true` is **mandatory**: this site is not `extensionLess`, so the
+  bare helper renders `/courses/bronze-obedience.html`, which Netlify 301s
+  back to the slashless form and `qa:preview`'s redirect-free check fails.
+  The same rule applies to model data — the about records' `next` carries a
+  page `id`, not a URL — and to `generate.js`, where `linkTo()` wraps the
+  helper for the breadcrumb and course-ladder helpers.
 
 ### Design system (`src/styles/site.css`)
 
@@ -162,8 +192,13 @@ emitted `.css`/`.js` with a content hash; templates always reference the
 unhashed name through kiss's `{{asset}}` helper
 (`href="/{{asset "css/site.css"}}"`) and the manifest resolves it.
 `src/assets/_headers` sets long-lived immutable caching for hashed CSS/JS, a
-year for images/fonts, and security headers; `src/assets/_redirects` keeps
-pre-2015 URLs alive.
+year for images/fonts, and security headers. There is **no hand-written
+`_redirects`**: kiss writes `docs/_redirects` at build time from each page's
+`aliases` (the pre-2015 paths sit on the course, consultation and about
+records in `src/models/`; `/find-us/` on the contact page in `generate.js`),
+one `<old> <new> 301` line per alias. To keep an old URL alive when a page
+moves, add it to that page's `aliases`; `npm run check` reports a page
+removed or moved without one.
 
 **Cache busting is by URL, never by header.** CSS and JS bust themselves:
 kiss renames them with a content hash on every change, so a changed file is
@@ -182,6 +217,9 @@ applies to the self-hosted font (`buenard-700-v1.woff2`).
 
 Netlify builds on push (`npm run build`, publish dir `docs/`); it must
 install devDependencies (Tailwind's CLI is one) on Node ≥ 22.12.
-`kiss-ssg` is on the published `^2.1.0` release, which carries the
-asset-pipeline hook, the trailing-slash canonical fix and `.llms()` (the
-generated `llms.txt`) this project depends on.
+`kiss-ssg` is on the published `^2.2.1` release. Beyond the asset-pipeline
+hook, the trailing-slash canonical fix and `.llms()` (the generated
+`llms.txt`) from 2.1, this project relies on three 2.2 features: page
+`aliases` (the source of the generated `docs/_redirects`), the `{{link}}`
+helper (every internal href), and the recorded knowledge base under `AIKB/`
+that `npm run check` diffs against.
