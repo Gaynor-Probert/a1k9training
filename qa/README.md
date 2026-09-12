@@ -1,7 +1,7 @@
 # QA harness
 
 Playwright + Lighthouse + axe-core QA harness for the a1k9training rebuild
-(see `planning/2026-09-07-tailwind-migration-plan.md`, "Loop 0"). Everything
+(see `planning/sessions/2026-09-07-tailwind-migration.md`, "Loop 0"). Everything
 here is plain Node ESM (`.mjs`), driven by npm scripts. Nothing in `qa/`
 builds the site — every script takes a **directory of already-built HTML**
 (a `docs/` build, or the frozen `qa/.baseline-site`) and serves/inspects it.

@@ -5,7 +5,7 @@
  * Usage:
  *   node scripts/optimise-images.mjs
  *
- * What it does (see planning/2026-09-07-tailwind-migration-plan.md, "Loop 3"):
+ * What it does (see planning/sessions/2026-09-07-tailwind-migration.md, "Loop 3"):
  *   1. Discovers every /images/... path referenced from src/pages, src/partials,
  *      src/layouts, src/models/**\/*.json and generate.js (png/jpg/JPG/gif),
  *      plus the homepage hero background-image hardcoded in a layout.

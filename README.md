@@ -51,7 +51,7 @@ src/assets/         copied verbatim into the build (images, fonts, js, css)
 docs/               build output — never edited by hand, emptied on every build
 qa/                 Playwright, Lighthouse and axe harness — see qa/README.md
 scripts/            dev tooling (image optimisation)
-planning/           migration plan and session notes
+planning/sessions/  one record per piece of work (intent, pulses, close), oldest the migration plan
 ```
 
 `src/assets/css/site.css` is **generated** and gitignored. Edit

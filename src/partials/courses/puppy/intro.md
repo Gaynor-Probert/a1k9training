@@ -4,5 +4,5 @@ The foundations for good behaviour are laid down in the first 16 weeks of a dog'
 
 <div class="mt-4 rounded-card border border-accent-400/50 bg-white/10 px-4 py-3">
     <p class="mb-0">Suitable for pups up to the age of 6 months.<br>
-    <strong>Please <a href="/contact/">book a place</a> prior to attendance</strong></p>
+    <strong>Please <a href="{{link "contact" canonical=true}}">book a place</a> prior to attendance</strong></p>
 </div>

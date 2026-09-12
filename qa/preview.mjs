@@ -297,16 +297,20 @@ let llmsEntryUrls = []
 // ======================================================================
 // 3b. Redirects actually redirect.
 //
-// Every rule in src/assets/_redirects is a URL that was live once and may
-// still be linked from somewhere we don't control — the pre-2015 paths, and
-// /find-us/, which was the contact page's URL until it became /contact/.
+// Every rule in docs/_redirects is a URL that was live once and may still be
+// linked from somewhere we don't control — the pre-2015 paths, and /find-us/,
+// which was the contact page's URL until it became /contact/. kiss writes the
+// file at build time from each page's `aliases` (the course, consultation and
+// about records in src/models, and the contact page in generate.js), one
+// `<old> <new> 301` line per alias — so this needs a build to have run first
+// (the workflow does; by hand, `npm run build` before `npm run qa:preview`).
 // Nothing tested that these resolve: qa/serve.mjs implements pretty-URL
 // resolution only, not _redirects, so a broken rule looks identical locally
 // to a working one and only shows up on a deploy. Hence checking it here.
 // ======================================================================
 
 {
-  const redirectsFile = 'src/assets/_redirects'
+  const redirectsFile = 'docs/_redirects'
   let rules = []
   try {
     rules = (await fs.readFile(redirectsFile, 'utf8'))

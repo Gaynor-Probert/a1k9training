@@ -186,18 +186,31 @@ kiss.handlebars.registerHelper(
   },
 )
 
+// The same id → served-path resolution templates get from {{link}}, for the
+// helpers below that assemble a breadcrumb trail or a course track in JS rather
+// than in markup. `canonical` gives the pretty form Netlify serves without a
+// redirect (`/courses/`, `/courses/bronze-obedience`), the same string the
+// page's own <link rel="canonical"> and its sitemap <loc> carry. Render-time
+// only: the registry it reads is filled by the .page()/.pages() calls further
+// down, so nothing may call it at module load — an unknown id throws, which is
+// the point (a dead link fails the build instead of shipping).
+const linkTo = (id, slug) =>
+  kiss.handlebars.helpers.link(id, { hash: { canonical: true, slug } })
+
 // The site's four sections — one entry per top-level folder: the label used for
-// it wherever it is named, and the URL its index page builds to. The navbar
-// still carries its own copy of these labels in markup, so renaming a section
-// means editing src/partials/layout/navbar.hbs too.
+// it wherever it is named, the page id of its index, and the fan-out id its
+// child pages hang off (`{{link child slug=…}}`; null where a section has no
+// children). The navbar still carries its own copy of these labels in markup,
+// so renaming a section means editing src/partials/layout/navbar.hbs too.
 const SECTIONS = {
   'behavioural-consultations': {
     label: 'Consultations',
-    url: '/behavioural-consultations/',
+    id: 'behavioural-consultations/index',
+    child: 'behavioural-consultations/consultation',
   },
-  courses: { label: 'Courses', url: '/courses/' },
-  about: { label: 'About Us', url: '/about/' },
-  contact: { label: 'Contact', url: '/contact/' },
+  courses: { label: 'Courses', id: 'courses/index', child: 'courses/course' },
+  about: { label: 'About Us', id: 'about/index', child: 'about' },
+  contact: { label: 'Contact', id: 'contact', child: null },
 }
 
 // The breadcrumb trail for the page being rendered, derived from that page's own
@@ -222,17 +235,17 @@ kiss.handlebars.registerHelper('breadcrumb', function (options) {
   const section = SECTIONS[sectionSlug]
   if (!section) return []
 
-  const trail = [{ name: 'Home', url: '/' }]
+  const trail = [{ name: 'Home', url: linkTo('index') }]
   if (!childSlug) {
-    trail.push({ name: section.label, url: section.url, current: true })
+    trail.push({ name: section.label, url: linkTo(section.id), current: true })
     return trail
   }
 
-  trail.push({ name: section.label, url: section.url })
+  trail.push({ name: section.label, url: linkTo(section.id) })
   const model = options?.data?.root?.model
   trail.push({
     name: model?.crumb || model?.heading || childSlug,
-    url: `${section.url}${childSlug}`,
+    url: linkTo(section.child, childSlug),
     current: true,
   })
   return trail
@@ -249,11 +262,13 @@ kiss.handlebars.registerHelper('breadcrumb', function (options) {
 // a private format rather than a stage, carries neither field, and so gets no
 // track at all.
 const COURSE_MODELS = './src/models/courses'
+// No `url` here: the steps are built at module load, before any page is
+// registered, so the URL is resolved per step at render time (`withUrl` in the
+// courseLadder helper) where {{link}} can vouch for it.
 const ladderStep = (m) => ({
   slug: m.slug,
   rung: m.rung,
   name: m.crumb,
-  url: `/courses/${m.slug}`,
 })
 const courseModels = fs
   .readdirSync(COURSE_MODELS)
@@ -280,11 +295,14 @@ kiss.handlebars.registerHelper('courseLadder', function (options) {
   const isOnramp = ONRAMP?.slug === slug
   if (rung === -1 && !isOnramp) return null
 
+  const withUrl = (s) =>
+    s ? { ...s, url: linkTo('courses/course', s.slug) } : null
   const steps = []
-  if (ONRAMP) steps.push({ ...ONRAMP, current: isOnramp, optional: true })
+  if (ONRAMP)
+    steps.push({ ...withUrl(ONRAMP), current: isOnramp, optional: true })
   LADDER.forEach((s, i) =>
     steps.push({
-      ...s,
+      ...withUrl(s),
       current: s.slug === slug,
       // the only dashed connector is the optional one from the on-ramp into
       // the first rung; every other step follows its predecessor strictly
@@ -295,7 +313,7 @@ kiss.handlebars.registerHelper('courseLadder', function (options) {
   return {
     steps,
     current: steps.find((s) => s.current),
-    next: isOnramp ? (LADDER[0] ?? null) : (LADDER[rung + 1] ?? null),
+    next: withUrl(isOnramp ? LADDER[0] : LADDER[rung + 1]),
     isOnramp,
   }
 })
@@ -409,6 +427,12 @@ kiss
       'Contact A1K9 Dog Training Academy near Swansea in South Wales to book dog training courses or a behavioural consultation, and find us on the map.',
     path: 'contact',
     slug: 'index',
+    // The contact page moved from /find-us/ to /contact/ (the label the navbar
+    // and breadcrumb already used). Unlike the pre-2015 paths the course,
+    // consultation and about records carry as their own `aliases`, this URL
+    // was live and indexed until the rename, so the 301 is what carries its
+    // ranking. kiss writes every alias into docs/_redirects.
+    aliases: ['/find-us/'],
     sitemapPriority: '0.80',
     sitemapChangefreq: 'monthly',
   })

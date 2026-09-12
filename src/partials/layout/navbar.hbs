@@ -14,7 +14,7 @@
 --}}
 <nav class="border-b border-brand-900/40 bg-brand-800 text-sand-100" aria-label="Main">
   <div class="mx-auto flex max-w-content flex-wrap items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:flex-nowrap lg:px-8">
-    <a href="/" class="font-display text-lg font-bold tracking-wide text-white no-underline sm:text-xl">
+    <a href="{{link "index" canonical=true}}" class="font-display text-lg font-bold tracking-wide text-white no-underline sm:text-xl">
       Gaynor Probert
     </a>
 
@@ -36,7 +36,7 @@
     <div id="site-menu" class="hidden w-full basis-full lg:block lg:w-auto lg:basis-auto" data-nav-panel>
       <ul class="flex flex-col gap-1 pt-3 pb-1 lg:flex-row lg:items-center lg:gap-1 lg:pt-0 lg:pb-0">
 
-        {{#isActive this href="/" active="true"}}
+        {{#isActive this href=(link "index" canonical=true) active="true"}}
           <li>
             <a href="{{href}}" data-active="{{active}}"
               class="block rounded-pill px-4 py-2 font-medium text-sand-100 no-underline hover:bg-brand-700 hover:text-white data-[active=true]:bg-brand-900 data-[active=true]:text-white">
@@ -45,7 +45,7 @@
           </li>
         {{/isActive}}
 
-        {{#isActive this href="/behavioural-consultations" folderMatch=true active="true"}}
+        {{#isActive this href=(link "behavioural-consultations/index" canonical=true) folderMatch=true active="true"}}
           <li class="group relative" data-dropdown>
             <div class="flex items-center rounded-pill data-[active=true]:bg-brand-900 lg:group-hover:bg-brand-700" data-active="{{active}}">
               <a href="{{href}}" data-active="{{active}}"
@@ -69,12 +69,12 @@
               </li>
               <li aria-hidden="true" class="my-1 border-t border-brand-700 lg:border-sand-200"></li>
               <li>
-                <a href="{{href}}/dog-on-dog-aggression" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                <a href="{{link "behavioural-consultations/consultation" slug="dog-on-dog-aggression" canonical=true}}" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
                   Dog-on-Dog Aggression
                 </a>
               </li>
               <li>
-                <a href="{{href}}/dog-on-person-aggression" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                <a href="{{link "behavioural-consultations/consultation" slug="dog-on-person-aggression" canonical=true}}" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
                   Dog-on-Person Aggression
                 </a>
               </li>
@@ -82,7 +82,7 @@
           </li>
         {{/isActive}}
 
-        {{#isActive this href="/courses" folderMatch=true active="true"}}
+        {{#isActive this href=(link "courses/index" canonical=true) folderMatch=true active="true"}}
           <li class="group relative" data-dropdown>
             <div class="flex items-center rounded-pill data-[active=true]:bg-brand-900 lg:group-hover:bg-brand-700" data-active="{{active}}">
               <a href="{{href}}" data-active="{{active}}"
@@ -106,39 +106,39 @@
               </li>
               <li aria-hidden="true" class="my-1 border-t border-brand-700 lg:border-sand-200"></li>
               <li>
-                <a href="{{href}}/puppy-socialisation" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                <a href="{{link "courses/course" slug="puppy-socialisation" canonical=true}}" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
                   Puppy Socialisation
                 </a>
               </li>
               <li aria-hidden="true" class="my-1 border-t border-brand-700 lg:border-sand-200"></li>
               <li>
-                <a href="{{href}}/junior-obedience" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                <a href="{{link "courses/course" slug="junior-obedience" canonical=true}}" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
                   Junior Course
                 </a>
               </li>
               <li>
-                <a href="{{href}}/bronze-obedience" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                <a href="{{link "courses/course" slug="bronze-obedience" canonical=true}}" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
                   Bronze Obedience
                 </a>
               </li>
               <li>
-                <a href="{{href}}/silver-obedience" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                <a href="{{link "courses/course" slug="silver-obedience" canonical=true}}" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
                   Silver Obedience
                 </a>
               </li>
               <li>
-                <a href="{{href}}/gold-obedience" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                <a href="{{link "courses/course" slug="gold-obedience" canonical=true}}" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
                   Gold Obedience
                 </a>
               </li>
               <li>
-                <a href="{{href}}/platinum-obedience" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                <a href="{{link "courses/course" slug="platinum-obedience" canonical=true}}" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
                   Platinum Obedience
                 </a>
               </li>
               <li aria-hidden="true" class="my-1 border-t border-brand-700 lg:border-sand-200"></li>
               <li>
-                <a href="{{href}}/one-to-one" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                <a href="{{link "courses/course" slug="one-to-one" canonical=true}}" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
                   One to One
                 </a>
               </li>
@@ -146,7 +146,7 @@
           </li>
         {{/isActive}}
 
-        {{#isActive this href="/about" folderMatch=true active="true"}}
+        {{#isActive this href=(link "about/index" canonical=true) folderMatch=true active="true"}}
           <li class="group relative" data-dropdown>
             <div class="flex items-center rounded-pill data-[active=true]:bg-brand-900 lg:group-hover:bg-brand-700" data-active="{{active}}">
               <a href="{{href}}" data-active="{{active}}"
@@ -170,17 +170,17 @@
               </li>
               <li aria-hidden="true" class="my-1 border-t border-brand-700 lg:border-sand-200"></li>
               <li>
-                <a href="{{href}}/facilities" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                <a href="{{link "about" slug="facilities" canonical=true}}" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
                   Facilities
                 </a>
               </li>
               <li>
-                <a href="{{href}}/gaynor-probert" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                <a href="{{link "about" slug="gaynor-probert" canonical=true}}" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
                   Gaynor Probert
                 </a>
               </li>
               <li>
-                <a href="{{href}}/sara-thomas" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
+                <a href="{{link "about" slug="sara-thomas" canonical=true}}" class="block rounded-pill px-3 py-2 text-sm text-sand-100 no-underline hover:bg-brand-700 hover:text-white lg:text-ink-700 lg:hover:bg-brand-50 lg:hover:text-brand-800">
                   Sara Thomas
                 </a>
               </li>
@@ -188,7 +188,7 @@
           </li>
         {{/isActive}}
 
-        {{#isActive this href="/contact/" active="true"}}
+        {{#isActive this href=(link "contact" canonical=true) active="true"}}
           <li>
             <a href="{{href}}" data-active="{{active}}"
               class="block rounded-pill px-4 py-2 font-medium text-sand-100 no-underline hover:bg-brand-700 hover:text-white data-[active=true]:bg-brand-900 data-[active=true]:text-white">

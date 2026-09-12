@@ -1,3 +1,17 @@
+---
+branch: claude/a1k9-bootstrap-tailwind-m1uwni
+base: kiss-ssg-v2-migration
+status: closed
+opened: 2026-09-07
+closed: 2026-09-09
+---
+
+> **Status: complete.** Merged to master as PR #9 on 2026-09-09; the branch
+> is gone. This is the plan as it was run, kept as the record of *why* the
+> site is shaped the way it is (decisions, starting numbers, risks). It
+> predates the `planning/sessions/` convention and has been filed here with
+> the later session logs. Nothing below is still to do.
+
 # a1k9 → Tailwind migration and speed plan
 
 Date: 2026-09-07. Branch: `claude/a1k9-bootstrap-tailwind-m1uwni` in both

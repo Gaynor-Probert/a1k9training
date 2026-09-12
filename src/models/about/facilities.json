@@ -1,5 +1,7 @@
 {
   "slug": "facilities",
+
+  "aliases": ["/about-facilities/"],
   "crumb": "Facilities",
   "heading": "Facilities",
   "title": "About the A1K9 Training Facilities",
@@ -9,7 +11,7 @@
   "captionOffset": true,
   "next": {
     "name": "About Gaynor Probert",
-    "link": "/about/gaynor-probert"
+    "id": "about/gaynor-probert"
   },
   "components": {
     "intro": "about/facilities/intro",

@@ -1,0 +1,569 @@
+{
+  "ok": true,
+  "mode": "check",
+  "buildDir": "./docs",
+  "pages": [
+    {
+      "view": "index.hbs",
+      "buildTo": "./docs/index.html",
+      "ok": true,
+      "hash": "3cc9cff868e2d73ef4cb658bcfb6ffe862b4e145",
+      "id": "index"
+    },
+    {
+      "view": "contact.hbs",
+      "buildTo": "./docs/contact/index.html",
+      "ok": true,
+      "hash": "f9ae10fab67e49aefe6133717c8d9f1583be6e0d",
+      "id": "contact"
+    },
+    {
+      "view": "thanks.hbs",
+      "buildTo": "./docs/thanks/index.html",
+      "ok": true,
+      "hash": "2b6b762f48b1dbbbb64bb7614b41c56a4a9cdd23",
+      "id": "thanks"
+    },
+    {
+      "view": "404.hbs",
+      "buildTo": "./docs/404.html",
+      "ok": true,
+      "hash": "3b85fb8ba2680d21c7cdbb4cf49e23abfd6e1caa",
+      "id": "404"
+    },
+    {
+      "view": "about.hbs",
+      "buildTo": "./docs/about/facilities.html",
+      "ok": true,
+      "hash": "3a959379a9d64d53b700c06f1be2b21c52bae482",
+      "id": "about/facilities"
+    },
+    {
+      "view": "behavioural-consultations/index.hbs",
+      "buildTo": "./docs/behavioural-consultations/index.html",
+      "ok": true,
+      "hash": "ebe854c99dc0acf7358b1a785330de6363d46792",
+      "id": "behavioural-consultations/index"
+    },
+    {
+      "view": "courses/index.hbs",
+      "buildTo": "./docs/courses/index.html",
+      "ok": true,
+      "hash": "b21091a74e5282fba36782968f7e54376195ea23",
+      "id": "courses/index"
+    },
+    {
+      "view": "behavioural-consultations/consultation.hbs",
+      "buildTo": "./docs/behavioural-consultations/dog-on-dog-aggression.html",
+      "ok": true,
+      "hash": "4ed72e40d6135e559e1b81a1fcb98db58ff5f1b0",
+      "id": "behavioural-consultations/consultation/dog-on-dog-aggression"
+    },
+    {
+      "view": "courses/course.hbs",
+      "buildTo": "./docs/courses/bronze-obedience.html",
+      "ok": true,
+      "hash": "667f6a2ed0bbaf9da45af2b51b49256b0f1fc89f",
+      "id": "courses/course/bronze-obedience"
+    },
+    {
+      "view": "about.hbs",
+      "buildTo": "./docs/about/gaynor-probert.html",
+      "ok": true,
+      "hash": "a9e67dde5fe984d797c301950b93f262ce3dd86e",
+      "id": "about/gaynor-probert"
+    },
+    {
+      "view": "behavioural-consultations/consultation.hbs",
+      "buildTo": "./docs/behavioural-consultations/dog-on-person-aggression.html",
+      "ok": true,
+      "hash": "947d3f65b86f79298a6985b779b2f4de72e3d460",
+      "id": "behavioural-consultations/consultation/dog-on-person-aggression"
+    },
+    {
+      "view": "courses/course.hbs",
+      "buildTo": "./docs/courses/gold-obedience.html",
+      "ok": true,
+      "hash": "b69ecb52e1a914db2aabf6d3e22e3f5e722ba4fb",
+      "id": "courses/course/gold-obedience"
+    },
+    {
+      "view": "about.hbs",
+      "buildTo": "./docs/about/index.html",
+      "ok": true,
+      "hash": "4ced0a9b75c1d44609f75adf0a83dee883988bea",
+      "id": "about/index"
+    },
+    {
+      "view": "courses/course.hbs",
+      "buildTo": "./docs/courses/junior-obedience.html",
+      "ok": true,
+      "hash": "f0e30550810605a43727ece6fd57ba5525ebce2c",
+      "id": "courses/course/junior-obedience"
+    },
+    {
+      "view": "about.hbs",
+      "buildTo": "./docs/about/sara-thomas.html",
+      "ok": true,
+      "hash": "3e32f533e7b0021f16206aa7625a9dbffa9031f3",
+      "id": "about/sara-thomas"
+    },
+    {
+      "view": "courses/course.hbs",
+      "buildTo": "./docs/courses/one-to-one.html",
+      "ok": true,
+      "hash": "007f326cfc4d0299dcd7461383082407e91c2dfc",
+      "id": "courses/course/one-to-one"
+    },
+    {
+      "view": "courses/course.hbs",
+      "buildTo": "./docs/courses/platinum-obedience.html",
+      "ok": true,
+      "hash": "a58b025d56acc857f8a40c1fe1f0c19bfb299144",
+      "id": "courses/course/platinum-obedience"
+    },
+    {
+      "view": "courses/course.hbs",
+      "buildTo": "./docs/courses/puppy-socialisation.html",
+      "ok": true,
+      "hash": "6a76c3a4db0fce5ad0a853e82e82e9f998ad6b94",
+      "id": "courses/course/puppy-socialisation"
+    },
+    {
+      "view": "courses/course.hbs",
+      "buildTo": "./docs/courses/silver-obedience.html",
+      "ok": true,
+      "hash": "b0e53438ba2494d1d4354a45e480a24578556bc0",
+      "id": "courses/course/silver-obedience"
+    }
+  ],
+  "failures": [],
+  "assets": [
+    {
+      "source": "_headers",
+      "target": "_headers"
+    },
+    {
+      "source": "attachments/Gaynor-Probert_CFBA_behaviourist_of_the_year_2014.pdf",
+      "target": "attachments/Gaynor-Probert_CFBA_behaviourist_of_the_year_2014.pdf"
+    },
+    {
+      "source": "css/site.css",
+      "target": "css/site.8fdcf48c.css"
+    },
+    {
+      "source": "favicon.ico",
+      "target": "favicon.ico"
+    },
+    {
+      "source": "fonts/buenard-700-v1.woff2",
+      "target": "fonts/buenard-700-v1.woff2"
+    },
+    {
+      "source": "googleab62e0ee5f306664.html",
+      "target": "googleab62e0ee5f306664.html"
+    },
+    {
+      "source": "images/about/BIPDT-V1.webp",
+      "target": "images/about/BIPDT-V1.webp"
+    },
+    {
+      "source": "images/about/CFBA-v1.webp",
+      "target": "images/about/CFBA-v1.webp"
+    },
+    {
+      "source": "images/about/NTIPDU-v1.webp",
+      "target": "images/about/NTIPDU-v1.webp"
+    },
+    {
+      "source": "images/about/facilities-v2-960w.webp",
+      "target": "images/about/facilities-v2-960w.webp"
+    },
+    {
+      "source": "images/about/facilities-v2.webp",
+      "target": "images/about/facilities-v2.webp"
+    },
+    {
+      "source": "images/about/facilities/hospitality-cabin-v1.webp",
+      "target": "images/about/facilities/hospitality-cabin-v1.webp"
+    },
+    {
+      "source": "images/about/facilities/indoor-training-v1.webp",
+      "target": "images/about/facilities/indoor-training-v1.webp"
+    },
+    {
+      "source": "images/about/facilities/location-v1.webp",
+      "target": "images/about/facilities/location-v1.webp"
+    },
+    {
+      "source": "images/about/facilities/parking-v1.webp",
+      "target": "images/about/facilities/parking-v1.webp"
+    },
+    {
+      "source": "images/about/facilities/shop-v1.webp",
+      "target": "images/about/facilities/shop-v1.webp"
+    },
+    {
+      "source": "images/about/facilities/training-fields-v1.webp",
+      "target": "images/about/facilities/training-fields-v1.webp"
+    },
+    {
+      "source": "images/about/gaynor-probert-awards-v1.webp",
+      "target": "images/about/gaynor-probert-awards-v1.webp"
+    },
+    {
+      "source": "images/about/gaynor-probert-canine-and-feline-practitioner-of-the-year-2014-v1.webp",
+      "target": "images/about/gaynor-probert-canine-and-feline-practitioner-of-the-year-2014-v1.webp"
+    },
+    {
+      "source": "images/about/gaynor-probert-v1-960w.webp",
+      "target": "images/about/gaynor-probert-v1-960w.webp"
+    },
+    {
+      "source": "images/about/gaynor-probert-v1.webp",
+      "target": "images/about/gaynor-probert-v1.webp"
+    },
+    {
+      "source": "images/about/guild-of-dog-trainers-v1.webp",
+      "target": "images/about/guild-of-dog-trainers-v1.webp"
+    },
+    {
+      "source": "images/about/horse-sit-v1-960w.webp",
+      "target": "images/about/horse-sit-v1-960w.webp"
+    },
+    {
+      "source": "images/about/horse-sit-v1.webp",
+      "target": "images/about/horse-sit-v1.webp"
+    },
+    {
+      "source": "images/about/offlead-run-v1.webp",
+      "target": "images/about/offlead-run-v1.webp"
+    },
+    {
+      "source": "images/about/philosophy-v4-960w.webp",
+      "target": "images/about/philosophy-v4-960w.webp"
+    },
+    {
+      "source": "images/about/philosophy-v4.webp",
+      "target": "images/about/philosophy-v4.webp"
+    },
+    {
+      "source": "images/about/sara-thomas-v2-960w.webp",
+      "target": "images/about/sara-thomas-v2-960w.webp"
+    },
+    {
+      "source": "images/about/sara-thomas-v2.webp",
+      "target": "images/about/sara-thomas-v2.webp"
+    },
+    {
+      "source": "images/consultations/ali-the-rotti-v1.webp",
+      "target": "images/consultations/ali-the-rotti-v1.webp"
+    },
+    {
+      "source": "images/consultations/behavioural-assessment-v1.webp",
+      "target": "images/consultations/behavioural-assessment-v1.webp"
+    },
+    {
+      "source": "images/consultations/consultations-v1-960w.webp",
+      "target": "images/consultations/consultations-v1-960w.webp"
+    },
+    {
+      "source": "images/consultations/consultations-v1.webp",
+      "target": "images/consultations/consultations-v1.webp"
+    },
+    {
+      "source": "images/consultations/dog-on-dog-aggression/dog-on-dog-aggression-v1-960w.webp",
+      "target": "images/consultations/dog-on-dog-aggression/dog-on-dog-aggression-v1-960w.webp"
+    },
+    {
+      "source": "images/consultations/dog-on-dog-aggression/dog-on-dog-aggression-v1.webp",
+      "target": "images/consultations/dog-on-dog-aggression/dog-on-dog-aggression-v1.webp"
+    },
+    {
+      "source": "images/consultations/dog-on-person-aggression/dog-on-person-aggression-v3-960w.webp",
+      "target": "images/consultations/dog-on-person-aggression/dog-on-person-aggression-v3-960w.webp"
+    },
+    {
+      "source": "images/consultations/dog-on-person-aggression/dog-on-person-aggression-v3.webp",
+      "target": "images/consultations/dog-on-person-aggression/dog-on-person-aggression-v3.webp"
+    },
+    {
+      "source": "images/consultations/naughty-dog-v1.webp",
+      "target": "images/consultations/naughty-dog-v1.webp"
+    },
+    {
+      "source": "images/courses/bronze-v1.webp",
+      "target": "images/courses/bronze-v1.webp"
+    },
+    {
+      "source": "images/courses/bronze/bronze-course-v2-960w.webp",
+      "target": "images/courses/bronze/bronze-course-v2-960w.webp"
+    },
+    {
+      "source": "images/courses/bronze/bronze-course-v2.webp",
+      "target": "images/courses/bronze/bronze-course-v2.webp"
+    },
+    {
+      "source": "images/courses/bronze/ozzy-v1.webp",
+      "target": "images/courses/bronze/ozzy-v1.webp"
+    },
+    {
+      "source": "images/courses/bronze/walking-the-dog-v1.webp",
+      "target": "images/courses/bronze/walking-the-dog-v1.webp"
+    },
+    {
+      "source": "images/courses/classes-v1.1-960w.webp",
+      "target": "images/courses/classes-v1.1-960w.webp"
+    },
+    {
+      "source": "images/courses/classes-v1.1.webp",
+      "target": "images/courses/classes-v1.1.webp"
+    },
+    {
+      "source": "images/courses/gold-v1.webp",
+      "target": "images/courses/gold-v1.webp"
+    },
+    {
+      "source": "images/courses/gold/agility-v1.webp",
+      "target": "images/courses/gold/agility-v1.webp"
+    },
+    {
+      "source": "images/courses/gold/gold-course-v1-960w.webp",
+      "target": "images/courses/gold/gold-course-v1-960w.webp"
+    },
+    {
+      "source": "images/courses/gold/gold-course-v1.webp",
+      "target": "images/courses/gold/gold-course-v1.webp"
+    },
+    {
+      "source": "images/courses/gold/gold-v1.webp",
+      "target": "images/courses/gold/gold-v1.webp"
+    },
+    {
+      "source": "images/courses/gold/linda-and-bella-v1.webp",
+      "target": "images/courses/gold/linda-and-bella-v1.webp"
+    },
+    {
+      "source": "images/courses/junior/junior-course-v3-960w.webp",
+      "target": "images/courses/junior/junior-course-v3-960w.webp"
+    },
+    {
+      "source": "images/courses/junior/junior-course-v3.webp",
+      "target": "images/courses/junior/junior-course-v3.webp"
+    },
+    {
+      "source": "images/courses/junior/junior-v1.webp",
+      "target": "images/courses/junior/junior-v1.webp"
+    },
+    {
+      "source": "images/courses/junior/mbali-v1.webp",
+      "target": "images/courses/junior/mbali-v1.webp"
+    },
+    {
+      "source": "images/courses/one-to-one/121-v1.webp",
+      "target": "images/courses/one-to-one/121-v1.webp"
+    },
+    {
+      "source": "images/courses/one-to-one/one-to-one-v3-960w.webp",
+      "target": "images/courses/one-to-one/one-to-one-v3-960w.webp"
+    },
+    {
+      "source": "images/courses/one-to-one/one-to-one-v3.webp",
+      "target": "images/courses/one-to-one/one-to-one-v3.webp"
+    },
+    {
+      "source": "images/courses/one-to-one/poppy-v1.webp",
+      "target": "images/courses/one-to-one/poppy-v1.webp"
+    },
+    {
+      "source": "images/courses/one2one-v2.webp",
+      "target": "images/courses/one2one-v2.webp"
+    },
+    {
+      "source": "images/courses/platinum-v1.webp",
+      "target": "images/courses/platinum-v1.webp"
+    },
+    {
+      "source": "images/courses/platinum/glenda-and-bryn-v1.webp",
+      "target": "images/courses/platinum/glenda-and-bryn-v1.webp"
+    },
+    {
+      "source": "images/courses/platinum/platinum-course-v2-960w.webp",
+      "target": "images/courses/platinum/platinum-course-v2-960w.webp"
+    },
+    {
+      "source": "images/courses/platinum/platinum-course-v2.webp",
+      "target": "images/courses/platinum/platinum-course-v2.webp"
+    },
+    {
+      "source": "images/courses/platinum/sit-v1.webp",
+      "target": "images/courses/platinum/sit-v1.webp"
+    },
+    {
+      "source": "images/courses/platinum/tire-jump-v1.webp",
+      "target": "images/courses/platinum/tire-jump-v1.webp"
+    },
+    {
+      "source": "images/courses/puppy-v2.webp",
+      "target": "images/courses/puppy-v2.webp"
+    },
+    {
+      "source": "images/courses/puppy/flying-ewok-v1.webp",
+      "target": "images/courses/puppy/flying-ewok-v1.webp"
+    },
+    {
+      "source": "images/courses/puppy/mandy-and-henry-v1.webp",
+      "target": "images/courses/puppy/mandy-and-henry-v1.webp"
+    },
+    {
+      "source": "images/courses/puppy/puppy-class-v2-960w.webp",
+      "target": "images/courses/puppy/puppy-class-v2-960w.webp"
+    },
+    {
+      "source": "images/courses/puppy/puppy-class-v2.webp",
+      "target": "images/courses/puppy/puppy-class-v2.webp"
+    },
+    {
+      "source": "images/courses/puppy/puppy-v1.webp",
+      "target": "images/courses/puppy/puppy-v1.webp"
+    },
+    {
+      "source": "images/courses/silver-v1.1.webp",
+      "target": "images/courses/silver-v1.1.webp"
+    },
+    {
+      "source": "images/courses/silver/agility-v2.1.webp",
+      "target": "images/courses/silver/agility-v2.1.webp"
+    },
+    {
+      "source": "images/courses/silver/group-stay-v1.webp",
+      "target": "images/courses/silver/group-stay-v1.webp"
+    },
+    {
+      "source": "images/courses/silver/keith-and-magic-v1.webp",
+      "target": "images/courses/silver/keith-and-magic-v1.webp"
+    },
+    {
+      "source": "images/courses/silver/silver-course-v1-960w.webp",
+      "target": "images/courses/silver/silver-course-v1-960w.webp"
+    },
+    {
+      "source": "images/courses/silver/silver-course-v1.webp",
+      "target": "images/courses/silver/silver-course-v1.webp"
+    },
+    {
+      "source": "images/courses/silver/walking-the-dog-v1.webp",
+      "target": "images/courses/silver/walking-the-dog-v1.webp"
+    },
+    {
+      "source": "images/find-us/llys-nini-cafe-exterior-v1.webp",
+      "target": "images/find-us/llys-nini-cafe-exterior-v1.webp"
+    },
+    {
+      "source": "images/find-us/llys-nini-cafe-interior-v1.webp",
+      "target": "images/find-us/llys-nini-cafe-interior-v1.webp"
+    },
+    {
+      "source": "images/find-us/llys-nini-car-park-v1.webp",
+      "target": "images/find-us/llys-nini-car-park-v1.webp"
+    },
+    {
+      "source": "images/gaynor-probert-home-v1.1-960w.webp",
+      "target": "images/gaynor-probert-home-v1.1-960w.webp"
+    },
+    {
+      "source": "images/gaynor-probert-home-v1.1.webp",
+      "target": "images/gaynor-probert-home-v1.1.webp"
+    },
+    {
+      "source": "images/index/facebook-v1.webp",
+      "target": "images/index/facebook-v1.webp"
+    },
+    {
+      "source": "images/index/find-us-v1.webp",
+      "target": "images/index/find-us-v1.webp"
+    },
+    {
+      "source": "images/index/gaynor-probert-award-v1.webp",
+      "target": "images/index/gaynor-probert-award-v1.webp"
+    },
+    {
+      "source": "images/index/peek-a-boo-dog-1.webp",
+      "target": "images/index/peek-a-boo-dog-1.webp"
+    },
+    {
+      "source": "images/index/tel-v1.webp",
+      "target": "images/index/tel-v1.webp"
+    },
+    {
+      "source": "js/site.js",
+      "target": "js/site.9e8bff8d.js"
+    },
+    {
+      "source": "robots.txt",
+      "target": "robots.txt"
+    }
+  ],
+  "sitemap": "./docs/sitemap.xml",
+  "pipeline": [
+    {
+      "name": "tailwind",
+      "ok": true
+    }
+  ],
+  "llms": "./docs/llms.txt",
+  "aikb": {
+    "folder": "AIKB",
+    "written": true,
+    "notes": {
+      "missing": [],
+      "dead": [],
+      "stale": [],
+      "dangling": []
+    },
+    "subjects": [
+      {
+        "kind": "controllers",
+        "id": "about.js",
+        "note": "notes/controllers/about.md",
+        "hash": "6f0c19f075e4e0088c40e725d9b2d8da5a50e946"
+      },
+      {
+        "kind": "controllers",
+        "id": "behavioural-consultations.js",
+        "note": "notes/controllers/behavioural-consultations.md",
+        "hash": "11f8b7629362a8a382d91c9bc8ba7f80df59aff0"
+      },
+      {
+        "kind": "controllers",
+        "id": "course.js",
+        "note": "notes/controllers/course.md",
+        "hash": "877201383d605184398e1913c4137ea16fb74ad3"
+      },
+      {
+        "kind": "controllers",
+        "id": "faqMapper.js",
+        "note": "notes/controllers/faqmapper.md",
+        "hash": "9f34e2fa9adf0d76eb66f601bb264c6f79483542"
+      },
+      {
+        "kind": "pipeline",
+        "id": "tailwind",
+        "note": "notes/pipeline/tailwind.md",
+        "hash": "56a316d5e0cbd20c0f34670fc23a9e6966bc2624"
+      }
+    ]
+  },
+  "links": {
+    "checked": 513,
+    "broken": []
+  },
+  "redirects": {
+    "file": "./docs/_redirects",
+    "aliases": 14,
+    "removed": [],
+    "collisions": [],
+    "moved": []
+  },
+  "feed": null
+}
